@@ -7,7 +7,9 @@ using UnityEngine.Events;
 public class DayController : MonoBehaviour {
     private int dayCount = 0;
     private static UnityEvent newDayEvent;
-    
+    public static UnityEvent NewDayEvent => newDayEvent;
+
+
     private void OnMouseDown() {
         newDay();
     }
