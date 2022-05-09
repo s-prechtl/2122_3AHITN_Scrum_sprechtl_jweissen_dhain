@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Items {
-    public class WheatSeed : MonoBehaviour {
+    public class WheatSeed : Item {
+        public WheatSeed() : base("Wheat Seeds", "When planted on farmland, wheat will grow.", 6){}
     }
 }

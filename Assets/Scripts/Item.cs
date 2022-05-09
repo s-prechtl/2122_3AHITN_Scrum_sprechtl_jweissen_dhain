@@ -3,7 +3,7 @@ using UnityEngine;
 public class Item : MonoBehaviour {
     private string displayName;
     private string description;
-    private int id;
+    private int id;  //TODO: create an actual ID System that makes snens
     public SpriteRenderer spriteRenderer;
     public Sprite selectedSprite;
     public Sprite defaultSprite;
@@ -12,6 +12,6 @@ public class Item : MonoBehaviour {
         this.displayName = displayName;
         this.description = description;
         this.id = id;
-        spriteRenderer.sprite = defaultSprite;   // defaultSprite is set in UnityEditor
+        spriteRenderer.sprite ??= defaultSprite;   // defaultSprite is set in UnityEditor
     }
 }
