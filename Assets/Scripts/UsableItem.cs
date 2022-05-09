@@ -20,6 +20,6 @@ public class UsableItem : Item, IUsable
     }
 
     public void select() {
-        throw new System.NotImplementedException();
+        PlayerController.getInstance().setSelectedItem(this);
     }
 }
