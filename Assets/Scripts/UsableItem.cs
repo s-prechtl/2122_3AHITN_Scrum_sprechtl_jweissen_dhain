@@ -16,10 +16,12 @@ public class UsableItem : Item, IUsable
         
     }
 
-    public UsableItem(string displayName, string description, int id) : base(displayName, description, id) {
-    }
+        public UsableItem(string displayName, string description, int id) : base(displayName, description, id)
+        {
+        }
 
-    public void select() {
-        PlayerController.getInstance().setSelectedItem(this);
+        public void select()
+        {
+            PlayerController.getInstance().setSelectedItem(this);
+        }
     }
-}
