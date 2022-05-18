@@ -24,12 +24,18 @@ public class TileBehaviour : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Clicked");
-        tile.Clicked(/* Current tool */ null);
+        
+        // SelectedItem always null for now 
+        BaseTile temp = tile.Clicked(PlayerController.getInstance().SelectedItem);
+        if (temp != null)
+        {
+            SetTile(temp);
+        }
     }
 
     void SetTile(BaseTile tileToSet)
     {
         tile = tileToSet;
-        GetComponent<SpriteRenderer>().color = tile.getColor;
+        GetComponent<SpriteRenderer>().color = tile.getColor; // TODO: Change to Sprite 
     }
 }

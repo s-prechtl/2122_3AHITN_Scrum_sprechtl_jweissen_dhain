@@ -9,7 +9,7 @@ namespace Tiles
     {
         protected Color color;
         public Color getColor => color;
-        // Later to be replaced with
+        // TODO: Change to Sprite, also in subclasses
         // public Sprite sprite;
         
         protected BaseTile(Color color)
@@ -32,9 +32,10 @@ namespace Tiles
 
         }
 
-        public void Clicked(UsableItem usable)
+        public BaseTile Clicked(UsableItem usable)
         {
             Debug.Log(usable.ToString() + " used on " + this.ToString());
+            return null;
         }
 
         

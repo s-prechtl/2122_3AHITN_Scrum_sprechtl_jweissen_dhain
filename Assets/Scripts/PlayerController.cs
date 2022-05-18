@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour {
     private Dictionary<Item, int> inventory;
     private int money;
     private UsableItem selectedItem;
-    
+
+    public UsableItem SelectedItem => selectedItem;
+
     private static PlayerController instance;
     
     public int startMoney = 100;
@@ -39,4 +41,6 @@ public class PlayerController : MonoBehaviour {
           Debug.Log("An item requested to select isn't in the inventory" + item);  
         }
     }
+    
+    
 }
