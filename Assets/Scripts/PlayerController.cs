@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class PlayerController : MonoBehaviour {
     #region Singleton
@@ -39,5 +41,9 @@ public class PlayerController : MonoBehaviour {
         } else {
             Debug.Log("An item requested to select isn't in the inventory" + item);
         }
+    }
+
+    public UsableItem GetSelectedItem() {
+        return selectedItem;
     }
 }

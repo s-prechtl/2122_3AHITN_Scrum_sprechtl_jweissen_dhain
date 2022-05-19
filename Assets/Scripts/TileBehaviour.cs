@@ -24,7 +24,7 @@ public class TileBehaviour : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Clicked");
-        UsableItem usable = PlayerController.getInstance().SelectedItem;
+        UsableItem usable = PlayerController.instance.GetSelectedItem();
         BaseTile tileToSetTo = null;
         if (usable.GetType() == typeof(TerraformingTool))
         {

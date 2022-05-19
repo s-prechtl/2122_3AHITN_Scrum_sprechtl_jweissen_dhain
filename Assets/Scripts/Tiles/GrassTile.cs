@@ -17,7 +17,7 @@ namespace Tiles
         public new BaseTile Clicked(UsableItem usable) {
             base.Clicked(usable);
             BaseTile rv = null;
-            if (usable.GetType() == typeof(Items.Hoe))
+            if (usable.displayName == "Hoe")
             {
                 rv = new FarmlandTile();
             }
