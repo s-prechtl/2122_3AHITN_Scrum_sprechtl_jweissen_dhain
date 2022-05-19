@@ -1,42 +1,64 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    private Dictionary<Item, int> inventory;
-    private int money;
-    private UsableItem selectedItem;
-    
-    private static PlayerController instance;
-    
-    public int startMoney = 100;
+    #region Singleton
 
-    public static PlayerController getInstance() {
-        return instance;
-    }
-    
+    public static PlayerController instance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        inventory ??= new Dictionary<Item, int>();
-        money = startMoney;
+    private void Awake() {
+        if(instance != null) {
+            Debug.LogWarning("More than one instance of PlayeController found");
+        }
+
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    #endregion
+
+    public Dictionary<Item, int> inventory;
+    public readonly int inventorySpace = 28;
+    private int money;
+    private UsableItem selectedItem;
+
+    public int startMoney = 100;
+
+    // Start is called before the first frame update
+    void Start() {
+        inventory ??= new Dictionary<Item, int>();
+        money = startMoney;
     }
 
+    // Update is called once per frame
+    void Update() { }
+
     public void setSelectedItem(UsableItem item) {
-        if (inventory.ContainsKey(item)) {
+        if(inventory.ContainsKey(item)) {
             selectedItem = item;
-            Cursor.SetCursor(item.defaultSprite.texture,  Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(item.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
         } else {
-          Debug.Log("An item requested to select isn't in the inventory" + item);  
+            Debug.Log("An item requested to select isn't in the inventory" + item);
         }
+    }
+
+    public delegate void onItemChanged();
+
+    public onItemChanged onItemChangedCallback;
+
+    public void addItem(Item item, int amount) {
+        if(inventory.Count >= inventorySpace) {
+            Debug.Log("Not enough inventory space!");
+            return;
+        }
+
+        inventory.Add(item, amount);
+        
+        onItemChangedCallback?.Invoke();
+    }
+    
+    public void removeItem(Item item, int amount) {
+        inventory.Add(item, -amount);
+        
+        onItemChangedCallback?.Invoke();
     }
 }

@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
 
+//TODO: Auf ScriptableItem umschreiben!!!!!!!!!!
+//
+//https://www.youtube.com/watch?v=YLhj7SfaxSE
 public class Item : MonoBehaviour, IComparable<Item> {
-    private readonly string displayName;
-    private readonly string description;
-    private readonly int id;  //TODO: create an actual ID System that makes snens
+    public readonly string displayName;
+    public readonly string description;
+    public readonly int id;  //TODO: create an actual ID System that makes snens
     public SpriteRenderer spriteRenderer;
     public Sprite selectedSprite;
     public Sprite defaultSprite;
