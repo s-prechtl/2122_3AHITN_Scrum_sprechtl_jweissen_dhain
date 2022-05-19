@@ -4,42 +4,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    private Dictionary<Item, int> inventory;
-    private int money;
-    private UsableItem selectedItem;
+    #region Singleton
 
-    public UsableItem SelectedItem => selectedItem;
+    public static PlayerController instance;
 
-    private static PlayerController instance;
-    
-    public int startMoney = 100;
+    private void Awake() {
+        if(instance != null) {
+            Debug.LogWarning("More than one instance of PlayerController found");
+        }
 
-    public static PlayerController getInstance() {
-        return instance;
-    }
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        inventory ??= new Dictionary<Item, int>();
-        money = startMoney;
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    #endregion
+
+    public Inventory inventory;
+    private int money;
+    private UsableItem selectedItem;
+
+    public int startMoney = 100;
+
+    // Start is called before the first frame update
+    void Start() {
+        money = startMoney;
     }
 
-    public void setSelectedItem(UsableItem item) {
-        if (inventory.ContainsKey(item)) {
+    // Update is called once per frame
+    void Update() { }
+
+    public void SetSelectedItem(UsableItem item) {
+        if(inventory.items.ContainsKey(item)) {
             selectedItem = item;
-            Cursor.SetCursor(item.defaultSprite.texture,  Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(item.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
         } else {
-          Debug.Log("An item requested to select isn't in the inventory" + item);  
+            Debug.Log("An item requested to select isn't in the inventory" + item);
         }
     }
-    
 }
