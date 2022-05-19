@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 757639008}
   - component: {fileID: 757639007}
   - component: {fileID: 757639010}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,8 +622,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -278359049
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: 037b2d58280f32e459042d7c4740d028, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -644,7 +644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757639006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3651423, y: -0.9205238, z: 0}
+  m_LocalPosition: {x: -8.93, y: 3.09, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e4cfe156bc8c4458f719983afdc204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 4752245148499717901, guid: 8fd9111325ac85a439c0e1a896f8903d, type: 3}
+  tile: {fileID: 4752245148499717901, guid: 459572cfc28597a4d93aa1ace783965d, type: 3}
   CameraGameObject: {fileID: 598358736}
 --- !u!4 &1291863651
 Transform:
@@ -1290,9 +1290,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1800469988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ff39a43f7a5df74b9d3456085e32adf, type: 3}
+  m_Script: {fileID: 11500000, guid: 74374ff3b6e24bbaba07d40a46c40188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoney: 100
 --- !u!4 &1800469990
 Transform:
   m_ObjectHideFlags: 0

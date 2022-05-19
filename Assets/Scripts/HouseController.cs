@@ -17,8 +17,6 @@ public class HouseController : MonoBehaviour {
 
     void Start() {
         newDayEvent ??= new UnityEvent();
-
-        newDayEvent.AddListener(newDay);
     }
 
     public void newDay() {

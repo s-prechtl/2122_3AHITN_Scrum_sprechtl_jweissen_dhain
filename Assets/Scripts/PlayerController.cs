@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
     public static PlayerController getInstance() {
         return instance;
     }
-    
 
     // Start is called before the first frame update
     void Start()

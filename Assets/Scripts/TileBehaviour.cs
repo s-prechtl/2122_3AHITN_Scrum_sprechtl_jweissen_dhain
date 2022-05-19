@@ -13,6 +13,8 @@ public class TileBehaviour : MonoBehaviour
     {
         Debug.Log("Created");
         SetTile(new GrassTile());
+        
+        HouseController.NewDayEvent.AddListener(tile.DayLightStep);
     }
 
     // Update is called once per frame
@@ -26,11 +28,11 @@ public class TileBehaviour : MonoBehaviour
         Debug.Log("Clicked");
         
         // SelectedItem always null for now 
-        BaseTile temp = tile.Clicked(PlayerController.getInstance().SelectedItem);
-        if (temp != null)
-        {
-            SetTile(temp);
-        }
+        //BaseTile temp = tile.Clicked(PlayerController.getInstance().SelectedItem);
+        //if (temp != null)
+        //{
+        //    SetTile(temp);
+        //}
     }
 
     void SetTile(BaseTile tileToSet)
