@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DayController : MonoBehaviour {
+public class HouseController : MonoBehaviour {
     private int dayCount = 0;
     private static UnityEvent newDayEvent;
     public static UnityEvent NewDayEvent => newDayEvent;
 
+    public Canvas menu;
 
     private void OnMouseDown() {
-        newDay();
+        toggleMenu();
     }
 
     void Start() {
@@ -20,8 +21,13 @@ public class DayController : MonoBehaviour {
         newDayEvent.AddListener(newDay);
     }
 
-    private void newDay() {
+    public void newDay() {
         dayCount++;
+        Debug.Log("New day: " + dayCount);
         newDayEvent?.Invoke();
+    }
+
+    public void toggleMenu() {
+        menu.gameObject.SetActive(!menu.gameObject.activeSelf);
     }
 }
