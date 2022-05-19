@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject, IComparable<Item> {
     public string displayName;
     public string description;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New UsableItem", menuName = "Inventory/UsableItem")]
 public class UsableItem : Item, IUsable {
     // Start is called before the first frame update
     void Start() {
