@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 
     #endregion
 
-    public Inventory inventory;
+    private Inventory _inventory;
     private int money;
     private UsableItem selectedItem;
 
@@ -29,13 +29,14 @@ public class PlayerController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         money = startMoney;
+        _inventory = Inventory.instance;
     }
 
     // Update is called once per frame
     void Update() { }
 
     public void SetSelectedItem(UsableItem item) {
-        if(inventory.items.ContainsKey(item)) {
+        if(_inventory.items.ContainsKey(item)) {
             selectedItem = item;
             Cursor.SetCursor(item.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
         } else {

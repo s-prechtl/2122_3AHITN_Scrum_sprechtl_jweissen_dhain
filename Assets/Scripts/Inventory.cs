@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour {
     }
 
     public void tempAddItem(Item item) {
+        Debug.Log("AWSD");
         AddItem(item, 1);
     }
     
@@ -38,13 +39,15 @@ public class Inventory : MonoBehaviour {
             return;
         }
 
+        Debug.Log("ASDADADWDASDWD");
+        
         if(!items.ContainsKey(item)) {
             items.Add(item, amount);
         } else {
             items[item] += amount;
         }
         
-
+        
         onItemChangedCallback?.Invoke();
     }
 

@@ -919,7 +919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -268, y: 152}
+  m_AnchoredPosition: {x: -385, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &466567697
@@ -2080,7 +2080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -156, y: 144}
+  m_AnchoredPosition: {x: -388, y: 152}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119271991
@@ -3008,7 +3008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -348, y: 107}
+  m_AnchoredPosition: {x: -413, y: 211}
   m_SizeDelta: {x: 720, y: 430}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1701153146
@@ -3235,7 +3235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18feac5270242d4a85c78ce72972d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 1800469991}
   startMoney: 100
 --- !u!4 &1800469990
 Transform:
