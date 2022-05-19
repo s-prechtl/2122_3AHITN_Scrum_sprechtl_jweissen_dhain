@@ -14,13 +14,19 @@ public class InventoryUI : MonoBehaviour {
         _inventory.onItemChangedCallback += UpdateUI;
 
         _slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        toggleInventory();
     }
 
     // Update is called once per frame
     void Update() {
         if(Input.GetButtonDown("Inventory")) {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            toggleInventory();
         }
+    }
+
+    private void toggleInventory() {
+        
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
     }
     
     private void UpdateUI() {
