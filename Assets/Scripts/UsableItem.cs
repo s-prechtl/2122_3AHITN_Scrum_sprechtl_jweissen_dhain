@@ -15,6 +15,6 @@ public class UsableItem : Item, IUsable {
     }
 
     public void select() {
-        PlayerController.instance.setSelectedItem(this);
+        PlayerController.instance.SetSelectedItem(this);
     }
 }

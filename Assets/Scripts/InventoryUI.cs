@@ -1,18 +1,19 @@
+using System.Linq;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour {
 
     public Transform itemsParent;
     public GameObject inventoryUI;
-    private PlayerController playerController;
-    private InventorySlot[] slots;
+    private Inventory _inventory;
+    private InventorySlot[] _slots;
     
     // Start is called before the first frame update
     void Start() {
-        playerController = PlayerController.instance;
-        playerController.onItemChangedCallback += updateUI;
+        _inventory = Inventory.instance;
+        _inventory.onItemChangedCallback += UpdateUI;
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        _slots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
     // Update is called once per frame
@@ -22,12 +23,12 @@ public class InventoryUI : MonoBehaviour {
         }
     }
     
-    private void updateUI() {
-        for(int i = 0; i < slots.Length; i++) {
-            if(i < playerController.inventory.Count) {
-                // slots[i].addItem(playerController.inventory[i]); //TODO: dictionary "letztes" Item finden, Wie?!?!?!
+    private void UpdateUI() {
+        for(int i = 0; i < _slots.Length; i++) {
+            if(i < _inventory.items.Count) {
+                _slots[i].AddItem(_inventory.items.ElementAt(i).Key);
             } else {
-                slots[i].clearSlot();
+                _slots[i].ClearSlot();
             }
         }
     }

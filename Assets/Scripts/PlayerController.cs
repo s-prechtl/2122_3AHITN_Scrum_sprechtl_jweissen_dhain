@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         if(instance != null) {
-            Debug.LogWarning("More than one instance of PlayeController found");
+            Debug.LogWarning("More than one instance of PlayerController found");
         }
 
         instance = this;
@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     #endregion
 
-    public Dictionary<Item, int> inventory;
-    public readonly int inventorySpace = 28;
+    public Inventory inventory;
     private int money;
     private UsableItem selectedItem;
 
@@ -25,40 +24,18 @@ public class PlayerController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        inventory ??= new Dictionary<Item, int>();
         money = startMoney;
     }
 
     // Update is called once per frame
     void Update() { }
 
-    public void setSelectedItem(UsableItem item) {
-        if(inventory.ContainsKey(item)) {
+    public void SetSelectedItem(UsableItem item) {
+        if(inventory.items.ContainsKey(item)) {
             selectedItem = item;
             Cursor.SetCursor(item.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
         } else {
             Debug.Log("An item requested to select isn't in the inventory" + item);
         }
-    }
-
-    public delegate void onItemChanged();
-
-    public onItemChanged onItemChangedCallback;
-
-    public void addItem(Item item, int amount) {
-        if(inventory.Count >= inventorySpace) {
-            Debug.Log("Not enough inventory space!");
-            return;
-        }
-
-        inventory.Add(item, amount);
-        
-        onItemChangedCallback?.Invoke();
-    }
-    
-    public void removeItem(Item item, int amount) {
-        inventory.Add(item, -amount);
-        
-        onItemChangedCallback?.Invoke();
     }
 }

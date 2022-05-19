@@ -4,27 +4,32 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour {
     public Image icon;
     
-    private Item item;
+    private Item _item;
 
-    public void addItem(Item newItem) {
-        item = newItem;
+    public void AddItem(Item newItem) {
+        _item = newItem;
 
-        icon.sprite = item.defaultSprite;
+        icon.sprite = _item.defaultSprite;
         icon.enabled = true;
     }
 
-    public void clearSlot() {
-        item = null;
+    public void ClearSlot() {
+        _item = null;
         icon.sprite = null;
         icon.enabled = false;
     }
 
-    public void removeItem() {
-        PlayerController.instance.inventory.Remove(item);
+    public void RemoveItem() {
+        Inventory.instance.items.Remove(_item);
     }
 
-    public void useItem() {
-        //TODO: use item
-        Debug.Log("using " + item.displayName);
+    public void UseItem() {
+        if(_item.GetType() == typeof(UsableItem)) {
+            ((UsableItem) _item).select();
+            Debug.Log("using " + _item.displayName);
+        } else {
+            Debug.Log("Item not usable " + _item.displayName);
+        }
+
     }
 }

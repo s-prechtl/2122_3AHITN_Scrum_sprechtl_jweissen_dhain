@@ -1,0 +1,56 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Inventory : MonoBehaviour {
+    #region Singleton
+
+    public static Inventory instance;
+
+    private void Awake() {
+        if(instance != null) {
+            Debug.LogWarning("More than one instance of Inventory found");
+        }
+
+        instance = this;
+    }
+
+    #endregion
+    
+    public Dictionary<Item, int> items;
+    public const int inventorySpace = 28;
+    
+    public delegate void onItemChanged();
+    public onItemChanged onItemChangedCallback;
+
+    private void Start() {
+        items ??= new Dictionary<Item, int>();
+    }
+
+    public void tempAddItem(Item item) {
+        AddItem(item, 1);
+    }
+    
+    public void AddItem(Item item, int amount) {
+        if(items.Count >= inventorySpace) {
+            Debug.Log("Not enough inventory space!");
+            return;
+        }
+
+        if(!items.ContainsKey(item)) {
+            items.Add(item, amount);
+        } else {
+            items[item] += amount;
+        }
+        
+
+        onItemChangedCallback?.Invoke();
+    }
+
+    public void removeItem(Item item, int amount) {
+        items.Add(item, -amount);
+
+        onItemChangedCallback?.Invoke();
+    }
+}
