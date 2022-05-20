@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class Item : MonoBehaviour, IComparable<Item> {
-    private readonly string displayName;
-    private readonly string description;
-    private readonly int id;  //TODO: create an actual ID System that makes snens
-    public SpriteRenderer spriteRenderer;
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+public class Item : ScriptableObject, IComparable<Item> {
+    public string displayName;
+    public string description;
+    public int id;  //TODO: create an actual ID System that makes snens
     public Sprite selectedSprite;
     public Sprite defaultSprite;
     
@@ -13,7 +13,6 @@ public class Item : MonoBehaviour, IComparable<Item> {
         this.displayName = displayName;
         this.description = description;
         this.id = id;
-        spriteRenderer.sprite ??= defaultSprite;   // defaultSprite is set in UnityEditor
     }
 
     public int CompareTo(Item other) {

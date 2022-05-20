@@ -27,16 +27,27 @@ public class TileBehaviour : MonoBehaviour
     {
         Debug.Log("Clicked");
         
-        // SelectedItem always null for now 
-        //BaseTile temp = tile.Clicked(PlayerController.getInstance().SelectedItem);
-        //if (temp != null)
-        //{
-        //    SetTile(temp);
-        //}
+        UsableItem usable = PlayerController.instance.GetSelectedItem();
+        BaseTile tileToSetTo = null;
+        if (usable.GetType() == typeof(TerraformingTool))
+        {
+            TerraformingTool terraformingTool = (TerraformingTool) usable;
+            Type tileTypeToSetTo = terraformingTool.TileType;
+            tileToSetTo = (BaseTile) Activator.CreateInstance(tileTypeToSetTo);
+        }
+        else
+        {
+            tile.Clicked(usable);
+        }
+        if (tileToSetTo != null)
+        {
+            SetTile(tileToSetTo);
+        }
     }
 
     void SetTile(BaseTile tileToSet)
     {
+        Debug.Log("Set tile to " + tileToSet.ToString());
         tile = tileToSet;
         GetComponent<SpriteRenderer>().color = tile.getColor; // TODO: Change to Sprite 
     }
