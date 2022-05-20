@@ -971,7 +971,7 @@ MonoBehaviour:
         m_MethodName: tempAddItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 55fbb48b3a41c1049af9b40f3fd35db1, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 27247f24f52c4dc479e8a654a315a085, type: 2}
           m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2132,7 +2132,7 @@ MonoBehaviour:
         m_MethodName: tempAddItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 03bae48711a435b4bb9c1892438a3b3a, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: d57952ede78a45f4b8b33397f10c7e4d, type: 2}
           m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2517,7 +2517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e4cfe156bc8c4458f719983afdc204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 4752245148499717901, guid: 8fd9111325ac85a439c0e1a896f8903d, type: 3}
+  tile: {fileID: 4752245148499717901, guid: ea81011a3ce83fb4386934728a92ee2d, type: 3}
   CameraGameObject: {fileID: 598358736}
 --- !u!4 &1291863651
 Transform:
@@ -3008,8 +3008,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -413, y: 211}
-  m_SizeDelta: {x: 720, y: 430}
+  m_AnchoredPosition: {x: -420.6112, y: 211}
+  m_SizeDelta: {x: 735.2224, y: 430}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1701153146
 PrefabInstance:
