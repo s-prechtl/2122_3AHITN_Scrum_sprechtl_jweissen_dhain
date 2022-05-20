@@ -22,8 +22,8 @@ public class Inventory : MonoBehaviour {
     public Item[] startItems;
     public const int inventorySpace = 28;
     
-    public delegate void onItemChanged();
-    public onItemChanged onItemChangedCallback;
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
 
     private void Start() {
         items ??= new Dictionary<Item, int>();
@@ -38,8 +38,6 @@ public class Inventory : MonoBehaviour {
             return;
         }
 
-        Debug.Log("ASDADADWDASDWD");
-        
         if(!items.ContainsKey(item)) {
             items.Add(item, amount);
         } else {
@@ -51,7 +49,11 @@ public class Inventory : MonoBehaviour {
     }
 
     public void RemoveItem(Item item, int amount) {
-        items.Add(item, -amount);
+        if(items[item] <= 0) {
+            items.Remove(item);
+        } else {
+            items.Add(item, -amount);
+        }
 
         onItemChangedCallback?.Invoke();
     }
