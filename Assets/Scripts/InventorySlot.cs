@@ -1,10 +1,15 @@
+using System;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour {
     public Image icon;
-    
     private Item _item;
+
+    private void Start() {
+        Physics.queriesHitTriggers = true;
+    }
 
     public void AddItem(Item newItem) {
         _item = newItem;
@@ -31,5 +36,15 @@ public class InventorySlot : MonoBehaviour {
             Debug.Log("Item not usable " + _item.displayName);
         }
 
+    }
+
+    public void OnMouseOver() {
+        icon.sprite = _item.selectedSprite;
+        Debug.Log("Mouse Over Slot");
+    }
+//TODO: OnMouse Methods not working :'(
+    public void OnMouseExit() {
+        icon.sprite = _item.defaultSprite;
+        Debug.Log("Mouse Exit Slot");
     }
 }

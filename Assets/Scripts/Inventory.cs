@@ -43,8 +43,7 @@ public class Inventory : MonoBehaviour {
         } else {
             items[item] += amount;
         }
-        
-        
+
         onItemChangedCallback?.Invoke();
     }
 
