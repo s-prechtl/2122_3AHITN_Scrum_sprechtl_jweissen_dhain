@@ -37,7 +37,5 @@ namespace Tiles
             Debug.Log(usable.ToString() + " used on " + this.ToString());
             return null;
         }
-
-        
     }
 }
