@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour {
     #endregion
     
     public Dictionary<Item, int> items;
+    public Item[] startItems;
     public const int inventorySpace = 28;
     
     public delegate void onItemChanged();
@@ -26,13 +27,11 @@ public class Inventory : MonoBehaviour {
 
     private void Start() {
         items ??= new Dictionary<Item, int>();
+        foreach(Item item in startItems) {
+            AddItem(item, 1);
+        }
     }
 
-    public void tempAddItem(Item item) {
-        Debug.Log("AWSD");
-        AddItem(item, 1);
-    }
-    
     public void AddItem(Item item, int amount) {
         if(items.Count >= inventorySpace) {
             Debug.Log("Not enough inventory space!");
@@ -51,7 +50,7 @@ public class Inventory : MonoBehaviour {
         onItemChangedCallback?.Invoke();
     }
 
-    public void removeItem(Item item, int amount) {
+    public void RemoveItem(Item item, int amount) {
         items.Add(item, -amount);
 
         onItemChangedCallback?.Invoke();
