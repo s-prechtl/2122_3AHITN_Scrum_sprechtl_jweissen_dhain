@@ -2719,7 +2719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9add6f301ddcf864294c3a0e34014b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 971652024}
+  menu: {fileID: 1395531174}
 --- !u!212 &1278234715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3143,7 +3143,7 @@ GameObject:
   - component: {fileID: 1395531173}
   - component: {fileID: 1395531172}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: HouseCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
