@@ -1,44 +1,45 @@
-﻿namespace DefaultNamespace
+﻿using UnityEngine;
+
+public class Crop
 {
-    public class Crop
+    private const int DaysUntilFinished = 4;
+
+    private bool _fullyGrown;
+    public bool FullyGrown => _fullyGrown;
+
+    private bool _markedForDeletion;
+    public bool MarkedForDeletion => _markedForDeletion;
+
+    private int _daysGrown;
+
+    public Crop()
     {
-        private const int DaysUntilFinished = 4;
+        Debug.Log("Crop created");
+        _fullyGrown = false;
+        _markedForDeletion = false;
+        _daysGrown = 0;
+    }
 
-        private bool _fullyGrown;
-        public bool FullyGrown => _fullyGrown;
-        
-        private bool _markedForDeletion;
-        public bool MarkedForDeletion => _markedForDeletion;
+    private void Grow()
+    {
+        Debug.Log("Crop grown");
+        _daysGrown++;
+    }
 
-        private int _daysGrown;
-
-        public Crop()
+    public void DayLightStep(bool hydrated)
+    {
+        if (_daysGrown >= DaysUntilFinished)
         {
-            _fullyGrown = false;
-            _markedForDeletion = false;
-            _daysGrown = 0;
+            _fullyGrown = true;
         }
 
-        private void Grow()
+        if (!hydrated)
         {
-            _daysGrown++;
+            _markedForDeletion = true;
         }
-
-        public void DayLightStep(bool hydrated)
+        else if (!_fullyGrown)
         {
-            if (_daysGrown >= DaysUntilFinished)
-            {
-                _fullyGrown = true;
-            }
-
-            if (!hydrated)
-            {
-                _markedForDeletion = true;
-            }
-            else if (!_fullyGrown)
-            {
-                Grow();
-            }
+            Grow();
         }
     }
 }

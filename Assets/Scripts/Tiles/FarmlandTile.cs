@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using DefaultNamespace;
-using Items;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Tiles
 {
@@ -24,6 +20,7 @@ namespace Tiles
                 _crop.DayLightStep(_hydrated);
                 if (_crop.MarkedForDeletion)
                 {
+                    Debug.Log("Farmland crop deleted");
                     _crop = null;
                 }
             }
@@ -37,6 +34,7 @@ namespace Tiles
 
             if (usable.id == ic.GetItemIdByName("Hoe"))
             {
+                Debug.Log("Farmland hydrated");
                 _hydrated = true;
             }
             
@@ -55,12 +53,14 @@ namespace Tiles
 
         private void Harvest()
         {
+            Debug.Log("Farmland harvested");
             // add wheat to inventory
             _crop = null;
         }
 
         private void Plant()
         {
+            Debug.Log("Farmland planted");
             // wheatSeeds-- in inventory
             _crop = new Crop();
         }
