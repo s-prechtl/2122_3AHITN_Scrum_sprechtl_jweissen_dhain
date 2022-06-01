@@ -4,18 +4,10 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New UsableItem", menuName = "Inventory/UsableItem")]
 public class UsableItem : Item, IUsable {
-    // Start is called before the first frame update
-    void Start() {
-    }
-
-    // Update is called once per frame
-    void Update() {
-    }
-
     public UsableItem(string displayName, string description, int id) : base(displayName, description, id) {
     }
 
-    public void select() {
+    public void Select() {
         PlayerController.instance.SetSelectedItem(this);
     }
 }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761f645f009328845bc7851753024e92, type: 3}
   m_Name: WheatSeed
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
-  id: 0
-  selectedSprite: {fileID: 0}
-  defaultSprite: {fileID: 0}
+  displayName: Wheat Seeds
+  description: sheeeeeeeeeeeesh
+  id: 3
+  selectedSprite: {fileID: 21300182, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
+  defaultSprite: {fileID: 21300156, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
+  cost: 69

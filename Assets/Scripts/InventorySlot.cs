@@ -1,16 +1,47 @@
 using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour {
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     public Image icon;
-    private Item _item;
+    public TextMeshProUGUI amountText;
 
-    private void Start() {
-        Physics.queriesHitTriggers = true;
+    public Item _item;
+    
+    #region DescriptionHover
+
+    public float timeToWait;
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        StopAllCoroutines();
+        StartCoroutine(StartTimer());
     }
 
+    public void OnPointerExit(PointerEventData eventData) {
+        StopAllCoroutines();
+        HoverManager.onMouseExit();
+    }
+
+    private void ShowMessage() {
+        if(_item){
+            HoverManager.onMouseHover(_item.description, Input.mousePosition);
+        }
+    }
+
+    private IEnumerator StartTimer() {
+        yield return new WaitForSeconds(timeToWait);
+
+        ShowMessage();
+    }
+
+    #endregion
+    
+    /**
+     * Sets the Item of the Inventory Slot
+     */
     public void AddItem(Item newItem) {
         _item = newItem;
 
@@ -18,33 +49,24 @@ public class InventorySlot : MonoBehaviour {
         icon.enabled = true;
     }
 
+    /**
+     * Clears the Inventory Slot
+     */
     public void ClearSlot() {
         _item = null;
         icon.sprite = null;
         icon.enabled = false;
     }
 
-    public void RemoveItem() {
-        Inventory.instance.items.Remove(_item);
-    }
-
+    /**
+     * Gets called when the Inventory Slot is clicked
+     */
     public void UseItem() {
         if(_item.GetType() == typeof(UsableItem)) {
-            ((UsableItem) _item).select();
+            ((UsableItem) _item).Select();
             Debug.Log("using " + _item.displayName);
         } else {
             Debug.Log("Item not usable " + _item.displayName);
         }
-
-    }
-
-    public void OnMouseOver() {
-        icon.sprite = _item.selectedSprite;
-        Debug.Log("Mouse Over Slot");
-    }
-//TODO: OnMouse Methods not working :'(
-    public void OnMouseExit() {
-        icon.sprite = _item.defaultSprite;
-        Debug.Log("Mouse Exit Slot");
     }
 }

@@ -21,23 +21,20 @@ public class PlayerController : MonoBehaviour {
     #endregion
 
     private Inventory _inventory;
-    private int money;
-    private UsableItem selectedItem;
+    public int money;
+    private UsableItem _selectedItem;
 
     public int startMoney = 100;
 
     // Start is called before the first frame update
-    void Start() {
+    private void Start() {
         money = startMoney;
         _inventory = Inventory.instance;
     }
 
-    // Update is called once per frame
-    void Update() { }
-
     public void SetSelectedItem(UsableItem item) {
         if(_inventory.items.ContainsKey(item)) {
-            selectedItem = item;
+            _selectedItem = item;
             Cursor.SetCursor(item.selectedSprite.texture, Vector2.zero, CursorMode.Auto);
         } else {
             Debug.Log("An item requested to select isn't in the inventory" + item);
@@ -45,6 +42,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     public UsableItem GetSelectedItem() {
-        return selectedItem;
+        return _selectedItem;
     }
 }
