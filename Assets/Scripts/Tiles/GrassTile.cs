@@ -14,10 +14,10 @@ namespace Tiles
         /// </summary>
         /// <param name="usable">the UsableItem that the Tile was clicked on with</param>
         /// <returns>a subclass of BaseTile if the Tile has to change, null if it stays the same type</returns>
-        public new BaseTile Clicked(UsableItem usable) {
+        public override BaseTile Clicked(UsableItem usable) {
             base.Clicked(usable);
             BaseTile rv = null;
-            if (usable.displayName == "Hoe")
+            if (usable.id == ItemContainer.Instance.GetItemIdByName("Hoe"))
             {
                 rv = new FarmlandTile();
             }

@@ -29,7 +29,7 @@ namespace Tiles
             Debug.Log("I evolve");
         }
 
-        public BaseTile Clicked(UsableItem usable)
+        public virtual BaseTile Clicked(UsableItem usable)
         {
             Debug.Log(usable.ToString() + " used on " + this.ToString());
             return null;

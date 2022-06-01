@@ -38,7 +38,8 @@ public class TileBehaviour : MonoBehaviour
         }
         else
         {
-            tile.Clicked(usable);
+            tileToSetTo = tile.Clicked(usable);
+            Debug.Log("AMOGUS " + tileToSetTo.ToString());
         }
         if (tileToSetTo != null)
         {
