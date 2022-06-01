@@ -8,6 +8,7 @@ public class Item : ScriptableObject, IComparable<Item> {
     public int id;  //TODO: create an actual ID System that makes snens
     public Sprite selectedSprite;
     public Sprite defaultSprite;
+    public int cost;
     
     public Item(string displayName, string description, int id) {
         this.displayName = displayName;
