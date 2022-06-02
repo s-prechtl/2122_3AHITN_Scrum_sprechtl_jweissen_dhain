@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         _money = startMoney;
         _inventory = Inventory.instance;
+        moneyTextMeshProUGUI.text = _money + "µ";
     }
 
     public void SetSelectedItem(UsableItem item) {
@@ -51,6 +52,6 @@ public class PlayerController : MonoBehaviour {
 
     public void ChangeMoney(int amount) {
         _money += amount;
-        moneyTextMeshProUGUI.text = amount + "µ";
+        moneyTextMeshProUGUI.text = _money + "µ";
     }
 }
