@@ -45,7 +45,9 @@ public class InventoryUI : MonoBehaviour {
         for(int i = 0; i < _slots.Length; i++) {
             if(i < _inventory.items.Count) {
                 _slots[i].AddItem(_inventory.items.ElementAt(i).Key);
-                _slots[i].amountText.text = "" + _inventory.items[_inventory.items.ElementAt(i).Key];
+                if(_inventory.items[_inventory.items.ElementAt(i).Key] > 1) {
+                    _slots[i].amountText.text = "" + _inventory.items[_inventory.items.ElementAt(i).Key];
+                }
             } else {
                 _slots[i].ClearSlot();
             }
