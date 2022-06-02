@@ -5,52 +5,39 @@ using Items.TerraformingTools;
 using Tiles;
 using UnityEngine;
 
-public class TileBehaviour : MonoBehaviour
-{
-    private BaseTile tile;
-    
+public class TileBehaviour : MonoBehaviour {
+    private BaseTile _tile;
+
     // Start is called before the first frame update
-    void Start()
-    {
+    private void Start() {
         Debug.Log("Created");
         SetTile(new GrassTile());
-        
-        HouseController.NewDayEvent.AddListener(tile.DayLightStep);
+
+        HouseController.NewDayEvent.AddListener(_tile.DayLightStep);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
-    void OnMouseDown()
-    {
+    private void OnMouseDown() {
         Debug.Log("Clicked");
-        
+
         UsableItem usable = PlayerController.instance.GetSelectedItem();
         BaseTile tileToSetTo = null;
-        if (usable.GetType() == typeof(TerraformingTool))
-        {
-            TerraformingTool terraformingTool = (TerraformingTool) usable;
+        if(usable.GetType() == typeof(TerraformingTool)) {
+            TerraformingTool terraformingTool = (TerraformingTool)usable;
             Type tileTypeToSetTo = terraformingTool.TileType;
-            tileToSetTo = (BaseTile) Activator.CreateInstance(tileTypeToSetTo);
-        }
-        else
-        {
-            tileToSetTo = tile.Clicked(usable);
+            tileToSetTo = (BaseTile)Activator.CreateInstance(tileTypeToSetTo);
+        } else {
+            tileToSetTo = _tile.Clicked(usable);
             Debug.Log("AMOGUS " + tileToSetTo.ToString());
         }
-        if (tileToSetTo != null)
-        {
+
+        if(tileToSetTo != null) {
             SetTile(tileToSetTo);
         }
     }
 
-    void SetTile(BaseTile tileToSet)
-    {
+    private void SetTile(BaseTile tileToSet) {
         Debug.Log("Set tile to " + tileToSet.ToString());
-        tile = tileToSet;
-        GetComponent<SpriteRenderer>().color = tile.getColor; // TODO: Change to Sprite 
+        _tile = tileToSet;
+        GetComponent<SpriteRenderer>().color = _tile.getColor; // TODO: Change to Sprite 
     }
 }

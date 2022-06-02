@@ -4906,7 +4906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1395531174}
-  dayCountTextMeshProUGUI: {fileID: 1089918735}
+  dayCountTextMeshProUGUI: {fileID: 0}
 --- !u!212 &1278234715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5010,7 +5010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 4752245148499717901, guid: ea81011a3ce83fb4386934728a92ee2d, type: 3}
-  CameraGameObject: {fileID: 598358736}
+  cameraGameObject: {fileID: 0}
 --- !u!4 &1291863651
 Transform:
   m_ObjectHideFlags: 0
