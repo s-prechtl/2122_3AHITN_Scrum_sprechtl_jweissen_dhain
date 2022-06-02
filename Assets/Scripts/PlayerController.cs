@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
@@ -21,14 +22,17 @@ public class PlayerController : MonoBehaviour {
     #endregion
 
     private Inventory _inventory;
-    public int money;
+    private int _money;
     private UsableItem _selectedItem;
 
     public int startMoney = 100;
+    public TextMeshProUGUI moneyTextMeshProUGUI;
+
+    public int Money => _money;
 
     // Start is called before the first frame update
     private void Start() {
-        money = startMoney;
+        _money = startMoney;
         _inventory = Inventory.instance;
     }
 
@@ -43,5 +47,10 @@ public class PlayerController : MonoBehaviour {
 
     public UsableItem GetSelectedItem() {
         return _selectedItem;
+    }
+
+    public void ChangeMoney(int amount) {
+        _money += amount;
+        moneyTextMeshProUGUI.text = amount + "µ";
     }
 }

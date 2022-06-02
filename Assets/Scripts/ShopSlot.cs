@@ -76,13 +76,13 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
      * Gets called when the Shop Slot is clicked
      */
     public void UseItem() {
-        if(_playerController.money >= item.cost) {
+        if(_playerController.Money >= item.cost) {
             _inventory.AddItem(item, 1);
             _shop.RemoveItem(item, 1);
-            _playerController.money -= item.cost;
+            _playerController.ChangeMoney(-item.cost);
             
             Debug.Log("Buying Item: " + item.displayName);
-            Debug.Log("money left: " + _playerController.money);
+            Debug.Log("money left: " + _playerController.Money);
         } else {
             Debug.Log("Not enough money to buy item.");
         }
