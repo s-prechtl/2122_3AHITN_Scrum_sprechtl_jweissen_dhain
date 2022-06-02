@@ -4545,7 +4545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1291863650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5946,7 +5946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5eb8967b8912c42b93a2086383ddd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempItems:
+  startItems:
   - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
   - {fileID: 11400000, guid: 430db451ae959f34b8fba8d8b17276fd, type: 2}
   - {fileID: 11400000, guid: d651d57ba97a4246a0094409e29fe56a, type: 2}
@@ -7738,6 +7738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1985691912}
     m_Modifications:
+    - target: {fileID: 5121261193055935939, guid: 2279fa2b47ef2ce40af9052d3a3f438b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UseItem
+      objectReference: {fileID: 0}
     - target: {fileID: 5121261193055935940, guid: 2279fa2b47ef2ce40af9052d3a3f438b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

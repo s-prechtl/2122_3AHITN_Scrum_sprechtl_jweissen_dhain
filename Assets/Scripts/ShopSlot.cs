@@ -5,68 +5,25 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-    public Image icon;
-    public Item item;
+public class ShopSlot : ItemStorageSlot {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI costText;
-    public TextMeshProUGUI amountText;
-    
+
     private Shop _shop;
     private Inventory _inventory;
     private PlayerController _playerController;
-    
-    #region DescriptionHover
-
-    public float timeToWait;
-
-    public void OnPointerEnter(PointerEventData eventData) {
-        StopAllCoroutines();
-        StartCoroutine(StartTimer());
-    }
-
-    public void OnPointerExit(PointerEventData eventData) {
-        StopAllCoroutines();
-        HoverManager.onMouseExit();
-    }
-
-    private void ShowMessage() {
-        if(item) {
-            HoverManager.onMouseHover(item.description, Input.mousePosition);
-        }
-    }
-
-    private IEnumerator StartTimer() {
-        yield return new WaitForSeconds(timeToWait);
-
-        ShowMessage();
-    }
-
-    #endregion
 
     private void Start() {
         _shop = Shop.instance;
         _inventory = Inventory.instance;
         _playerController = PlayerController.instance;
     }
-
-    /**
-     * Sets the Item of the Shop Slot
-     */
-    public void AddItem(Item newItem) {
-        item = newItem;
-
-        icon.sprite = item.defaultSprite;
-        icon.enabled = true;
-    }
     
     /**
      * Clears the Shop Slot
      */
-    public void ClearSlot() {
-        item = null;
-        icon.sprite = null;
-        icon.enabled = false;
+    public override void ClearSlot() {
+        base.ClearSlot();
         nameText.text = "";
         costText.text = "";
         amountText.text = "";
@@ -75,13 +32,13 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /**
      * Gets called when the Shop Slot is clicked
      */
-    public void UseItem() {
-        if(_playerController.money >= item.cost) {
-            _inventory.AddItem(item, 1);
-            _shop.RemoveItem(item, 1);
-            _playerController.money -= item.cost;
+    public override void UseItem() {
+        if(_playerController.money >= Item.cost) {
+            _inventory.AddItem(Item, 1);
+            _shop.RemoveItem(Item, 1);
+            _playerController.money -= Item.cost;
             
-            Debug.Log("Buying Item: " + item.displayName);
+            Debug.Log("Buying Item: " + Item.displayName);
             Debug.Log("money left: " + _playerController.money);
         } else {
             Debug.Log("Not enough money to buy item.");

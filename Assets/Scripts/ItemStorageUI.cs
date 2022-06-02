@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour {
+public class ItemStorageUI : MonoBehaviour {
     public Transform itemsParent;
     public GameObject inventoryUI;
     private Inventory _inventory;

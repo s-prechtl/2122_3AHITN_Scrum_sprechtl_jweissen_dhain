@@ -20,8 +20,6 @@ public class ShopUI : MonoBehaviour {
         foreach(ShopSlot slot in _slots) {
             slot.icon.raycastTarget = false;
         }
-        
-        UpdateUI();
     }
 
     private void Update() {
@@ -46,8 +44,8 @@ public class ShopUI : MonoBehaviour {
         for(int i = 0; i < _slots.Length; i++) {
             if(i < _shop.items.Count) {
                 _slots[i].AddItem(_shop.items.ElementAt(i).Key);
-                _slots[i].nameText.text = _slots[i].item.displayName;
-                _slots[i].costText.text = _slots[i].item.cost + " €";
+                _slots[i].nameText.text = _slots[i].Item.displayName;
+                _slots[i].costText.text = _slots[i].Item.cost + " €";
                 _slots[i].amountText.text = _shop.items[_shop.items.ElementAt(i).Key] + " #";
             } else {
                 _slots[i].ClearSlot();
