@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class ShopSlot : ItemStorageSlot {
     public TextMeshProUGUI nameText;
@@ -32,13 +28,13 @@ public class ShopSlot : ItemStorageSlot {
     /**
      * Gets called when the Shop Slot is clicked
      */
-    public void UseItem() {
-        if(_playerController.Money >= item.cost) {
-            _inventory.AddItem(item, 1);
-            _shop.RemoveItem(item, 1);
-            _playerController.ChangeMoney(-item.cost);
+    public override void UseItem() {
+        if(_playerController.Money >= Item.cost) {
+            _inventory.AddItem(Item, 1);
+            _shop.RemoveItem(Item, 1);
+            _playerController.ChangeMoney(-Item.cost);
             
-            Debug.Log("Buying Item: " + item.displayName);
+            Debug.Log("Buying Item: " + Item.displayName);
             Debug.Log("money left: " + _playerController.Money);
         } else {
             Debug.Log("Not enough money to buy item.");
