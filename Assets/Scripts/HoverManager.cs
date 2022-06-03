@@ -6,23 +6,23 @@ public class HoverManager : MonoBehaviour {
     public TextMeshProUGUI descriptionText;
     public RectTransform descriptionHoverBackground;
 
-    public static Action<string, Vector2> onMouseHover;
+    public static Action<string, Vector2> onMouseHoverDescription;
     public static Action onMouseExit;
 
     private void OnEnable() {
-        onMouseHover += ShowDescription;
+        onMouseHoverDescription += ShowDescription;
         onMouseExit += HideDescription;
     }
 
     private void OnDisable() {
-        onMouseHover -= ShowDescription;
+        onMouseHoverDescription -= ShowDescription;
         onMouseExit -= HideDescription;
     }
 
     private void Start() {
         HideDescription();
     }
-
+    
     /**
      * Show the description Text at the mouse position
      */

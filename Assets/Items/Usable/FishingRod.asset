@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 761f645f009328845bc7851753024e92, type: 3}
-  m_Name: WateringCan
+  m_Name: FishingRod
   m_EditorClassIdentifier: 
-  displayName: Watering Can
-  description: Waters with water
-  id: 2
-  selectedSprite: {fileID: 21300000, guid: 232469852165c5640a76569b41ae3987, type: 3}
-  defaultSprite: {fileID: 21300000, guid: eb0fc176cd1c0874da4fcadbc8938ff4, type: 3}
-  cost: 20
+  displayName: Fishing Rod
+  description: Used to fish fish.
+  id: 5
+  selectedSprite: {fileID: 21300000, guid: 29803b4d3ea05bc40b6a0ba9079789c7, type: 3}
+  defaultSprite: {fileID: 21300000, guid: ea463a9346e5ff444b977261452fce7f, type: 3}
+  cost: 100

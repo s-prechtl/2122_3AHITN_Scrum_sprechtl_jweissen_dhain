@@ -35,7 +35,7 @@ public class InventoryUI : MonoBehaviour {
     private void ToggleInventory() {
         inventoryUI.SetActive(!inventoryUI.activeSelf);
     }
-
+//TODO: sell Items with right click and when shop is open
     /**
      * Is called when something in the Inventory UI should update
      */

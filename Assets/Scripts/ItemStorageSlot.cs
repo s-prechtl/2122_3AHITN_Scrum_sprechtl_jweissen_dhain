@@ -13,23 +13,36 @@ public class ItemStorageSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
     
     private Item _item;
     
-    #region DescriptionHover
+    #region HoverOverItem
 
     public float timeToWait;
 
     public void OnPointerEnter(PointerEventData eventData) {
         StopAllCoroutines();
         StartCoroutine(StartTimer());
+        
+        ChangeItemSelectedSprite(true);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         StopAllCoroutines();
+        ChangeItemSelectedSprite(false);
         HoverManager.onMouseExit();
     }
 
     private void ShowMessage() {
         if(_item){
-            HoverManager.onMouseHover(_item.description, Input.mousePosition);
+            HoverManager.onMouseHoverDescription(_item.description, Input.mousePosition);
+        }
+    }
+
+    private void ChangeItemSelectedSprite(bool on) {
+        if(_item) {
+            if(on) {
+                icon.sprite = _item.selectedSprite;
+            } else {
+                icon.sprite = _item.defaultSprite;
+            }
         }
     }
 
