@@ -15,13 +15,13 @@ public class Inventory : ItemStorage {
 
     #endregion
     
-    public const int InventorySpace = 28;
+    private const int _InventorySpace = 28;
     
     /**
      * Adds the specified amount of items to the Inventory
      */
     public override void AddItem(Item item, int amount) {
-        if(items.Count >= InventorySpace) {
+        if(items.Count >= _InventorySpace) {
             Debug.Log("Not enough inventory space!");
             return;
         }

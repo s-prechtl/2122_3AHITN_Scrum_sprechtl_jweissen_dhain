@@ -1638,8 +1638,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2006577139}
   m_HandleRect: {fileID: 2006577138}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.59324205
+  m_Value: 1
+  m_Size: 0.5932421
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4906,7 +4906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1395531174}
-  dayCountTextMeshProUGUI: {fileID: 1089918735}
+  dayCountTextMeshProUGUI: {fileID: 0}
 --- !u!212 &1278234715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4967,7 +4967,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278234712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.57, y: -2.97, z: -1}
+  m_LocalPosition: {x: -4.52, y: 3.09, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4996,7 +4996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1291863650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6888,7 +6888,6 @@ MonoBehaviour:
   startItems:
   - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
   - {fileID: 11400000, guid: 430db451ae959f34b8fba8d8b17276fd, type: 2}
-  - {fileID: 11400000, guid: ea1a26b19bc34a0ba29bad77253c7266, type: 2}
 --- !u!114 &1800469992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,7 +6905,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d651d57ba97a4246a0094409e29fe56a, type: 2}
   - {fileID: 11400000, guid: 430db451ae959f34b8fba8d8b17276fd, type: 2}
   - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
-  - {fileID: 11400000, guid: ea1a26b19bc34a0ba29bad77253c7266, type: 2}
 --- !u!1001 &1805366398
 PrefabInstance:
   m_ObjectHideFlags: 0

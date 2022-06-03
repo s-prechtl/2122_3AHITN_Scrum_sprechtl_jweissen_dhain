@@ -19,10 +19,11 @@ public class ShopSlot : ItemStorageSlot {
      * Clears the Shop Slot
      */
     public override void ClearSlot() {
-        base.ClearSlot();
         nameText.text = "";
         costText.text = "";
         amountText.text = "";
+        // _shop.RemoveItem(Item, 1);
+        base.ClearSlot();
     }
 
     /**
@@ -35,7 +36,6 @@ public class ShopSlot : ItemStorageSlot {
             _playerController.ChangeMoney(-Item.cost);
             
             Debug.Log("Buying Item: " + Item.displayName);
-            Debug.Log("money left: " + _playerController.Money);
         } else {
             Debug.Log("Not enough money to buy item.");
         }
