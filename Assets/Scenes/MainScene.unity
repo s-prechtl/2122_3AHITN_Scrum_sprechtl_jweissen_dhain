@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2006577139}
   m_HandleRect: {fileID: 2006577138}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.9999998
   m_Size: 0.59324205
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4967,7 +4967,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278234712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.52, y: 3.09, z: -1}
+  m_LocalPosition: {x: -5.57, y: -2.97, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5010,7 +5010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 4752245148499717901, guid: ea81011a3ce83fb4386934728a92ee2d, type: 3}
-  cameraGameObject: {fileID: 0}
+  cameraGameObject: {fileID: 598358736}
 --- !u!4 &1291863651
 Transform:
   m_ObjectHideFlags: 0
@@ -6888,6 +6888,7 @@ MonoBehaviour:
   startItems:
   - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
   - {fileID: 11400000, guid: 430db451ae959f34b8fba8d8b17276fd, type: 2}
+  - {fileID: 11400000, guid: ea1a26b19bc34a0ba29bad77253c7266, type: 2}
 --- !u!114 &1800469992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6905,6 +6906,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d651d57ba97a4246a0094409e29fe56a, type: 2}
   - {fileID: 11400000, guid: 430db451ae959f34b8fba8d8b17276fd, type: 2}
   - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
+  - {fileID: 11400000, guid: ea1a26b19bc34a0ba29bad77253c7266, type: 2}
 --- !u!1001 &1805366398
 PrefabInstance:
   m_ObjectHideFlags: 0

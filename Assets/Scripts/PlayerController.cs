@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
     public void SetSelectedItem(UsableItem item) {
         if(_inventory.items.ContainsKey(item)) {
             _selectedItem = item;
-            Cursor.SetCursor(item.selectedSprite.texture, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(item.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
         } else {
             Debug.Log("An item requested to select isn't in the inventory" + item);
         }
