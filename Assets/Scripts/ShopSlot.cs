@@ -14,7 +14,7 @@ public class ShopSlot : ItemStorageSlot {
         _inventory = Inventory.instance;
         _playerController = PlayerController.instance;
     }
-    
+
     /**
      * Clears the Shop Slot
      */
@@ -30,17 +30,21 @@ public class ShopSlot : ItemStorageSlot {
      * Gets called when the Shop Slot is clicked
      */
     public override void UseItem() {
-        if(_playerController.Money >= Item.cost) {
-            _inventory.AddItem(Item, 1);
-            _shop.RemoveItem(Item, 1);
-            _playerController.ChangeMoney(-Item.cost);
-            
-            Debug.Log("Buying Item: " + Item.displayName);
-        } else {
-            Debug.Log("Not enough money to buy item.");
+        if(Item) {
+            if(_playerController.Money >= Item.cost) {
+                _inventory.AddItem(Item, 1);
+                _shop.RemoveItem(Item, 1);
+                if(Item) {
+                    _playerController.ChangeMoney(-Item.cost);
+                    
+                    Debug.Log("Buying Item: " + Item.displayName);
+                }
+            } else {
+                Debug.Log("Not enough money to buy item.");
+            }
+
+            _shop.onItemChangedCallback?.Invoke();
+            _inventory.onItemChangedCallback?.Invoke();
         }
-        
-        _shop.onItemChangedCallback?.Invoke();
-        _inventory.onItemChangedCallback?.Invoke();
     }
 }
