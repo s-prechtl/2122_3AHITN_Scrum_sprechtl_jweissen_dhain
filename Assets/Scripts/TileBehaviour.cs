@@ -8,7 +8,6 @@ public class TileBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Created");
         SetTile(new GrassTile());
         
         HouseController.NewDayEvent.AddListener(_tile.DayLightStep);
@@ -22,8 +21,6 @@ public class TileBehaviour : MonoBehaviour
     
     void OnMouseDown()
     {
-        Debug.Log("Clicked");
-
         UsableItem usable = null;
         BaseTile tileToSetTo = null;
 
@@ -42,9 +39,8 @@ public class TileBehaviour : MonoBehaviour
 
     void SetTile(BaseTile tileToSet)
     {
-        Debug.Log("Set tile to " + tileToSet.ToString());
         _tile = tileToSet;
         Debug.Log(_tile.Sprite);
-        GetComponent<SpriteRenderer>().sprite = _tile.Sprite; // TODO: Change to Sprite 
+        GetComponent<SpriteRenderer>().sprite = _tile.Sprite;
     }
 }

@@ -1,30 +1,18 @@
-﻿using DefaultNamespace;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Tiles
 {
     public class FarmlandTile : BaseTile
     {
         private Crop _crop;
-        private bool _hydrated;
         
-        public FarmlandTile() : base(TileSpriteContainer.FarmlandTileSprite)
+        public FarmlandTile() : base("Assets/Farming Asset Pack/Split Assets/farming_tileset_008.png")
         {
             _crop = null;
-            _hydrated = false;
         }
 
         public new void DayLightStep()
         {
-            if (_crop != null)
-            {
-                _crop.DayLightStep(_hydrated);
-                if (_crop.MarkedForDeletion)
-                {
-                    Debug.Log("Farmland crop deleted");
-                    _crop = null;
-                }
-            }
         }
 
         public new BaseTile Clicked(UsableItem usable)
@@ -36,7 +24,7 @@ namespace Tiles
             if (usable.id == ic.GetItemIdByName("Hoe"))
             {
                 Debug.Log("Farmland hydrated");
-                _hydrated = true;
+                //_hydrated = true;
             }
             
             if (usable.id == ic.GetItemIdByName("Wheat Seed") && _crop == null)

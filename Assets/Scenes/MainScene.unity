@@ -6509,11 +6509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5eb8967b8912c42b93a2086383ddd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startItems:
-  - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
-  - {fileID: 11400000, guid: 430db451ae959f34b8fba8d8b17276fd, type: 2}
-  - {fileID: 11400000, guid: d651d57ba97a4246a0094409e29fe56a, type: 2}
-  - {fileID: 11400000, guid: bb9777a7d5804bd6bf25d5510206aaf0, type: 2}
+  startItems: []
 --- !u!1001 &1701153146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6756,7 +6752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 10000
-  moneyTextMeshProUGUI: {fileID: 1347709342}
+  moneyTextMeshProUGUI: {fileID: 0}
 --- !u!4 &1800469990
 Transform:
   m_ObjectHideFlags: 0

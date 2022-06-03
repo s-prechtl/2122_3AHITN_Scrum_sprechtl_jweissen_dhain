@@ -10,6 +10,11 @@ public class Crop
     private bool _markedForDeletion;
     public bool MarkedForDeletion => _markedForDeletion;
 
+    private bool _dead;
+    public bool IsDead => _dead;
+
+    private bool _hydrated;
+
     private int _daysGrown;
 
     public Crop()
