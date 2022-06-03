@@ -18,17 +18,18 @@ public class ItemContainer : MonoBehaviour {
     }
 
     #endregion
-    
+
     private List<Item> _allItems;
 
-    private void Start() {
-        string[] files = 
-            Directory.GetFiles("Assets/Items", "*.cs", SearchOption.AllDirectories);
+    void Start() {
+        _allItems ??= new List<Item>();
+        Debug.Log("Itemcontainer started");
+        string[] files =
+            Directory.GetFiles("Assets\\Resources\\Items", "*.asset", SearchOption.AllDirectories);
         foreach (string file in files) {
-           _allItems.Add(Resources.Load<Item>("Assets/Items/" + file));            
+            String path = file.Replace("Assets\\Resources\\", "").Replace(".asset", "");
+           _allItems.Add(Resources.Load<Item>(path));
         }
-        Debug.Log(files);
-        Debug.Log(_allItems);
     }
 
     public Item GetItemByName(String name) {
