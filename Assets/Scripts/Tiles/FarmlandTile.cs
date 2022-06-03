@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 
 namespace Tiles
 {
@@ -7,7 +8,7 @@ namespace Tiles
         private Crop _crop;
         private bool _hydrated;
         
-        public FarmlandTile() : base(Color.black)
+        public FarmlandTile() : base(TileSpriteContainer.FarmlandTileSprite)
         {
             _crop = null;
             _hydrated = false;

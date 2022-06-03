@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4752245148499717902}
   - component: {fileID: 4752245148499717903}
   - component: {fileID: 4752245148499717900}
+  - component: {fileID: 7967442993183754557}
   m_Layer: 0
   m_Name: BaseTile
   m_TagString: Untagged
@@ -124,3 +125,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd8bc1d313319d4f89f11548ccb1b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7967442993183754557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752245148499717901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae14b865b73e45c5b15efb9484f9cae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrassTileSprite: {fileID: 21300002, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
+  FarmlandTileSprite: {fileID: 21300016, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
+  WheatSprite: {fileID: 21300078, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}

@@ -26,7 +26,7 @@ namespace Tiles
 
         public void DayLightStep()
         {
-            Debug.Log("I evolve");
+            
         }
 
         public virtual BaseTile Clicked(UsableItem usable)
@@ -34,5 +34,11 @@ namespace Tiles
             Debug.Log(usable.ToString() + " used on " + this.ToString());
             return null;
         }
+/*
+        static protected Sprite GenerateSpriteFromFile()
+        {
+            
+        }
+        */
     }
 }

@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 
 namespace Tiles
 {
     public class GrassTile : BaseTile
     {
-        public GrassTile() : base(Color.green)
+        public GrassTile() : base(TileSpriteContainer.GrassTileSprite)
         {
-            
+
         }
         
         /// <summary>
@@ -15,11 +16,14 @@ namespace Tiles
         /// <param name="usable">the UsableItem that the Tile was clicked on with</param>
         /// <returns>a subclass of BaseTile if the Tile has to change, null if it stays the same type</returns>
         public override BaseTile Clicked(UsableItem usable) {
-            base.Clicked(usable);
             BaseTile rv = null;
-            if (usable.id == ItemContainer.Instance.GetItemIdByName("Hoe"))
+            if (usable != null)
             {
-                rv = new FarmlandTile();
+                base.Clicked(usable);
+                if (usable.id == ItemContainer.Instance.GetItemIdByName(new string("Hoe")))
+                {
+                    rv = new FarmlandTile();
+                }
             }
             return rv;
         }

@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Items.TerraformingTools;
 using Tiles;
 using UnityEngine;
 
 public class TileBehaviour : MonoBehaviour
 {
-    private BaseTile tile;
+    private BaseTile _tile;
     
     // Start is called before the first frame update
     void Start()
@@ -15,7 +11,7 @@ public class TileBehaviour : MonoBehaviour
         Debug.Log("Created");
         SetTile(new GrassTile());
         
-        HouseController.NewDayEvent.AddListener(tile.DayLightStep);
+        HouseController.NewDayEvent.AddListener(_tile.DayLightStep);
     }
 
     // Update is called once per frame
@@ -27,20 +23,17 @@ public class TileBehaviour : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Clicked");
-        
-        UsableItem usable = PlayerController.instance.GetSelectedItem();
+
+        UsableItem usable = null;
         BaseTile tileToSetTo = null;
-        if (usable.GetType() == typeof(TerraformingTool))
+
+        if (PlayerController.instance.GetSelectedItem() != null)
         {
-            TerraformingTool terraformingTool = (TerraformingTool) usable;
-            Type tileTypeToSetTo = terraformingTool.TileType;
-            tileToSetTo = (BaseTile) Activator.CreateInstance(tileTypeToSetTo);
+            usable = PlayerController.instance.GetSelectedItem();
         }
-        else
-        {
-            tileToSetTo = tile.Clicked(usable);
-            Debug.Log("AMOGUS " + tileToSetTo.ToString());
-        }
+
+        tileToSetTo = _tile.Clicked(usable);
+
         if (tileToSetTo != null)
         {
             SetTile(tileToSetTo);
@@ -50,7 +43,8 @@ public class TileBehaviour : MonoBehaviour
     void SetTile(BaseTile tileToSet)
     {
         Debug.Log("Set tile to " + tileToSet.ToString());
-        tile = tileToSet;
-        GetComponent<SpriteRenderer>().color = tile.getColor; // TODO: Change to Sprite 
+        _tile = tileToSet;
+        Debug.Log(_tile.Sprite);
+        GetComponent<SpriteRenderer>().sprite = _tile.Sprite; // TODO: Change to Sprite 
     }
 }
