@@ -37,7 +37,7 @@ namespace Tiles
 
         static protected Sprite GenerateSpriteFromFile(String pathToImageFile)
         {
-            byte[] data = System.IO.File.ReadAllBytes(pathToImageFile);
+            byte[] data = File.ReadAllBytes(pathToImageFile);
             Texture2D texture = new Texture2D(32, 32, TextureFormat.ARGB32, false);
             texture.LoadImage(data);
             Sprite sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 32);
