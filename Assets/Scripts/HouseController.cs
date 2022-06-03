@@ -6,28 +6,29 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class HouseController : MonoBehaviour {
-    private int dayCount = 1;
-    private static UnityEvent newDayEvent;
-    public static UnityEvent NewDayEvent => newDayEvent;
+    private int _dayCount = 1;
+    private static UnityEvent _newDayEvent;
+    public static UnityEvent NewDayEvent => _newDayEvent;
 
     public Canvas menu;
     public TextMeshProUGUI dayCountTextMeshProUGUI;
 
     private void OnMouseDown() {
-        toggleMenu();
+        ToggleMenu();
     }
 
     void Start() {
-        newDayEvent ??= new UnityEvent();
+        _newDayEvent ??= new UnityEvent();
+        ToggleMenu();
     }
 
-    public void newDay() {
-        dayCount++;
-        dayCountTextMeshProUGUI.text = dayCount.ToString();
-        newDayEvent?.Invoke();
+    public void NewDay() {
+        _dayCount++;
+        dayCountTextMeshProUGUI.text = _dayCount.ToString();
+        _newDayEvent?.Invoke();
     }
 
-    public void toggleMenu() {
+    public void ToggleMenu() {
         menu.gameObject.SetActive(!menu.gameObject.activeSelf);
     }
 }
