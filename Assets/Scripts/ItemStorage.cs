@@ -35,7 +35,7 @@ public class ItemStorage : MonoBehaviour {
      * Removes the specified amount of items in the Item Storage
      */
     public void RemoveItem(Item item, int amount) {
-        if(items[item] <= 0) {
+        if(items[item]-amount <= 0) {
             items.Remove(item);
         } else {
             items[item] -= amount;

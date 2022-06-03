@@ -4,6 +4,8 @@ using UnityEngine;
 public class ShopUI : MonoBehaviour {
     public Transform itemsParent;
     public GameObject shopUI;
+    public bool shopIsOpen;
+    
     private Shop _shop;
     private ShopSlot[] _slots;
     
@@ -14,6 +16,7 @@ public class ShopUI : MonoBehaviour {
         
         // Add all ShopSlot GameObjects to _slots and turn off the Shop UI
         _slots = itemsParent.GetComponentsInChildren<ShopSlot>();
+        shopIsOpen = false;
         ToggleShop();
 
         // Set the icon to not be a raycast target for the Description Hovering to work
@@ -25,6 +28,7 @@ public class ShopUI : MonoBehaviour {
     private void Update() {
         // When "Shop" button is pressed turn on/off Shop UI
         if(Input.GetButtonDown("Shop")) {
+            shopIsOpen = true;
             ToggleShop();
         }
     }
