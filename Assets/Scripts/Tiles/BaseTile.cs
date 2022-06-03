@@ -7,11 +7,11 @@ namespace Tiles
         protected Color color;
         public Color getColor => color;
         // TODO: Change to Sprite, also in subclasses
-        // public Sprite sprite;
+         public Sprite Sprite;
         
-        protected BaseTile(Color color)
+        protected BaseTile(Sprite sprite)
         {
-            this.color = color;
+            this.Sprite = sprite;
         }
 
         protected void Start()
