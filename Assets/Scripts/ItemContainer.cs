@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ItemContainer : MonoBehaviour {
@@ -18,12 +19,22 @@ public class ItemContainer : MonoBehaviour {
 
     #endregion
     
-    public Item[] allItems;
-    // Start is called before the first frame update
+    private List<Item> _allItems;
+
+    private void Start() {
+        string[] files = 
+            Directory.GetFiles("Assets/Items", "*.cs", SearchOption.AllDirectories);
+        foreach (string file in files) {
+           _allItems.Add(Resources.Load<Item>("Assets/Items/" + file));            
+        }
+        Debug.Log(files);
+        Debug.Log(_allItems);
+    }
+
     public Item GetItemByName(String name) {
-        for (int i = 0; i < allItems.Length; i++) {
-            if (allItems[i].displayName == name) {
-                return allItems[i];
+        for (int i = 0; i < _allItems.Count; i++) {
+            if (_allItems[i].displayName == name) {
+                return _allItems[i];
             }
         }
 

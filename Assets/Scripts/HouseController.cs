@@ -31,20 +31,20 @@ public class HouseController : MonoBehaviour {
 
     public void ToggleMenu() {
         menu.gameObject.SetActive(!menu.gameObject.activeSelf);
-        float newPosY;
+        
+        
         if (Camera.main != null) {
-            
             Vector3 pos =  Camera.main.WorldToScreenPoint(transform.position);
-
+            float newPosX = pos.x;
+            float newPosY;
+            
             if (pos.y - 50 - ((RectTransform)menuPanel.transform).rect.height >= 0) { //check if bottom of panel is in screen
                 newPosY = pos.y - ((RectTransform)menuPanel.transform).rect.height;
             } else {
                 newPosY = pos.y + ((RectTransform)menuPanel.transform).rect.height;
             }
         
-            menuPanel.transform.position = new Vector3(pos.x, newPosY);
+            menuPanel.transform.position = new Vector3(newPosX, newPosY);
         }
-
-        
     }
 }
