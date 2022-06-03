@@ -14,8 +14,6 @@ public class TileController : MonoBehaviour {
         Vector3 screen = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
         int x = Convert.ToInt32(Math.Ceiling(screen.x));
         int y = Convert.ToInt32(Math.Ceiling(screen.y));
-
-        Debug.Log(screen);
         for(int xx = -x; xx <= x; xx++) {
             for(int yy = -y; yy <= y; yy++) {
                 if(tile != null) {

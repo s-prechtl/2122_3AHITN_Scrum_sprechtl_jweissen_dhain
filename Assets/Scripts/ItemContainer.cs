@@ -23,7 +23,6 @@ public class ItemContainer : MonoBehaviour {
 
     void Start() {
         _allItems ??= new List<Item>();
-        Debug.Log("Itemcontainer started");
         string[] files =
             Directory.GetFiles("Assets\\Resources\\Items", "*.asset", SearchOption.AllDirectories);
         foreach (string file in files) {
