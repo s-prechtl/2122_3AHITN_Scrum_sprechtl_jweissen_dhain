@@ -4,7 +4,7 @@ namespace Tiles
 {
     public class GrassTile : BaseTile
     {
-        public GrassTile() : base("C:/Users/maile/UnityProjects/2122_3AHITN_Scrum_sprechtl_jweissen_dhain/Assets/Farming Asset Pack/Split Assets/farming_tileset_000.png")
+        public GrassTile() : base("Assets/Farming Asset Pack/Split Assets/farming_tileset_000.png")
         {
 
         }

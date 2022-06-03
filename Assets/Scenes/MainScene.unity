@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2006577139}
   m_HandleRect: {fileID: 2006577138}
   m_Direction: 2
-  m_Value: 0.9999998
+  m_Value: 1
   m_Size: 0.59324205
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6320,6 +6320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 610140154}
   shopUI: {fileID: 1671356616}
+  shopIsOpen: 0
+  inventoryUI: {fileID: 1609015285}
 --- !u!224 &1551890462 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3510585822996971025, guid: 44dae5fbdb6f7df4f93a10807f66956f, type: 3}
@@ -6509,7 +6511,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5eb8967b8912c42b93a2086383ddd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startItems: []
+  startItems:
+  - {fileID: 11400000, guid: bb9777a7d5804bd6bf25d5510206aaf0, type: 2}
+  - {fileID: 11400000, guid: bb9777a7d5804bd6bf25d5510206aaf0, type: 2}
+  - {fileID: 11400000, guid: bb9777a7d5804bd6bf25d5510206aaf0, type: 2}
+  - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
 --- !u!1001 &1701153146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6752,7 +6758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 10000
-  moneyTextMeshProUGUI: {fileID: 0}
+  moneyTextMeshProUGUI: {fileID: 1347709342}
 --- !u!4 &1800469990
 Transform:
   m_ObjectHideFlags: 0
