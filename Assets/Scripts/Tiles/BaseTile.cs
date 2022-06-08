@@ -9,33 +9,26 @@ namespace Tiles
         private Sprite _sprite;
         public Sprite Sprite => _sprite;
 
-        protected BaseTile(String pathToImageFile)
+        protected GameObject _gameObject;
+
+        protected BaseTile(String pathToImageFile, GameObject gameObject)
         {
+            this._gameObject = gameObject;
             this._sprite = GenerateSpriteFromFile(pathToImageFile);
+            HouseController.NewDayEvent.AddListener(DayLightStep);
         }
 
-        protected void Start()
-        {
-
-        }
-
-        protected void Update()
-        {
-
-        }
-
-        public void DayLightStep()
+        public virtual void DayLightStep()
         {
             
         }
 
         public virtual BaseTile Clicked(UsableItem usable)
         {
-            Debug.Log(usable.ToString() + " used on " + this.ToString());
             return null;
         }
 
-        static protected Sprite GenerateSpriteFromFile(String pathToImageFile)
+        static public Sprite GenerateSpriteFromFile(String pathToImageFile)
         {
             byte[] data = File.ReadAllBytes(pathToImageFile);
             Texture2D texture = new Texture2D(32, 32, TextureFormat.ARGB32, false);

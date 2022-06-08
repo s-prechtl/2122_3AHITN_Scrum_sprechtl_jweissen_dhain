@@ -4,7 +4,7 @@ namespace Tiles
 {
     public class WaterTile : BaseTile
     {
-        public WaterTile() : base(null)
+        public WaterTile() : base(null, null)
         {
             
         }

@@ -4,7 +4,7 @@ namespace Tiles
 {
     public class GrassTile : BaseTile
     {
-        public GrassTile() : base("Assets/Farming Asset Pack/Split Assets/farming_tileset_000.png")
+        public GrassTile(GameObject gameObject) : base("Assets/Farming Asset Pack/Split Assets/farming_tileset_000.png", gameObject)
         {
 
         }
@@ -21,7 +21,7 @@ namespace Tiles
                 base.Clicked(usable);
                 if (usable.id == ItemContainer.Instance.GetItemIdByName(new string("Hoe")))
                 {
-                    rv = new FarmlandTile();
+                    rv = new FarmlandTile(_gameObject);
                 }
             }
             return rv;
