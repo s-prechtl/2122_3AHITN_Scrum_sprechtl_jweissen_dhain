@@ -8,6 +8,8 @@ public class TileController : MonoBehaviour {
 
     public GameObject cameraGameObject;
 
+    public List<GameObject> Tiles;
+
     // Start is called before the first frame update
     void Start() {
         Camera camera = cameraGameObject.GetComponent<Camera>();
@@ -17,7 +19,7 @@ public class TileController : MonoBehaviour {
         for(int xx = -x; xx <= x; xx++) {
             for(int yy = -y; yy <= y; yy++) {
                 if(tile != null) {
-                    Instantiate(tile, new Vector3(xx, yy, 0), Quaternion.identity);
+                    Tiles.Add(Instantiate(tile, new Vector3(xx, yy, 0), Quaternion.identity));
                 }
             }
         }

@@ -51,12 +51,10 @@ public class Crop {
     }
 
     public void DayLightStep() {
-        Debug.Log("Crop.DayLightStep");
         ApplyAction(NextDay);
     }
 
     public void Clicked(UsableItem usableItem) {
-        Debug.Log("Crop.Clicked UsableItem " + usableItem);
         if(usableItem != null) {
             ItemContainer ic = ItemContainer.Instance;
             if(ic.GetItemIdByName("Hoe") == usableItem.Id) {
@@ -72,7 +70,6 @@ public class Crop {
     }
 
     private void ApplyAction(CropAction action) {
-        Debug.Log("ApplyAction: CropAction " + action);
         if(_planted) {
             if(Hoe == action) {
                 _planted = false;
@@ -116,7 +113,6 @@ public class Crop {
     }
 
     private void UpdateSprite() {
-        Dump();
         if(_planted) {
             if(_fullyGrown) {
                 //Debug.Log("sprite fg");

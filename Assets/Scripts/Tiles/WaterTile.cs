@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Tiles {
     public class WaterTile : BaseTile {
-        public WaterTile(GameObject gameObject) : base("Assets/Farming Asset Pack/Split Assets/farming_tileset_023.png", gameObject) {
+        public WaterTile(GameObject gameObject) : base("Assets/Farming Asset Pack/Split Assets/water_sprite_00.png", gameObject) {
         }
 
         public override BaseTile Clicked(UsableItem usable) {
