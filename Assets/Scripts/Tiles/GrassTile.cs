@@ -16,12 +16,14 @@ namespace Tiles
         /// <returns>a subclass of BaseTile if the Tile has to change, null if it stays the same type</returns>
         public override BaseTile Clicked(UsableItem usable) {
             BaseTile rv = null;
+            ItemContainer ic = ItemContainer.Instance;
             if (usable != null)
             {
                 base.Clicked(usable);
-                if (usable.id == ItemContainer.Instance.GetItemIdByName(new string("Hoe")))
-                {
+                if (usable.id == ic.GetItemIdByName("Hoe")) {
                     rv = new FarmlandTile();
+                } else if (usable.id == ic.GetItemIdByName("Shovel")) {
+                    rv = new WaterTile();
                 }
             }
             return rv;

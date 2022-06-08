@@ -31,7 +31,7 @@ namespace Tiles
 
         public virtual BaseTile Clicked(UsableItem usable)
         {
-            Debug.Log(usable.ToString() + " used on " + this.ToString());
+            Debug.Log(usable + " used on " + this);
             return null;
         }
 
