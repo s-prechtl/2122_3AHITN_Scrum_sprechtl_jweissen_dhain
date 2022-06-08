@@ -39,7 +39,7 @@ public class Shop : ItemStorage {
             _playerController = PlayerController.instance;
 
             if(_lastBoughtItem) {
-                _playerController.ChangeMoney(_lastBoughtItem.cost);
+                _playerController.ChangeMoney(_lastBoughtItem.price);
                 _inventory.RemoveItem(_lastBoughtItem, _lastBoughtItemAmount);
                 AddItem(_lastBoughtItem, _lastBoughtItemAmount);
                 itemWasBought = false;

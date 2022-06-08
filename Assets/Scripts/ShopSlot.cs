@@ -31,9 +31,9 @@ public class ShopSlot : ItemStorageSlot {
      */
     public override void UseItem() {
         if(Item) {
-            if(_playerController.Money >= Item.cost) {
+            if(_playerController.Money >= Item.price) {
                 if(Item) {
-                    _playerController.ChangeMoney(-Item.cost);
+                    _playerController.ChangeMoney(-Item.price);
                     _shop.itemWasBought = true;
                     
                     Debug.Log("Buying Item: " + Item.displayName);

@@ -35,7 +35,7 @@ public class ShopUI : MonoBehaviour {
      * Turn on/off the Shop UI
      */
     private void ToggleShop() {
-        // TODO: geht ned oda so: inventoryUI.gameObject.SetActive(!shopUI.activeSelf);
+        inventoryUI.gameObject.SetActive(!shopUI.activeSelf);
         shopUI.SetActive(!shopUI.activeSelf);
     }
 
@@ -48,7 +48,7 @@ public class ShopUI : MonoBehaviour {
             if (i < _shop.items.Count) {
                 _slots[i].AddItem(_shop.items.ElementAt(i).Key);
                 _slots[i].nameText.text = _slots[i].Item.displayName;
-                _slots[i].costText.text = _slots[i].Item.cost + " µ";
+                _slots[i].costText.text = _slots[i].Item.price + " µ";
                 _slots[i].amountText.text = _shop.items[_shop.items.ElementAt(i).Key] + " #";
             }
             else {

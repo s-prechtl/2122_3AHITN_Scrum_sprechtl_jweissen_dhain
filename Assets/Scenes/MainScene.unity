@@ -6456,7 +6456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 610140154}
   shopUI: {fileID: 1671356616}
-  inventoryUI: {fileID: 971652020}
+  inventoryUI: {fileID: 1609015285}
 --- !u!224 &1551890462 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3510585822996971025, guid: 44dae5fbdb6f7df4f93a10807f66956f, type: 3}
@@ -6651,7 +6651,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb9777a7d5804bd6bf25d5510206aaf0, type: 2}
   - {fileID: 11400000, guid: bb9777a7d5804bd6bf25d5510206aaf0, type: 2}
   - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
-  itemWasSold: 0
+  - {fileID: 11400000, guid: d651d57ba97a4246a0094409e29fe56a, type: 2}
+  - {fileID: 11400000, guid: d651d57ba97a4246a0094409e29fe56a, type: 2}
+  itemWasBought: 0
 --- !u!1001 &1701153146
 PrefabInstance:
   m_ObjectHideFlags: 0
