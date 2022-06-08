@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f096d187f76a734fac022700054dfec, type: 3}
   m_Name: Wheat
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
-  id: 0
-  selectedSprite: {fileID: 0}
-  defaultSprite: {fileID: 0}
-  price: 0
+  displayName: Wheat
+  description: weizenmann
+  selectedSprite: {fileID: 21300104, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
+  defaultSprite: {fileID: 21300104, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
+  price: 50

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Shovel
   description: Used to dig ground.
-  id: 6
   selectedSprite: {fileID: 21300000, guid: 58952d7ae1da0f0468af9c9d916af2fc, type: 3}
   defaultSprite: {fileID: 21300000, guid: 1ea3a182dfc173440993d81065fdbdf0, type: 3}
-  cost: 200
+  price: 500

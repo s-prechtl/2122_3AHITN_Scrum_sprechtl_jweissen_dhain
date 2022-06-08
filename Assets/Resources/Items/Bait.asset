@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Bait
   description: nom nom nom
-  id: 0
   selectedSprite: {fileID: 21300000, guid: 423719dfe7ab82942bf923c4b53737a0, type: 3}
   defaultSprite: {fileID: 21300000, guid: dccb93f4efdee0745a197bd2fa7fddf3, type: 3}
-  price: 420
+  price: 80

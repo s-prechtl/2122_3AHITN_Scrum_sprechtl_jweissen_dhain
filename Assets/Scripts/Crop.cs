@@ -59,13 +59,13 @@ public class Crop {
         Debug.Log("Crop.Clicked UsableItem " + usableItem);
         if(usableItem != null) {
             ItemContainer ic = ItemContainer.Instance;
-            if(ic.GetItemIdByName("Hoe") == usableItem.id) {
+            if(ic.GetItemIdByName("Hoe") == usableItem.Id) {
                 ApplyAction(Hoe);
-            } else if(ic.GetItemIdByName("Scythe") == usableItem.id) {
+            } else if(ic.GetItemIdByName("Scythe") == usableItem.Id) {
                 ApplyAction(Scythe);
-            } else if(ic.GetItemIdByName("Wheat Seeds") == usableItem.id) {
+            } else if(ic.GetItemIdByName("Wheat Seeds") == usableItem.Id) {
                 ApplyAction(Seeds);
-            } else if(ic.GetItemIdByName("Watering Can") == usableItem.id) {
+            } else if(ic.GetItemIdByName("Watering Can") == usableItem.Id) {
                 ApplyAction(WateringCan);
             }
         }
@@ -111,6 +111,7 @@ public class Crop {
     }
 
     private void AddCropToInventory() {
+        Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat Seeds"), (int)(Random.Range(1,300)));
         Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat"), 1);
     }
 

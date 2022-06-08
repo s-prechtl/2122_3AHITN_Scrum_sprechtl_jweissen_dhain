@@ -31,10 +31,8 @@ public class InventorySlot : ItemStorageSlot, IPointerClickHandler {
      * Sells the Item for the Item Sell Price and puts it in the Shop if the selling was a mistake
      */
     private void SellItem() {
-        if(Item){
-            _playerController.ChangeMoney(Item.SellPrice);
-            _shop.AddItem(Item, 1);
-            _inventory.RemoveItem(Item, 1); // TODO: somehow sell more than 1 Item
+        if(Item) {
+            _inventory.SellItem(Item, 1); //TODO: wie machen mehr als 1 verkaufen?!
         }
     }
 

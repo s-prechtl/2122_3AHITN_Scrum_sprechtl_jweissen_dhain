@@ -71,6 +71,7 @@ public class ItemStorageSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
         _item = null;
         icon.sprite = null;
         icon.enabled = false;
+        amountText.text = "";
     }
     
     /**

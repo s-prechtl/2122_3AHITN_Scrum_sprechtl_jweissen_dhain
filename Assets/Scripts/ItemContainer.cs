@@ -48,6 +48,6 @@ public class ItemContainer : MonoBehaviour {
     }
     
     public int GetItemIdByName(String name) {
-        return GetItemByName(name).ID;
+        return GetItemByName(name).Id;
     }
 }
