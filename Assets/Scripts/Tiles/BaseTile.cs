@@ -15,6 +15,9 @@ namespace Tiles
         {
             this._gameObject = gameObject;
             this._sprite = GenerateSpriteFromFile(pathToImageFile);
+        }
+
+        public void DayLightStep()
             HouseController.NewDayEvent.AddListener(DayLightStep);
         }
 
