@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f096d187f76a734fac022700054dfec, type: 3}
   m_Name: Fish
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
-  id: 0
-  selectedSprite: {fileID: 0}
-  defaultSprite: {fileID: 0}
-  cost: 0
+  displayName: Fish
+  description: Used to slap people.
+  selectedSprite: {fileID: 21300000, guid: 8c01c1a230575ac4bb0aee5ba1c7757a, type: 3}
+  defaultSprite: {fileID: 21300000, guid: d1b54b7f17e2d4d4e82d50d710d4482c, type: 3}
+  cost: 150
