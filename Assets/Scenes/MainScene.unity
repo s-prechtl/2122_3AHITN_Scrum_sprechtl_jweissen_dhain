@@ -6653,6 +6653,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 008a8fdd2c3a95745acafee4087a855d, type: 2}
   - {fileID: 11400000, guid: d651d57ba97a4246a0094409e29fe56a, type: 2}
   - {fileID: 11400000, guid: d651d57ba97a4246a0094409e29fe56a, type: 2}
+  - {fileID: 11400000, guid: a5d525b8ca07172499e8678eb6f73fb2, type: 2}
+  - {fileID: 11400000, guid: a5d525b8ca07172499e8678eb6f73fb2, type: 2}
   itemWasBought: 0
 --- !u!1001 &1701153146
 PrefabInstance:
