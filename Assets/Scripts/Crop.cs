@@ -38,9 +38,8 @@ public class Crop {
         _cropSpriteRenderer = cropSpriteRenderer;
         _hydrationSpriteRenderer = hydrationSpriteRenderer;
 
-        _smallCrop = BaseTile.GenerateSpriteFromFile("Assets/Farming Asset Pack/Split Assets/farming_tileset_027.png");
-        _fullyGrownCrop =
-            BaseTile.GenerateSpriteFromFile("Assets/Farming Asset Pack/Split Assets/farming_tileset_040.png");
+        _smallCrop = BaseTile.GenerateSpriteFromFile("Assets/Farming Asset Pack/Split Assets/farming_tileset_026.png");
+        _fullyGrownCrop = BaseTile.GenerateSpriteFromFile("Assets/Farming Asset Pack/Split Assets/farming_tileset_039.png");
 
         _hydratedColor = new Color(0.5f, 0.5f, 1.0f, 0.269420f);
 
@@ -112,7 +111,7 @@ public class Crop {
     }
 
     private void AddCropToInventory() {
-        Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat Seeds"), 3);
+        Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat"), 1);
     }
 
     private void UpdateSprite() {
