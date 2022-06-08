@@ -26,8 +26,10 @@ public class ItemContainer : MonoBehaviour {
         string[] files =
             Directory.GetFiles("Assets\\Resources\\Items", "*.asset", SearchOption.AllDirectories);
         foreach (string file in files) {
-            String path = file.Replace("Assets\\Resources\\", "").Replace(".asset", "");
-           _allItems.Add(Resources.Load<Item>(path));
+            String path = StripPath(file);
+            Item currItem = Resources.Load<Item>(path);
+            currItem.SetID(_allItems.Count);
+           _allItems.Add(currItem);
         }
     }
 
@@ -41,7 +43,11 @@ public class ItemContainer : MonoBehaviour {
         return null;
     }
 
+    private String StripPath(String path) {
+        return path.Replace("Assets\\Resources\\", "").Replace(".asset", "");
+    }
+    
     public int GetItemIdByName(String name) {
-        return GetItemByName(name).id;
+        return GetItemByName(name).ID;
     }
 }
