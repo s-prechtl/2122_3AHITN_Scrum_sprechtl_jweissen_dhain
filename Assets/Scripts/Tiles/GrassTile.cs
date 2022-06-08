@@ -20,9 +20,9 @@ namespace Tiles
             if (usable != null)
             {
                 base.Clicked(usable);
-                if (usable.id == ic.GetItemIdByName("Hoe")) {
+                if (usable.ID == ic.GetItemIdByName("Hoe")) {
                     rv = new FarmlandTile();
-                } else if (usable.id == ic.GetItemIdByName("Shovel")) {
+                } else if (usable.ID == ic.GetItemIdByName("Shovel")) {
                     rv = new WaterTile();
                 }
             }

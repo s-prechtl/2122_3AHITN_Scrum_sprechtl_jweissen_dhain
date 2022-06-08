@@ -14,16 +14,6 @@ namespace Tiles
             this._sprite = GenerateSpriteFromFile(pathToImageFile);
         }
 
-        protected void Start()
-        {
-
-        }
-
-        protected void Update()
-        {
-
-        }
-
         public void DayLightStep()
         {
             

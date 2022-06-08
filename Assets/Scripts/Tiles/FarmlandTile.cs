@@ -21,18 +21,18 @@ namespace Tiles
 
             ItemContainer ic = ItemContainer.Instance;
 
-            if (usable.id == ic.GetItemIdByName("Hoe"))
+            if (usable.ID == ic.GetItemIdByName("Hoe"))
             {
                 Debug.Log("Farmland hydrated");
                 //_hydrated = true;
             }
             
-            if (usable.id == ic.GetItemIdByName("Wheat Seed") && _crop == null)
+            if (usable.ID == ic.GetItemIdByName("Wheat Seed") && _crop == null)
             {
                 Plant();
             }
 
-            if (usable.id == ic.GetItemIdByName("Scythe") && _crop != null && _crop.FullyGrown)  
+            if (usable.ID == ic.GetItemIdByName("Scythe") && _crop != null && _crop.FullyGrown)  
             {
                 Harvest();
             }
