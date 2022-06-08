@@ -40,12 +40,13 @@ public class InventoryUI : MonoBehaviour {
      * Is called when something in the Inventory UI should update
      */
     private void UpdateUI() {
-        // Add all items to the correct slots and clear the ones where no item should be
+        // Add all items to the correct slots, clear the ones where no item should be and set the number of how many items are in the slot
         for(int i = 0; i < _slots.Length; i++) {
             if(i < _inventory.items.Count) {
                 _slots[i].AddItem(_inventory.items.ElementAt(i).Key);
-                if(_inventory.items[_inventory.items.ElementAt(i).Key] > 1) {
-                    _slots[i].amountText.text = "" + _inventory.items[_inventory.items.ElementAt(i).Key];
+                _slots[i].amountText.text = "" + _inventory.items[_inventory.items.ElementAt(i).Key];
+                if(_inventory.items[_inventory.items.ElementAt(i).Key] == 1) {
+                    _slots[i].amountText.text = "";
                 }
             } else {
                 _slots[i].ClearSlot();

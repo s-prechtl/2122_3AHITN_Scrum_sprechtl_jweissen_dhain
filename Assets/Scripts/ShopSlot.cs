@@ -32,13 +32,14 @@ public class ShopSlot : ItemStorageSlot {
     public override void UseItem() {
         if(Item) {
             if(_playerController.Money >= Item.cost) {
-                _inventory.AddItem(Item, 1);
-                _shop.RemoveItem(Item, 1);
                 if(Item) {
                     _playerController.ChangeMoney(-Item.cost);
+                    _shop.itemWasBought = true;
                     
                     Debug.Log("Buying Item: " + Item.displayName);
                 }
+                _inventory.AddItem(Item, 1);
+                _shop.RemoveItem(Item, 1);
             } else {
                 Debug.Log("Not enough money to buy item.");
             }

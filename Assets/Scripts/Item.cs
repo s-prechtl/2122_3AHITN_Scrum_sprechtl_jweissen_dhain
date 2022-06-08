@@ -9,6 +9,7 @@ public class Item : ScriptableObject, IComparable<Item> {
     public Sprite selectedSprite;
     public Sprite defaultSprite;
     public int cost;
+    public int SellPrice => Convert.ToInt32(cost * 0.8);
     
     public Item(string displayName, string description, int id) {
         this.displayName = displayName;

@@ -30,11 +30,15 @@ public class PlayerController : MonoBehaviour {
 
     public int Money => _money;
 
+    public delegate void OnMoneyChanged();
+    public OnMoneyChanged onMoneyChangedCallback;
+    
     // Start is called before the first frame update
     private void Start() {
         _money = startMoney;
         _inventory = Inventory.instance;
-        moneyTextMeshProUGUI.text = _money + "µ";
+
+        onMoneyChangedCallback += UpdateMoneyUI;
     }
 
     public void SetSelectedItem(UsableItem item) {
@@ -52,6 +56,10 @@ public class PlayerController : MonoBehaviour {
 
     public void ChangeMoney(int amount) {
         _money += amount;
+        onMoneyChangedCallback?.Invoke();
+    }
+
+    private void UpdateMoneyUI() {
         moneyTextMeshProUGUI.text = _money + "µ";
     }
 }
