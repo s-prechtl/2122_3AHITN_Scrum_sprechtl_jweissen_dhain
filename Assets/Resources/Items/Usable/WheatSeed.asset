@@ -17,4 +17,4 @@ MonoBehaviour:
   id: 3
   selectedSprite: {fileID: 21300000, guid: f20f809a862a67b408c2b7fe11e87605, type: 3}
   defaultSprite: {fileID: 21300000, guid: aca4991443af2a140b7400c8e4a003a1, type: 3}
-  cost: 69
+  price: 69
