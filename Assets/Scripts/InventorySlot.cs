@@ -20,9 +20,9 @@ public class InventorySlot : ItemStorageSlot, IPointerClickHandler {
         if(Item) {
             if(Item.GetType() == typeof(UsableItem)) {
                 ((UsableItem)Item).Select();
-                Debug.Log("using " + Item.displayName);
+                //Debug.Log("using " + Item.displayName);
             } else {
-                Debug.Log("Item not usable " + Item.displayName);
+                //Debug.Log("Item not usable " + Item.displayName);
             }
         }
     }

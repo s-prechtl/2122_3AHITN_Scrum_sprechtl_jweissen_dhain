@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using DefaultNamespace;
 using UnityEngine;
 
 namespace Tiles {
@@ -7,19 +8,12 @@ namespace Tiles {
         private Sprite _sprite;
         public Sprite Sprite => _sprite;
 
-        protected GameObject _gameObject;
-
-        protected BaseTile(String pathToImageFile, GameObject gameObject) {
-            _gameObject = gameObject;
+        protected BaseTile(String pathToImageFile) {
             _sprite = GenerateSpriteFromFile(pathToImageFile);
             HouseController.NewDayEvent.AddListener(DayLightStep);
         }
 
         public virtual void DayLightStep() { }
-
-        public virtual BaseTile Clicked(UsableItem usable) {
-            return null;
-        }
 
         static public Sprite GenerateSpriteFromFile(String pathToImageFile) {
             byte[] data = File.ReadAllBytes(pathToImageFile);
