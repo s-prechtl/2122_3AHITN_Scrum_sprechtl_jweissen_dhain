@@ -36,6 +36,7 @@ public class ShopUI : MonoBehaviour {
      */
     private void ToggleShop() {
         inventoryUI.gameObject.SetActive(!shopUI.activeSelf);
+        HoverManager.instance.HideDescription();
         shopUI.SetActive(!shopUI.activeSelf);
     }
 

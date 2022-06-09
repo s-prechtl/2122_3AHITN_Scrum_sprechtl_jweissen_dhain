@@ -1,5 +1,7 @@
+using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InventoryUI : MonoBehaviour {
     public Transform itemsParent;
@@ -34,8 +36,12 @@ public class InventoryUI : MonoBehaviour {
      */
     private void ToggleInventory() {
         inventoryUI.SetActive(!inventoryUI.activeSelf);
+        HoverManager.instance.HideDescription();
+        foreach(InventorySlot slot in _slots) {
+            slot.ChangeItemSelectedSprite(false);
+        }
     }
-//TODO: sell Items with right click and when shop is open
+
     /**
      * Is called when something in the Inventory UI should update
      */

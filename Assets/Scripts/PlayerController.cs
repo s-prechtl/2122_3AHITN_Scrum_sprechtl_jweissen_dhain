@@ -31,8 +31,9 @@ public class PlayerController : MonoBehaviour {
     public int Money => _money;
 
     public delegate void OnMoneyChanged();
+
     public OnMoneyChanged onMoneyChangedCallback;
-    
+
     // Start is called before the first frame update
     private void Start() {
         _inventory = Inventory.instance;
@@ -51,8 +52,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void DeselectItem()
-    {
+    public void DeselectItem() {
         _selectedItem = null;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
 
     public void ChangeMoney(int amount) {
         _money += amount;
-        
+
         onMoneyChangedCallback?.Invoke();
     }
 

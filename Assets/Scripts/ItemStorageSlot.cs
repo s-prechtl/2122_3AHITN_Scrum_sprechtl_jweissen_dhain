@@ -36,7 +36,7 @@ public class ItemStorageSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
 
-    private void ChangeItemSelectedSprite(bool on) {
+    public void ChangeItemSelectedSprite(bool on) {
         if(_item) {
             if(on) {
                 icon.sprite = _item.selectedSprite;

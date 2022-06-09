@@ -6,9 +6,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class HouseController : MonoBehaviour {
-    private int _dayCount = 1;
+    private static int _dayCount = 1;
     private static UnityEvent _newDayEvent;
     public static UnityEvent NewDayEvent => _newDayEvent;
+    public static int DayCount => _dayCount;
 
     public Canvas menu;
     public TextMeshProUGUI dayCountTextMeshProUGUI;
@@ -18,8 +19,11 @@ public class HouseController : MonoBehaviour {
         ToggleMenu();
     }
 
-    void Start() {
+    private void Awake() {
         _newDayEvent ??= new UnityEvent();
+    }
+
+    void Start() {
         ToggleMenu();
     }
 
@@ -31,8 +35,7 @@ public class HouseController : MonoBehaviour {
 
     public void ToggleMenu() {
         menu.gameObject.SetActive(!menu.gameObject.activeSelf);
-        
-        
+
         if (Camera.main != null) {
             Vector3 pos =  Camera.main.WorldToScreenPoint(transform.position);
             float newPosX = pos.x;

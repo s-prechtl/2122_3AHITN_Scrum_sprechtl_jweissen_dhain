@@ -4,12 +4,10 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : ItemStorageSlot, IPointerClickHandler {
     private Inventory _inventory;
-    private Shop _shop;
     private PlayerController _playerController;
 
     private void Start() {
         _inventory = Inventory.instance;
-        _shop = Shop.instance;
         _playerController = PlayerController.instance;
     }
 
@@ -30,21 +28,14 @@ public class InventorySlot : ItemStorageSlot, IPointerClickHandler {
     }
 
     /**
-     * Sells the Item for the Item Sell Price and puts it in the Shop if the selling was a mistake
-     */
-    private void SellItem() {
-        if(Item) {
-            _inventory.SellItem(Item, 1); //TODO: wie machen mehr als 1 verkaufen?!
-        }
-    }
-
-    /**
      * Gets called when the Inventory Slot gets clicked on
      */
     public void OnPointerClick(PointerEventData eventData) {
         // When clicked on with right Mouse Button sell the Item
         if(eventData.button == PointerEventData.InputButton.Right) {
-            SellItem();
+            if(Item) {
+                _inventory.SellItem(Item, 1); //TODO: wie machen mehr als 1 verkaufen?!
+            }
         }
     }
 }

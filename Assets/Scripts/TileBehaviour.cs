@@ -2,15 +2,13 @@ using System;
 using Tiles;
 using UnityEngine;
 
-public class TileBehaviour : MonoBehaviour
-{
+public class TileBehaviour : MonoBehaviour {
     private BaseTile _tile;
     private SpriteRenderer _hoverIndicatorSpriteRenderer;
     private static Color _hoverIndicatorColor;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         _hoverIndicatorSpriteRenderer = gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>();
         SetHoverIndicatorVisibility(false);
         SetTile(new GrassTile(gameObject));
@@ -19,53 +17,41 @@ public class TileBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
     }
-    
-    void OnMouseDown()
-    {
+
+    void OnMouseDown() {
         UsableItem usable = null;
         BaseTile tileToSetTo = null;
 
-        if (PlayerController.instance.GetSelectedItem() != null)
-        {
+        if(PlayerController.instance.GetSelectedItem() != null) {
             usable = PlayerController.instance.GetSelectedItem();
         }
 
         tileToSetTo = _tile.Clicked(usable);
 
-        if (tileToSetTo != null)
-        {
+        if(tileToSetTo != null) {
             SetTile(tileToSetTo);
         }
     }
 
-    void SetTile(BaseTile tileToSet)
-    {
+    void SetTile(BaseTile tileToSet) {
         _tile = tileToSet;
         GetComponent<SpriteRenderer>().sprite = _tile.Sprite;
     }
 
-    private void OnMouseEnter()
-    {
+    private void OnMouseEnter() {
         SetHoverIndicatorVisibility(true);
     }
 
-    private void OnMouseExit()
-    {
+    private void OnMouseExit() {
         SetHoverIndicatorVisibility(false);
     }
 
-    private void SetHoverIndicatorVisibility(bool visible)
-    {
-        if (visible)
-        {
+    private void SetHoverIndicatorVisibility(bool visible) {
+        if(visible) {
             _hoverIndicatorSpriteRenderer.color = _hoverIndicatorColor;
-        }
-        else
-        {
+        } else {
             _hoverIndicatorSpriteRenderer.color = Color.clear;
         }
     }

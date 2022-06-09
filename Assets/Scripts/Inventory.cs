@@ -16,25 +16,28 @@ public class Inventory : ItemStorage {
 
     #endregion
 
-    private const int InventorySpace = 28;
-    private const int MaxItemStack = 999;
+    private const int _InventorySpace = 28;
+    private const int _MaxItemStack = 999;
 
     /**
      * Adds the specified amount of items to the Inventory
      */
     public override void AddItem(Item item, int amount) {
-        if (items.Count >= InventorySpace) {
+        if (items.Count >= _InventorySpace) {
             Debug.Log("Not enough inventory space!");
             return;
         }
         // Sell overflowing Items
-        if (items.ContainsKey(item) && items[item] + amount >= MaxItemStack) {
-            SellItem(item, amount - (MaxItemStack - items[item]));
-            amount = MaxItemStack - items[item];
+        if (items.ContainsKey(item) && items[item] + amount >= _MaxItemStack) {
+            SellItem(item, amount - (_MaxItemStack - items[item]));
+            amount = _MaxItemStack - items[item];
         }
         base.AddItem(item, amount);
     }
 
+    /**
+     * Calls ItemStorage.RemoveItem() and deselects the item if removed
+     */
     public override void RemoveItem(Item item, int amount) {
         base.RemoveItem(item, amount);
         if (!items.ContainsKey(item) && PlayerController.instance.GetSelectedItem() == item) {
@@ -42,6 +45,9 @@ public class Inventory : ItemStorage {
         }
     }
 
+    /**
+     * Sells the Item for the Item Sell Price and puts it in the Shop for the full price
+     */
     public void SellItem(Item item, int amount) {
         PlayerController.instance.ChangeMoney(item.SellPrice);
         Shop.instance.AddItem(item, amount);

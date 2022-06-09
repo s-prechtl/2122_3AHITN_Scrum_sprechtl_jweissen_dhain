@@ -3,6 +3,20 @@ using TMPro;
 using UnityEngine;
 
 public class HoverManager : MonoBehaviour {
+    #region Singleton
+
+    public static HoverManager instance;
+
+    private void Awake() {
+        if (instance != null) {
+            Debug.LogWarning("More than one instance of HoverManager found");
+        }
+
+        instance = this;
+    }
+
+    #endregion
+    
     public TextMeshProUGUI descriptionText;
     public RectTransform descriptionHoverBackground;
 
@@ -41,7 +55,7 @@ public class HoverManager : MonoBehaviour {
     /**
      * Hide the description Text
      */
-    private void HideDescription() {
+    public void HideDescription() {
         descriptionText.text = default;
         descriptionHoverBackground.gameObject.SetActive(false);
     }
