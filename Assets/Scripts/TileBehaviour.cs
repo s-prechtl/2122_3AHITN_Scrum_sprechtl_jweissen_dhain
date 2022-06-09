@@ -1,10 +1,20 @@
 using System;
+using DefaultNamespace;
 using Tiles;
 using UnityEngine;
 
 public class TileBehaviour : MonoBehaviour
 {
     private BaseTile _tile;
+    public BaseTile Tile {
+        get => _tile;
+        set
+        {
+            _tile = value;
+            GetComponent<SpriteRenderer>().sprite = _tile.Sprite;
+        }
+    }
+    
     private SpriteRenderer _hoverIndicatorSpriteRenderer;
     private static Color _hoverIndicatorColor;
 
@@ -13,9 +23,15 @@ public class TileBehaviour : MonoBehaviour
     {
         _hoverIndicatorSpriteRenderer = gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>();
         SetHoverIndicatorVisibility(false);
-        SetTile(new GrassTile(gameObject));
+        Tile = new GrassTile();
         gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.clear;
         _hoverIndicatorColor = new Color(1, 1, 1, 0.3f);
+        
+        HouseController.NewDayEvent.AddListener(DayLightStep);
+    }
+
+    private void DayLightStep() {
+        ActionInvoker.InvokeDayLightStep(gameObject);
     }
 
     // Update is called once per frame
@@ -24,28 +40,14 @@ public class TileBehaviour : MonoBehaviour
         
     }
     
-    void OnMouseDown()
-    {
-        UsableItem usable = null;
-        BaseTile tileToSetTo = null;
-
-        if (PlayerController.instance.GetSelectedItem() != null)
+    void OnMouseDown() {
+        UsableItem usableItem = PlayerController.instance.GetSelectedItem();
+        if (usableItem != null)
         {
-            usable = PlayerController.instance.GetSelectedItem();
+            ActionInvoker.InvokeAction(gameObject, usableItem);
         }
-
-        tileToSetTo = _tile.Clicked(usable);
-
-        if (tileToSetTo != null)
-        {
-            SetTile(tileToSetTo);
-        }
-    }
-
-    void SetTile(BaseTile tileToSet)
-    {
-        _tile = tileToSet;
-        GetComponent<SpriteRenderer>().sprite = _tile.Sprite;
+        
+        
     }
 
     private void OnMouseEnter()

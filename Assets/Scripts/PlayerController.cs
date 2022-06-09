@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
             _selectedItem = item;
             Cursor.SetCursor(item.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
         } else {
-            Debug.Log("An item requested to select isn't in the inventory" + item);
+            //Debug.Log("An item requested to select isn't in the inventory" + item);
         }
     }
 
