@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Net.Mail;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class FishingController : MonoBehaviour {
@@ -22,13 +23,13 @@ public class FishingController : MonoBehaviour {
 
     #endregion
 
-    public GameObject _exMark;
+    public GameObject exMark;
 
     private double _fishingTime;
     private double _fishCooldown;
-    private readonly float _minFishCooldown = 1.5f;
-    private readonly float _maxFishCooldown = 7f;
-    private readonly double _maxTime = 2f;
+    private const float MinFishCooldown = 1.5f;
+    private const float MaxFishCooldown = 7f;
+    private const double MaxTime = 2f;
     private bool _fishing;
     private bool _catchable;
     private bool _caught;
@@ -53,8 +54,8 @@ public class FishingController : MonoBehaviour {
                 _fishCooldown -= Time.deltaTime;
                 if (_fishCooldown <= 0) { //fish will get spawned
                     _catchable = true;
-                    if (!_exMark.activeSelf) {
-                        _exMark.SetActive(true);
+                    if (!exMark.activeSelf) {
+                        exMark.SetActive(true);
                     }
                 }
             } else {
@@ -65,9 +66,9 @@ public class FishingController : MonoBehaviour {
     }
 
     private void NotifyShake() {
-        _exMark.transform.position =
-            new Vector3(_exMark.transform.position.x + _ampsXY.x * Time.deltaTime,
-                _exMark.transform.position.y + _ampsXY.y * Time.deltaTime,
+        exMark.transform.position =
+            new Vector3(exMark.transform.position.x + _ampsXY.x * Time.deltaTime,
+                exMark.transform.position.y + _ampsXY.y * Time.deltaTime,
                 transform.position.z);
         _ampsXY.x *= -1;
         _ampsXY.y *= -1;
@@ -77,8 +78,8 @@ public class FishingController : MonoBehaviour {
         _fishing = false;
         _catchable = false;
         _fishingTime = 0f;
-        _fishCooldown = Random.Range(_minFishCooldown, _maxFishCooldown);
-        _exMark.SetActive(false);
+        _fishCooldown = Random.Range(MinFishCooldown, MaxFishCooldown);
+        exMark.SetActive(false);
     }
 
     public void StartFishing() {
@@ -92,13 +93,13 @@ public class FishingController : MonoBehaviour {
             float newPosX = pos.x;
             float newPosY;
             
-            if (pos.y - 50 - ((RectTransform)_exMark.transform).rect.height >= 0) { //check if bottom of panel is in screen
-                newPosY = pos.y - ((RectTransform)_exMark.transform).rect.height;
+            if (pos.y - 50 - ((RectTransform)exMark.transform).rect.height >= 0) { //check if bottom of panel is in screen
+                newPosY = pos.y - ((RectTransform)exMark.transform).rect.height;
             } else {
-                newPosY = pos.y + ((RectTransform)_exMark.transform).rect.height;
+                newPosY = pos.y + ((RectTransform)exMark.transform).rect.height;
             }
         
-            _exMark.transform.position = new Vector3(newPosX, newPosY);
+            exMark.transform.position = new Vector3(newPosX, newPosY);
         }
         _fishing = true;
 
@@ -111,7 +112,7 @@ public class FishingController : MonoBehaviour {
     public void TryCatch() {
         if (_fishing && _catchable) {
             Debug.Log("Tried to catch!");
-            if (_fishingTime <= _maxTime) {
+            if (_fishingTime <= MaxTime) {
                 Debug.Log("Caught!");
                 _iv.AddItem(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime/2)), 1));
                 ResetFishing();
@@ -119,8 +120,8 @@ public class FishingController : MonoBehaviour {
                 Debug.Log("Failed to catch!");
                 _catchable = false;
                 _fishingTime = 0f;
-                _exMark.SetActive(false);
-                _fishCooldown = Random.Range(_minFishCooldown+2, _maxFishCooldown);
+                exMark.SetActive(false);
+                _fishCooldown = Random.Range(MinFishCooldown+2, MaxFishCooldown);
             }
         }
     }
