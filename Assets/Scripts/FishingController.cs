@@ -113,7 +113,7 @@ public class FishingController : MonoBehaviour {
             Debug.Log("Tried to catch!");
             if (_fishingTime <= _maxTime) {
                 Debug.Log("Caught!");
-                Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime/2)), 1));
+                _iv.AddItem(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime/2)), 1));
                 ResetFishing();
             } else {
                 Debug.Log("Failed to catch!");
