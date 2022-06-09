@@ -6,14 +6,16 @@ public class TileBehaviour : MonoBehaviour
 {
     private BaseTile _tile;
     private SpriteRenderer _hoverIndicatorSpriteRenderer;
+    private static Color _hoverIndicatorColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        //_hoverIndicatorSpriteRenderer = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        //SetHoverIndicatorVisibility(false);
+        _hoverIndicatorSpriteRenderer = gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>();
+        SetHoverIndicatorVisibility(false);
         SetTile(new GrassTile(gameObject));
         gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.clear;
+        _hoverIndicatorColor = new Color(1, 1, 1, 0.3f);
     }
 
     // Update is called once per frame
@@ -48,16 +50,23 @@ public class TileBehaviour : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        //SetHoverIndicatorVisibility(true);
+        SetHoverIndicatorVisibility(true);
     }
 
     private void OnMouseExit()
     {
-        //SetHoverIndicatorVisibility(false);
+        SetHoverIndicatorVisibility(false);
     }
 
     private void SetHoverIndicatorVisibility(bool visible)
     {
-        _hoverIndicatorSpriteRenderer.enabled = visible;
+        if (visible)
+        {
+            _hoverIndicatorSpriteRenderer.color = _hoverIndicatorColor;
+        }
+        else
+        {
+            _hoverIndicatorSpriteRenderer.color = Color.clear;
+        }
     }
 }
