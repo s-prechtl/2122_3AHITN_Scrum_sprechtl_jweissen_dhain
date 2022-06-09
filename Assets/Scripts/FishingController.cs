@@ -42,6 +42,8 @@ public class FishingController : MonoBehaviour {
     void Start() {
         ResetFishing();
         _ampsXY = new Vector2(10, 10);
+        _iv = Inventory.instance;
+        _ic = ItemContainer.Instance;
     }
 
     // Update is called once per frame
