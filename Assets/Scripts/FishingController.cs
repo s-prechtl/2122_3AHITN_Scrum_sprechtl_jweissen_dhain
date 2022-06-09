@@ -33,6 +33,8 @@ public class FishingController : MonoBehaviour {
     private bool _catchable;
     private bool _caught;
     private Vector2 _ampsXY;
+    private Inventory _iv;
+    private ItemContainer _ic;
 
     public bool Fishing => _fishing;
 
@@ -78,6 +80,10 @@ public class FishingController : MonoBehaviour {
     }
 
     public void StartFishing() {
+        if (!_iv.items.ContainsKey(_ic.GetItemByName("Bait"))) {
+            Debug.Log("No bait!");
+            return;
+        }
         Vector3 pos = Input.mousePosition;
         
         if (Camera.main != null) {
@@ -93,6 +99,11 @@ public class FishingController : MonoBehaviour {
             _exMark.transform.position = new Vector3(newPosX, newPosY);
         }
         _fishing = true;
+
+        if (Random.Range(0, 10) > 5) { //uses bait to certain chance
+            _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
+        }
+        
     }
 
     public void TryCatch() {
