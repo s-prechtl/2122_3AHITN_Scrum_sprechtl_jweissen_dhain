@@ -20,14 +20,17 @@ namespace Tiles
         public override BaseTile Clicked(UsableItem usable)
         {
             BaseTile rv = null;
-            base.Clicked(usable);
-            _crop.Clicked(usable);
-
-            if (ItemContainer.Instance.GetItemIdByName("Shovel") == usable.Id)
+            if (usable != null)
             {
-                rv = new GrassTile(_gameObject);
+                base.Clicked(usable);
+                _crop.Clicked(usable);
+
+                if (ItemContainer.Instance.GetItemIdByName("Shovel") == usable.Id)
+                {
+                    rv = new GrassTile(_gameObject);
+                }
             }
-            
+
             return rv;
         }
     }

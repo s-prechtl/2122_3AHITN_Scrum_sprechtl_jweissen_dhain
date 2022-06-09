@@ -51,6 +51,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void DeselectItem()
+    {
+        _selectedItem = null;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
+
     public UsableItem GetSelectedItem() {
         return _selectedItem;
     }

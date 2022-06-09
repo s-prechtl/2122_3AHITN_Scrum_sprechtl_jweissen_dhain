@@ -35,6 +35,15 @@ public class Inventory : ItemStorage {
         base.AddItem(item, amount);
     }
 
+    public override void RemoveItem(Item item, int amount)
+    {
+        base.RemoveItem(item, amount);
+        if (!items.ContainsKey(item))
+        {
+            PlayerController.instance.DeselectItem();
+        }
+    }
+
     public void SellItem(Item item, int amount) {
         PlayerController.instance.ChangeMoney(item.SellPrice);
         Shop.instance.AddItem(item, amount);
