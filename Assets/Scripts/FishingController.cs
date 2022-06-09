@@ -55,15 +55,15 @@ public class FishingController : MonoBehaviour {
                 }
             } else {
                 _fishingTime += Time.deltaTime;
-                //NotifyShake();
+                NotifyShake();
             }
         }
     }
 
     private void NotifyShake() {
         _exMark.transform.position =
-            new Vector3(_exMark.transform.position.x * _ampsXY.x * Time.deltaTime,
-                _exMark.transform.position.y * _ampsXY.y * Time.deltaTime,
+            new Vector3(_exMark.transform.position.x + _ampsXY.x * Time.deltaTime,
+                _exMark.transform.position.y + _ampsXY.y * Time.deltaTime,
                 transform.position.z);
         _ampsXY.x *= -1;
         _ampsXY.y *= -1;
@@ -100,7 +100,7 @@ public class FishingController : MonoBehaviour {
             Debug.Log("Tried to catch!");
             if (_fishingTime <= _maxTime) {
                 Debug.Log("Caught!");
-                Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Fish"), (int)(3 / _fishingTime));
+                Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime/2)), 1));
                 ResetFishing();
             } else {
                 Debug.Log("Failed to catch!");

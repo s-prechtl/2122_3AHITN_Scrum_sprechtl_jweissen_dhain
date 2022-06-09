@@ -57,13 +57,13 @@ public class Crop {
     public void Clicked(UsableItem usableItem) {
         if(usableItem != null) {
             ItemContainer ic = ItemContainer.Instance;
-            if(ic.GetItemIdByName("Hoe") == usableItem.Id) {
+            if(ic.GetItemIdByName("Hoe") == usableItem.ID) {
                 ApplyAction(Hoe);
-            } else if(ic.GetItemIdByName("Scythe") == usableItem.Id) {
+            } else if(ic.GetItemIdByName("Scythe") == usableItem.ID) {
                 ApplyAction(Scythe);
-            } else if(ic.GetItemIdByName("Wheat Seeds") == usableItem.Id) {
+            } else if(ic.GetItemIdByName("Wheat Seeds") == usableItem.ID) {
                 ApplyAction(Seeds);
-            } else if(ic.GetItemIdByName("Watering Can") == usableItem.Id) {
+            } else if(ic.GetItemIdByName("Watering Can") == usableItem.ID) {
                 ApplyAction(WateringCan);
             }
         }

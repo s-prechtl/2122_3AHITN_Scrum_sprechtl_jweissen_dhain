@@ -23,7 +23,7 @@ namespace Tiles
             base.Clicked(usable);
             _crop.Clicked(usable);
 
-            if (ItemContainer.Instance.GetItemIdByName("Shovel") == usable.Id)
+            if (ItemContainer.Instance.GetItemIdByName("Shovel") == usable.ID)
             {
                 rv = new GrassTile(_gameObject);
             }
