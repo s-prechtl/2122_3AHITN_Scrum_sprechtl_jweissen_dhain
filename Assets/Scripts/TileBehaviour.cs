@@ -32,10 +32,6 @@ public class TileBehaviour : MonoBehaviour {
         ActionInvoker.InvokeDayLightStep(gameObject);
     }
 
-    // Update is called once per frame
-    void Update() {
-    }
-
     void OnMouseDown() {
         UsableItem usableItem = PlayerController.instance.GetSelectedItem();
         if(usableItem != null) {
