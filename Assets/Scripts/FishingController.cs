@@ -26,12 +26,21 @@ public class FishingController : MonoBehaviour {
     public GameObject exMark;
 
     private double _fishingTime;
-    private double _fishCooldown;
+
+    private double _fishCooldown; 
+    private double fishCooldown {
+        get => _fishCooldown;
+        set {
+            _fishCooldown = value;
+            exMark.SetActive(Catchable);
+        }
+    }
+
     private const float MinFishCooldown = 1.5f;
     private const float MaxFishCooldown = 7f;
     private const double MaxTime = 2f;
     private bool _fishing;
-    private bool _catchable;
+    private bool Catchable => fishCooldown <= 0;
     private bool _caught;
     private Vector2 _ampsXY;
     private Inventory _iv;
@@ -50,14 +59,10 @@ public class FishingController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (_fishing) { //Fishing
-            if (!_catchable) { // Fish not spawned yet
-                _fishCooldown -= Time.deltaTime;
-                if (_fishCooldown <= 0) { //fish will get spawned
-                    _catchable = true;
-                    if (!exMark.activeSelf) {
-                        exMark.SetActive(true);
-                    }
-                }
+            
+            if (!Catchable) {
+                // Fish not spawned yet
+                fishCooldown -= Time.deltaTime;
             } else {
                 _fishingTime += Time.deltaTime;
                 NotifyShake();
@@ -76,9 +81,8 @@ public class FishingController : MonoBehaviour {
 
     private void ResetFishing() {
         _fishing = false;
-        _catchable = false;
         _fishingTime = 0f;
-        _fishCooldown = Random.Range(MinFishCooldown, MaxFishCooldown);
+        fishCooldown = Random.Range(MinFishCooldown, MaxFishCooldown);
         exMark.SetActive(false);
     }
 
@@ -88,40 +92,35 @@ public class FishingController : MonoBehaviour {
             return;
         }
         Vector3 pos = Input.mousePosition;
-        
+
         if (Camera.main != null) {
             float newPosX = pos.x;
             float newPosY;
-            
+
             if (pos.y - 50 - ((RectTransform)exMark.transform).rect.height >= 0) { //check if bottom of panel is in screen
                 newPosY = pos.y - ((RectTransform)exMark.transform).rect.height;
             } else {
                 newPosY = pos.y + ((RectTransform)exMark.transform).rect.height;
             }
-        
+
             exMark.transform.position = new Vector3(newPosX, newPosY);
         }
         _fishing = true;
-
-        if (Random.Range(0, 10) > 5) { //uses bait to certain chance
-            _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
-        }
-        
+        _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
     }
 
     public void TryCatch() {
-        if (_fishing && _catchable) {
+        if (_fishing && Catchable) {
             Debug.Log("Tried to catch!");
             if (_fishingTime <= MaxTime) {
                 Debug.Log("Caught!");
-                _iv.AddItem(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime/2)), 1));
+                _iv.AddItem(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime / 2)), 1));
                 ResetFishing();
             } else {
                 Debug.Log("Failed to catch!");
-                _catchable = false;
                 _fishingTime = 0f;
                 exMark.SetActive(false);
-                _fishCooldown = Random.Range(MinFishCooldown+2, MaxFishCooldown);
+                fishCooldown = Random.Range(MinFishCooldown + 2, MaxFishCooldown);
             }
         }
     }
