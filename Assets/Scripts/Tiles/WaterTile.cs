@@ -12,14 +12,14 @@ namespace Tiles {
 
             ItemContainer ic = ItemContainer.Instance;
 
-            if (usable.Id == ic.GetItemIdByName("Fishing Rod")) {
+            if (usable.ID == ic.GetItemIdByName("Fishing Rod")) {
                 FishingController fc = FishingController.instance;
                 if (!fc.Fishing) {
                     fc.StartFishing();
                 } else {
                     fc.TryCatch();
                 }
-            } else if (usable.Id == ic.GetItemIdByName("Shovel")) {
+            } else if (usable.ID == ic.GetItemIdByName("Shovel")) {
                 rv = new GrassTile(_gameObject);
             }
 
