@@ -24,6 +24,8 @@ public class InventorySlot : ItemStorageSlot, IPointerClickHandler {
             } else {
                 Debug.Log("Item not usable " + Item.displayName);
             }
+        } else {
+            _playerController.DeselectItem();
         }
     }
 
