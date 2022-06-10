@@ -107,8 +107,7 @@ public class FishingController : MonoBehaviour {
             return;
         }
         _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
-        _fishedThisDay++;
-        
+
         Vector3 pos = Input.mousePosition;
 
         if (Camera.main != null) {
@@ -134,6 +133,7 @@ public class FishingController : MonoBehaviour {
             if (_fishingTime <= MaxTime) {
                 _messageView.SendMessage("Caught!", 1.5f);
                 _iv.AddItem(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime / 2)), 1));
+                _fishedThisDay++;
             } else {
                 _messageView.SendMessage("Failed to catch the fish! You were too slow!", 1.5f);
             }
