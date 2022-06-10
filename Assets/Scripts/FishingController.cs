@@ -89,7 +89,7 @@ public class FishingController : MonoBehaviour {
 
     public void StartFishing() {
         if (!_iv.items.ContainsKey(_ic.GetItemByName("Bait"))) {
-            _messageView.sendMessage("No bait!", 1.0f);
+            _messageView.SendMessage("No bait!", 1.0f);
             return;
         }
         Vector3 pos = Input.mousePosition;
@@ -108,17 +108,17 @@ public class FishingController : MonoBehaviour {
         }
         _fishing = true;
         _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
-        _messageView.sendMessage("Fishing started", 1.0f);
+        _messageView.SendMessage("Fishing started", 1.0f);
         
     }
 
     public void TryCatch() {
         if (_fishing && Catchable) {
             if (_fishingTime <= MaxTime) {
-                _messageView.sendMessage("Caught!", 1.5f);
+                _messageView.SendMessage("Caught!", 1.5f);
                 _iv.AddItem(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime / 2)), 1));
             } else {
-                _messageView.sendMessage("Failed to catch the fish! You were too slow!", 1.5f);
+                _messageView.SendMessage("Failed to catch the fish! You were too slow!", 1.5f);
             }
             ResetFishing();
         }

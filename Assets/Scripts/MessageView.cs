@@ -27,12 +27,12 @@ public class MessageView : MonoBehaviour
         messageView.SetActive(false);
     }
 
-    public void sendMessage(String msg, float duration) {
+    public void SendMessage(String msg, float duration) {
         message.text = msg;
-        StartCoroutine(showForSeconds(duration));
+        StartCoroutine(ShowForSeconds(duration));
     }
 
-    private IEnumerator showForSeconds(float duration) {
+    private IEnumerator ShowForSeconds(float duration) {
         messageView.SetActive(true);
         yield return new WaitForSeconds(duration);
         messageView.SetActive(false);
