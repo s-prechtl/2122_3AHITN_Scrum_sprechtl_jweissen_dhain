@@ -11,6 +11,8 @@ public class Animal : MonoBehaviour {
 
     private void Start() {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        animalSprite = gameObject.GetComponent<SpriteRenderer>().GetComponent<Sprite>();
+        
         _rigidbody.velocity = new Vector2(Random.Range(1, 10),
             Random.Range(1, 10));
     }
