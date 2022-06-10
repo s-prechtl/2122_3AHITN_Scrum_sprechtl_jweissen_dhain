@@ -40,7 +40,7 @@ public class Inventory : ItemStorage {
      */
     public override void RemoveItem(Item item, int amount) {
         base.RemoveItem(item, amount);
-        if (!items.ContainsKey(item) && PlayerController.instance.GetSelectedItem() == item) {
+        if (!items.ContainsKey(item) && PlayerController.instance.SelectedItem == item) {
             PlayerController.instance.DeselectItem();
         }
     }

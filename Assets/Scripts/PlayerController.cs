@@ -27,11 +27,22 @@ public class PlayerController : MonoBehaviour {
 
     public int startMoney;
     public TextMeshProUGUI moneyTextMeshProUGUI;
-
+    
     public int Money => _money;
 
+    public UsableItem SelectedItem {
+        get => _selectedItem;
+        set {
+            if(_inventory.items.ContainsKey(value)) {
+                _selectedItem = value;
+                Cursor.SetCursor(value.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
+            } else {
+                //Debug.Log("An item requested to select isn't in the inventory" + item);
+            }
+        }
+    }
+    
     public delegate void OnMoneyChanged();
-
     public OnMoneyChanged onMoneyChangedCallback;
 
     // Start is called before the first frame update
@@ -43,22 +54,9 @@ public class PlayerController : MonoBehaviour {
         onMoneyChangedCallback += UpdateMoneyUI;
     }
 
-    public void SetSelectedItem(UsableItem item) {
-        if(_inventory.items.ContainsKey(item)) {
-            _selectedItem = item;
-            Cursor.SetCursor(item.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
-        } else {
-            //Debug.Log("An item requested to select isn't in the inventory" + item);
-        }
-    }
-
     public void DeselectItem() {
         _selectedItem = null;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-    }
-
-    public UsableItem GetSelectedItem() {
-        return _selectedItem;
     }
 
     public void ChangeMoney(int amount) {

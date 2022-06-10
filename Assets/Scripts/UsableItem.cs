@@ -8,6 +8,6 @@ public class UsableItem : Item, IUsable {
     }
 
     public void Select() {
-        PlayerController.instance.SetSelectedItem(this);
+        PlayerController.instance.SelectedItem = this;
     }
 }

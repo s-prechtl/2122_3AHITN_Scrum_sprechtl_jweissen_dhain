@@ -33,7 +33,7 @@ public class TileBehaviour : MonoBehaviour {
     }
 
     void OnMouseDown() {
-        UsableItem usableItem = PlayerController.instance.GetSelectedItem();
+        UsableItem usableItem = PlayerController.instance.SelectedItem;
         if(usableItem != null) {
             ActionInvoker.InvokeAction(gameObject, usableItem);
         }
