@@ -15,7 +15,7 @@ public class Item : ScriptableObject, IComparable<Item> {
     public Item(string displayName, string description, int id) {
         this.displayName = displayName;
         this.description = description;
-        this._id = id;
+        _id = id;
     }
 
     public int CompareTo(Item other) {
