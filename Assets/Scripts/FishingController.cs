@@ -45,11 +45,13 @@ public class FishingController : MonoBehaviour {
     private Vector2 _ampsXY;
     private Inventory _iv;
     private ItemContainer _ic;
+    private MessageView _messageView;
 
     public bool Fishing => _fishing;
 
     // Start is called before the first frame update
     void Start() {
+        _messageView = MessageView.instance;
         ResetFishing();
         _ampsXY = new Vector2(10, 10);
         _iv = Inventory.instance;
@@ -59,7 +61,6 @@ public class FishingController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (_fishing) { //Fishing
-            
             if (!Catchable) {
                 // Fish not spawned yet
                 fishCooldown -= Time.deltaTime;
@@ -88,7 +89,7 @@ public class FishingController : MonoBehaviour {
 
     public void StartFishing() {
         if (!_iv.items.ContainsKey(_ic.GetItemByName("Bait"))) {
-            Debug.Log("No bait!");
+            _messageView.sendMessage("No bait!", 1.0f);
             return;
         }
         Vector3 pos = Input.mousePosition;
@@ -107,21 +108,19 @@ public class FishingController : MonoBehaviour {
         }
         _fishing = true;
         _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
+        _messageView.sendMessage("Fishing started", 1.0f);
+        
     }
 
     public void TryCatch() {
         if (_fishing && Catchable) {
-            Debug.Log("Tried to catch!");
             if (_fishingTime <= MaxTime) {
-                Debug.Log("Caught!");
+                _messageView.sendMessage("Caught!", 1.5f);
                 _iv.AddItem(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime / 2)), 1));
-                ResetFishing();
             } else {
-                Debug.Log("Failed to catch!");
-                _fishingTime = 0f;
-                exMark.SetActive(false);
-                fishCooldown = Random.Range(MinFishCooldown + 2, MaxFishCooldown);
+                _messageView.sendMessage("Failed to catch the fish! You were too slow!", 1.5f);
             }
+            ResetFishing();
         }
     }
 }
