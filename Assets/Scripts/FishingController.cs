@@ -40,8 +40,11 @@ public class FishingController : MonoBehaviour {
     private const float MaxFishCooldown = 7f;
     private const double MaxTime = 2f;
     private bool _fishing;
+    private const int MaxFishPerDay = 3;
+    private int _fishedThisDay;
     private bool Catchable => fishCooldown <= 0;
     private bool _caught;
+    private bool Fishable => _fishedThisDay <= MaxFishPerDay;
     private Vector2 _ampsXY;
     private Inventory _iv;
     private ItemContainer _ic;
@@ -56,6 +59,8 @@ public class FishingController : MonoBehaviour {
         _ampsXY = new Vector2(10, 10);
         _iv = Inventory.instance;
         _ic = ItemContainer.Instance;
+        _fishedThisDay = 0;
+        HouseController.NewDayEvent.AddListener(ResetPond);
     }
 
     // Update is called once per frame
@@ -69,6 +74,10 @@ public class FishingController : MonoBehaviour {
                 NotifyShake();
             }
         }
+    }
+
+    private void ResetPond() {
+        _fishedThisDay = 0;
     }
 
     private void NotifyShake() {
@@ -92,6 +101,14 @@ public class FishingController : MonoBehaviour {
             _messageView.SendMessage("No bait!", 1.0f);
             return;
         }
+        
+        if (!Fishable) {
+            _messageView.SendMessage("You cannot fish anymore for today!", 1.0f);
+            return;
+        }
+        _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
+        _fishedThisDay++;
+        
         Vector3 pos = Input.mousePosition;
 
         if (Camera.main != null) {
@@ -107,7 +124,7 @@ public class FishingController : MonoBehaviour {
             exMark.transform.position = new Vector3(newPosX, newPosY);
         }
         _fishing = true;
-        _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
+        
         _messageView.SendMessage("Fishing started", 1.0f);
         
     }
