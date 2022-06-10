@@ -23,7 +23,18 @@ public class MessageView : MonoBehaviour
     public GameObject messageView;
     public TextMeshProUGUI message;
 
-    public void sendMessage(String msg, double duration) {
-        
+    private void Start() {
+        messageView.SetActive(false);
+    }
+
+    public void sendMessage(String msg, float duration) {
+        message.text = msg;
+        StartCoroutine(showForSeconds(duration));
+    }
+
+    private IEnumerator showForSeconds(float duration) {
+        messageView.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        messageView.SetActive(false);
     }
 }
