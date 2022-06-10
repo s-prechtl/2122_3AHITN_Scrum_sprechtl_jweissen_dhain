@@ -1,16 +1,25 @@
+using System;
 using DefaultNamespace;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Animal : MonoBehaviour {
     protected Sprite animalSprite;
-    private Item producedItem;
+    private Item _producedItem;
+    private Rigidbody2D _rigidbody;
+    public Item ProducedItem => _producedItem;
 
-    protected Animal(Item producedItem) {
-        this.producedItem = producedItem;
+    private void Start() {
+        _rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        _rigidbody.velocity = new Vector2(Random.Range(1, 10),
+            Random.Range(1, 10));
     }
-    
-    // TODO: Movement
-    
+
+    private void Update() {
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x * Random.Range(0, 10),
+            _rigidbody.velocity.y * Random.Range(0, 10));// TODO: wer?
+    }
+
     // TODO: Animations
     
     private void OnMouseDown() {
