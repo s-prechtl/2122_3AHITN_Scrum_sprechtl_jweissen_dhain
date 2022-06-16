@@ -21,7 +21,6 @@ public class DayTransitionManager : MonoBehaviour {
     
     private IEnumerator PlayTransition() {
         dayCountText.text = "Day " + HouseController.DayCount;
-        dayTransitionAnimator.SetTrigger("start");
         
         yield return new WaitForSeconds(3f);
         sleepButton.GetComponent<Button>().enabled = true;

@@ -154,5 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cb7b1a78935094f84a770ea77f308c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalSprite: {fileID: 0}
-  movementSpeed: 20
+  producedItem: {fileID: 11400000, guid: 510712f2d23afc147979bcd564ef7943, type: 2}
+  animalSprite: {fileID: 21300000, guid: e2bde586482642d44a270276574c0129, type: 3}
+  movementSpeed: 1
