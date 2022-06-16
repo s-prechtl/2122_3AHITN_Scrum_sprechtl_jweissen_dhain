@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Animal : MonoBehaviour {
     private Rigidbody2D _rigidbody;
+    private SpriteRenderer _spriteRenderer;
     private Sprite _animalSprite;
     private Animator _animator;
     private int _animMoveID;
@@ -17,7 +18,8 @@ public class Animal : MonoBehaviour {
 
     private void Start() {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _animalSprite = gameObject.GetComponent<SpriteRenderer>().GetComponent<Sprite>();
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        _animalSprite = _spriteRenderer.GetComponent<Sprite>();
         _animator = gameObject.GetComponent<Animator>();
         _animMoveID = Animator.StringToHash("moving");
         
@@ -35,7 +37,14 @@ public class Animal : MonoBehaviour {
                 Random.Range(-1f, 1f),
                 Random.Range(-1f, 1f));
             direction.Normalize();
-        
+            
+            // Flip sprite in moving Direction
+            if(direction.x > 0) {
+                _spriteRenderer.flipX = true;
+            }else if(direction.x < 0) {
+                _spriteRenderer.flipX = false;
+            }
+            
             _rigidbody.velocity = movementSpeed * direction;
             _animator.SetBool(_animMoveID, true);
             yield return new WaitForSeconds(randTime);
