@@ -15,6 +15,8 @@ namespace DefaultNamespace {
                     SetTile(gameObject, new FarmlandTile());
                 } else if(usableItem.ID == ic.GetItemIdByName("Shovel")) {
                     SetTile(gameObject, new WaterTile());
+                } else if(usableItem.ID == ic.GetItemIdByName("Fence")) {
+                    SetFence(gameObject);
                 }
             } else if(tileType == typeof(FarmlandTile)) {
                 if(usableItem.ID == ic.GetItemIdByName("Shovel")) {
@@ -60,6 +62,7 @@ namespace DefaultNamespace {
             if(crop.Planted && crop.Hydrated) {
                 crop.Grow();
             }
+
             UpdateFarmlandSprites(gameObject);
         }
 
@@ -69,6 +72,7 @@ namespace DefaultNamespace {
                 crop.Plant();
                 Inventory.instance.RemoveItem(ItemContainer.Instance.GetItemByName("Wheat Seeds"), 1);
             }
+
             UpdateFarmlandSprites(gameObject);
         }
 
@@ -109,7 +113,8 @@ namespace DefaultNamespace {
         private static void HarvestIfPossible(GameObject gameObject) {
             Crop crop = ((FarmlandTile)gameObject.GetComponent<TileBehaviour>().Tile).Crop;
             if(crop.FullyGrown) {
-                Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat Seeds"), (int)(Random.Range(1, 300)));
+                Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat Seeds"),
+                    (int)(Random.Range(1, 300)));
                 Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat"), 1);
                 crop.ResetPlant();
                 UpdateFarmlandSprites(gameObject);
@@ -118,6 +123,29 @@ namespace DefaultNamespace {
 
         private static void SetTile(GameObject gameObject, BaseTile tileType) {
             gameObject.GetComponent<TileBehaviour>().Tile = tileType;
+        }
+
+        private static void SetFence(GameObject gameObject) {
+            SpriteRenderer fenceRenderer = null;
+            BoxCollider2D fenceCollider = null;
+            foreach(Transform transChild in gameObject.GetComponentsInChildren<Transform>()) {
+                if(transChild.gameObject.name.Equals("Fence")) {
+                    fenceRenderer = transChild.gameObject.GetComponent<SpriteRenderer>();
+                    fenceCollider = transChild.gameObject.GetComponent<BoxCollider2D>();
+                }
+            }
+
+            if(fenceRenderer && fenceCollider) {
+                if(!fenceRenderer.enabled || !fenceCollider.enabled) {
+                    fenceRenderer.enabled = true;
+                    Debug.Log("aaaaaaaaaaaaaaaaaaaaa");
+                    fenceRenderer.color = new Color(1, 1, 1, 1);
+                    fenceCollider.enabled = true;
+                    Inventory.instance.RemoveItem(ItemContainer.Instance.GetItemByName("Fence"), 1);
+                }
+            } else {
+                Debug.LogError("Fence Renderer or Fence Collider is null");
+            }
         }
     }
 }

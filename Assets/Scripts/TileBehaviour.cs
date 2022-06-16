@@ -19,11 +19,16 @@ public class TileBehaviour : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        _hoverIndicatorSpriteRenderer = gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>();
-        SetHoverIndicatorVisibility(false);
         Tile = new GrassTile();
-        gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.clear;
+
+        foreach(Transform transChild in gameObject.GetComponentsInChildren<Transform>()) {
+            if(transChild.gameObject.name.Equals("HoverIndicator")) {
+                _hoverIndicatorSpriteRenderer = transChild.gameObject.GetComponent<SpriteRenderer>();
+                _hoverIndicatorSpriteRenderer.color = Color.clear;
+            }
+        }
         _hoverIndicatorColor = new Color(1, 1, 1, 0.3f);
+        SetHoverIndicatorVisibility(false);
 
         HouseController.NewDayEvent.AddListener(DayLightStep);
     }

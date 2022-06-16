@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
+using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class Animal : MonoBehaviour {
@@ -56,6 +57,8 @@ public class Animal : MonoBehaviour {
     }
 
     private void OnMouseDown() {
+        //TODO: TEMP!!!!
+        Destroy(gameObject);
         ActionInvoker.InvokeAction(gameObject, PlayerController.instance.SelectedItem);
     }
 }
