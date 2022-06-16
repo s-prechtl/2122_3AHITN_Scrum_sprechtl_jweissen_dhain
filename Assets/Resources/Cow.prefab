@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 123187747779251107}
   - component: {fileID: 2510115116361252818}
   - component: {fileID: 4094795090309576525}
+  - component: {fileID: 3321960187907454328}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -157,3 +158,24 @@ MonoBehaviour:
   producedItem: {fileID: 11400000, guid: 510712f2d23afc147979bcd564ef7943, type: 2}
   animalSprite: {fileID: 21300000, guid: e2bde586482642d44a270276574c0129, type: 3}
   movementSpeed: 1
+  animator: {fileID: 3321960187907454328}
+--- !u!95 &3321960187907454328
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2510115116361252817}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 353868083b4723041bbf6c45effa9223, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
