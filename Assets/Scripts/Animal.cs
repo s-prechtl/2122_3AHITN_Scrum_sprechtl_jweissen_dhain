@@ -6,22 +6,25 @@ using Random = UnityEngine.Random;
 
 public class Animal : MonoBehaviour {
     private Rigidbody2D _rigidbody;
+    private Sprite _animalSprite;
+    private Animator _animator;
     private int _animMoveID;
+
+    public Sprite AnimalSprite => _animalSprite;
     
     public Item producedItem;
-    public Sprite animalSprite;
     public int movementSpeed;
-    public Animator animator;
-    
+
     private void Start() {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        animalSprite = gameObject.GetComponent<SpriteRenderer>().GetComponent<Sprite>();
+        _animalSprite = gameObject.GetComponent<SpriteRenderer>().GetComponent<Sprite>();
+        _animator = gameObject.GetComponent<Animator>();
         _animMoveID = Animator.StringToHash("moving");
         
         // Move the Animal in any random direction every 1-5s
         InvokeRepeating(nameof(MoveInRandomDirection), 2f, Random.Range(1f, 5f));
     }
-    
+
     // Moves the Animal in any random direction for a random amount of time
     private void MoveInRandomDirection() {
         IEnumerator Move() { 
@@ -34,10 +37,10 @@ public class Animal : MonoBehaviour {
             direction.Normalize();
         
             _rigidbody.velocity = movementSpeed * direction;
-            animator.SetBool(_animMoveID, true);
+            _animator.SetBool(_animMoveID, true);
             yield return new WaitForSeconds(randTime);
             _rigidbody.velocity = new Vector2(0f, 0f); 
-            animator.SetBool(_animMoveID, false);
+            _animator.SetBool(_animMoveID, false);
         }
         
         StartCoroutine(Move());
