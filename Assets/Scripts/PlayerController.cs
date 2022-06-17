@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
     public UsableItem SelectedItem {
         get => _selectedItem;
         set {
-            if(_inventory.items.ContainsKey(value)) {
+            if(_inventory.elements.ContainsKey(value)) {
                 _selectedItem = value;
                 Cursor.SetCursor(value.defaultSprite.texture, Vector2.zero, CursorMode.Auto);
             } else {

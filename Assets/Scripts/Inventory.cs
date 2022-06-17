@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Inventory : ItemStorage {
+public class Inventory : ElementStorage<Item> {
     #region Singleton
 
     public static Inventory instance;
@@ -22,25 +22,25 @@ public class Inventory : ItemStorage {
     /**
      * Adds the specified amount of items to the Inventory
      */
-    public override void AddItem(Item item, int amount) {
-        if (items.Count >= _InventorySpace) {
+    public override void AddElement(Item item, int amount) {
+        if (elements.Count >= _InventorySpace) {
             Debug.Log("Not enough inventory space!");
             return;
         }
         // Sell overflowing Items
-        if (items.ContainsKey(item) && items[item] + amount >= _MaxItemStack) {
-            SellItem(item, amount - (_MaxItemStack - items[item]));
-            amount = _MaxItemStack - items[item];
+        if (elements.ContainsKey(item) && elements[item] + amount >= _MaxItemStack) {
+            SellItem(item, amount - (_MaxItemStack - elements[item]));
+            amount = _MaxItemStack - elements[item];
         }
-        base.AddItem(item, amount);
+        base.AddElement(item, amount);
     }
 
     /**
-     * Calls ItemStorage.RemoveItem() and deselects the item if removed
+     * Calls ItemStorage.RemoveElement() and deselects the item if removed
      */
-    public override void RemoveItem(Item item, int amount) {
-        base.RemoveItem(item, amount);
-        if (!items.ContainsKey(item) && PlayerController.instance.SelectedItem == item) {
+    public override void RemoveElement(Item item, int amount) {
+        base.RemoveElement(item, amount);
+        if (!elements.ContainsKey(item) && PlayerController.instance.SelectedItem == item) {
             PlayerController.instance.DeselectItem();
         }
     }
@@ -50,7 +50,7 @@ public class Inventory : ItemStorage {
      */
     public void SellItem(Item item, int amount) {
         PlayerController.instance.ChangeMoney(item.SellPrice);
-        Shop.instance.AddItem(item, amount);
-        RemoveItem(item, amount);
+        Shop.instance.AddElement(item, amount);
+        RemoveElement(item, amount);
     }
 }

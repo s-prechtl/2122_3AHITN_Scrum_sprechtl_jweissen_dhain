@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class ShopSlot : ItemStorageSlot {
+public class ShopSlot : ElementStorageSlot<Item> {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI costText;
 
@@ -29,23 +29,23 @@ public class ShopSlot : ItemStorageSlot {
     /**
      * Gets called when the Shop Slot is clicked
      */
-    public override void UseItem() {
-        if(Item) {
-            if(_playerController.Money >= Item.price) {
-                if(Item) {
-                    _playerController.ChangeMoney(-Item.price);
+    public override void UseElement() {
+        if(Element) {
+            if(_playerController.Money >= Element.price) {
+                if(Element) {
+                    _playerController.ChangeMoney(-Element.price);
                     _shop.itemWasBought = true;
                     
-                    Debug.Log("Buying Item: " + Item.displayName);
+                    Debug.Log("Buying Item: " + Element.displayName);
                 }
-                _inventory.AddItem(Item, 1);
-                _shop.RemoveItem(Item, 1);
+                _inventory.AddElement(Element, 1);
+                _shop.RemoveElement(Element, 1);
             } else {
                 Debug.Log("Not enough money to buy item.");
             }
 
-            _shop.onItemChangedCallback?.Invoke();
-            _inventory.onItemChangedCallback?.Invoke();
+            _shop.onElementChangedCallback?.Invoke();
+            _inventory.onElementChangedCallback?.Invoke();
         }
     }
 }

@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour {
     private void Start() {
         // Get Inventory instance and add UpdateUI method to OnItemChanged delegate
         _inventory = Inventory.instance;
-        _inventory.onItemChangedCallback += UpdateUI;
+        _inventory.onElementChangedCallback += UpdateUI;
 
         // Add all InventorySlot GameObjects to _slots and turn off the Inventory UI
         _slots = itemsParent.GetComponentsInChildren<InventorySlot>();
@@ -38,7 +38,7 @@ public class InventoryUI : MonoBehaviour {
         inventoryUI.SetActive(!inventoryUI.activeSelf);
         HoverManager.instance.HideDescription();
         foreach(InventorySlot slot in _slots) {
-            slot.ChangeItemSelectedSprite(false);
+            slot.ChangeElementSelectedSprite(false);
         }
     }
 
@@ -48,10 +48,10 @@ public class InventoryUI : MonoBehaviour {
     private void UpdateUI() {
         // Add all items to the correct slots, clear the ones where no item should be and set the number of how many items are in the slot
         for(int i = 0; i < _slots.Length; i++) {
-            if(i < _inventory.items.Count) {
-                _slots[i].AddItem(_inventory.items.ElementAt(i).Key);
-                _slots[i].amountText.text = "" + _inventory.items[_inventory.items.ElementAt(i).Key];
-                if(_inventory.items[_inventory.items.ElementAt(i).Key] == 1) {
+            if(i < _inventory.elements.Count) {
+                _slots[i].AddElement(_inventory.elements.ElementAt(i).Key);
+                _slots[i].amountText.text = "" + _inventory.elements[_inventory.elements.ElementAt(i).Key];
+                if(_inventory.elements[_inventory.elements.ElementAt(i).Key] == 1) {
                     _slots[i].amountText.text = "";
                 }
             } else {

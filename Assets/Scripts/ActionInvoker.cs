@@ -70,7 +70,7 @@ namespace DefaultNamespace {
             Crop crop = ((FarmlandTile)gameObject.GetComponent<TileBehaviour>().Tile).Crop;
             if(!crop.Planted) {
                 crop.Plant();
-                Inventory.instance.RemoveItem(ItemContainer.Instance.GetItemByName("Wheat Seeds"), 1);
+                Inventory.instance.RemoveElement(ItemContainer.Instance.GetItemByName("Wheat Seeds"), 1);
             }
 
             UpdateFarmlandSprites(gameObject);
@@ -113,9 +113,9 @@ namespace DefaultNamespace {
         private static void HarvestIfPossible(GameObject gameObject) {
             Crop crop = ((FarmlandTile)gameObject.GetComponent<TileBehaviour>().Tile).Crop;
             if(crop.FullyGrown) {
-                Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat Seeds"),
+                Inventory.instance.AddElement(ItemContainer.Instance.GetItemByName("Wheat Seeds"),
                     (int)(Random.Range(1, 300)));
-                Inventory.instance.AddItem(ItemContainer.Instance.GetItemByName("Wheat"), 1);
+                Inventory.instance.AddElement(ItemContainer.Instance.GetItemByName("Wheat"), 1);
                 crop.ResetPlant();
                 UpdateFarmlandSprites(gameObject);
             }
@@ -141,7 +141,7 @@ namespace DefaultNamespace {
                     Debug.Log("aaaaaaaaaaaaaaaaaaaaa");
                     fenceRenderer.color = new Color(1, 1, 1, 1);
                     fenceCollider.enabled = true;
-                    Inventory.instance.RemoveItem(ItemContainer.Instance.GetItemByName("Fence"), 1);
+                    Inventory.instance.RemoveElement(ItemContainer.Instance.GetItemByName("Fence"), 1);
                 }
             } else {
                 Debug.LogError("Fence Renderer or Fence Collider is null");

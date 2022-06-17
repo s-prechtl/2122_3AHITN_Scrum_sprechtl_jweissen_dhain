@@ -97,7 +97,7 @@ public class FishingController : MonoBehaviour {
     }
 
     public void StartFishing() {
-        if (!_iv.items.ContainsKey(_ic.GetItemByName("Bait"))) {
+        if (!_iv.elements.ContainsKey(_ic.GetItemByName("Bait"))) {
             _messageView.SendMessage("No bait!", 1.0f);
             return;
         }
@@ -106,7 +106,7 @@ public class FishingController : MonoBehaviour {
             _messageView.SendMessage("You cannot fish anymore for today!", 1.0f);
             return;
         }
-        _iv.RemoveItem(_ic.GetItemByName("Bait"), 1);
+        _iv.RemoveElement(_ic.GetItemByName("Bait"), 1);
 
         Vector3 pos = Input.mousePosition;
 
@@ -132,7 +132,7 @@ public class FishingController : MonoBehaviour {
         if (_fishing && Catchable) {
             if (_fishingTime <= MaxTime) {
                 _messageView.SendMessage("Caught!", 1.5f);
-                _iv.AddItem(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime / 2)), 1));
+                _iv.AddElement(_ic.GetItemByName("Fish"), Math.Max((int)(1 / (_fishingTime / 2)), 1));
                 _fishedThisDay++;
             } else {
                 _messageView.SendMessage("Failed to catch the fish! You were too slow!", 1.5f);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shop : ItemStorage {
+public class Shop : ElementStorage<Item> {
     #region Singleton
 
     public static Shop instance;
@@ -25,8 +25,8 @@ public class Shop : ItemStorage {
     /**
      * Calls ItemStorage.RemoveItem() and sets 2 Variables to remember the last bought item
      */
-    public override void RemoveItem(Item item, int amount) {
-        base.RemoveItem(item, amount);
+    public override void RemoveElement(Item item, int amount) {
+        base.RemoveElement(item, amount);
         if(itemWasBought){
             _lastBoughtItem = item;
             _lastBoughtItemAmount = amount;
@@ -40,8 +40,8 @@ public class Shop : ItemStorage {
 
             if(_lastBoughtItem) {
                 _playerController.ChangeMoney(_lastBoughtItem.price);
-                _inventory.RemoveItem(_lastBoughtItem, _lastBoughtItemAmount);
-                AddItem(_lastBoughtItem, _lastBoughtItemAmount);
+                _inventory.RemoveElement(_lastBoughtItem, _lastBoughtItemAmount);
+                AddElement(_lastBoughtItem, _lastBoughtItemAmount);
                 itemWasBought = false;
             }
         }

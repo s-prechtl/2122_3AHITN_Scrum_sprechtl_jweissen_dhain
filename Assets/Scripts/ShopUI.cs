@@ -12,7 +12,7 @@ public class ShopUI : MonoBehaviour {
     private void Start() {
         // Get Shop instance and add UpdateUI method to OnItemChanged delegate
         _shop = Shop.instance;
-        _shop.onItemChangedCallback += UpdateUI;
+        _shop.onElementChangedCallback += UpdateUI;
 
         // Add all ShopSlot GameObjects to _slots and turn off the Shop UI
         _slots = itemsParent.GetComponentsInChildren<ShopSlot>();
@@ -46,11 +46,11 @@ public class ShopUI : MonoBehaviour {
     private void UpdateUI() {
         // Add all items to the correct slots and clear the ones where no item should be
         for (int i = 0; i < _slots.Length; i++) {
-            if (i < _shop.items.Count) {
-                _slots[i].AddItem(_shop.items.ElementAt(i).Key);
-                _slots[i].nameText.text = _slots[i].Item.displayName;
-                _slots[i].costText.text = _slots[i].Item.price + " µ";
-                _slots[i].amountText.text = _shop.items[_shop.items.ElementAt(i).Key] + " #";
+            if (i < _shop.elements.Count) {
+                _slots[i].AddElement(_shop.elements.ElementAt(i).Key);
+                _slots[i].nameText.text = _slots[i].Element.displayName;
+                _slots[i].costText.text = _slots[i].Element.price + " µ";
+                _slots[i].amountText.text = _shop.elements[_shop.elements.ElementAt(i).Key] + " #";
             }
             else {
                 _slots[i].ClearSlot();

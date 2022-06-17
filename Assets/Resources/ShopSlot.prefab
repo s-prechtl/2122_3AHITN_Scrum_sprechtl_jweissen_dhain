@@ -610,7 +610,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5121261193055935938}
         m_TargetAssemblyTypeName: ShopSlot, Assembly-CSharp
-        m_MethodName: UseItem
+        m_MethodName: UseElement
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
