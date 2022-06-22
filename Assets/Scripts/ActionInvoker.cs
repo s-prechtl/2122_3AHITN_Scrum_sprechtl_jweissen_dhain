@@ -138,7 +138,6 @@ namespace DefaultNamespace {
             if(fenceRenderer && fenceCollider) {
                 if(!fenceRenderer.enabled || !fenceCollider.enabled) {
                     fenceRenderer.enabled = true;
-                    Debug.Log("aaaaaaaaaaaaaaaaaaaaa");
                     fenceRenderer.color = new Color(1, 1, 1, 1);
                     fenceCollider.enabled = true;
                     Inventory.instance.RemoveElement(ItemContainer.Instance.GetItemByName("Fence"), 1);
