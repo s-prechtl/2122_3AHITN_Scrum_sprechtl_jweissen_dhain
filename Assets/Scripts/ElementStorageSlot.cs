@@ -73,7 +73,7 @@ public class ElementStorageSlot<T> : MonoBehaviour, IPointerEnterHandler, IPoint
      * Clears the Element Storage Slot
      */
     public virtual void ClearSlot() {
-        _element = default(T);
+        _element = default;
         icon.sprite = null;
         icon.enabled = false;
         amountText.text = "";

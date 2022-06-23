@@ -23,14 +23,14 @@ public class Inventory : ElementStorage<Item> {
      * Adds the specified amount of items to the Inventory
      */
     public override void AddElement(Item item, int amount) {
-        if (elements.Count >= _InventorySpace) {
+        if (Elements.Count >= _InventorySpace) {
             Debug.Log("Not enough inventory space!");
             return;
         }
         // Sell overflowing Items
-        if (elements.ContainsKey(item) && elements[item] + amount >= _MaxItemStack) {
-            SellItem(item, amount - (_MaxItemStack - elements[item]));
-            amount = _MaxItemStack - elements[item];
+        if (Elements.ContainsKey(item) && Elements[item] + amount >= _MaxItemStack) {
+            SellItem(item, amount - (_MaxItemStack - Elements[item]));
+            amount = _MaxItemStack - Elements[item];
         }
         base.AddElement(item, amount);
     }
@@ -40,7 +40,7 @@ public class Inventory : ElementStorage<Item> {
      */
     public override void RemoveElement(Item item, int amount) {
         base.RemoveElement(item, amount);
-        if (!elements.ContainsKey(item) && PlayerController.instance.SelectedItem == item) {
+        if (!Elements.ContainsKey(item) && PlayerController.instance.SelectedItem == item) {
             PlayerController.instance.DeselectItem();
         }
     }

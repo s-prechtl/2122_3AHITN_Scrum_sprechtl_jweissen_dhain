@@ -22,7 +22,6 @@ public class ShopSlot : ElementStorageSlot<Item> {
         nameText.text = "";
         costText.text = "";
         amountText.text = "";
-        // _shop.RemoveItem(Item, 1);
         base.ClearSlot();
     }
 

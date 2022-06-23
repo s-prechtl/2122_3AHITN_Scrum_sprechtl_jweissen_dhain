@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ElementStorage<T> : MonoBehaviour {
-    public Dictionary<T, int> elements;
+    private Dictionary<T, int> _elements;
+    public Dictionary<T, int> Elements => _elements;
     public T[] startElements;
 
     /**
@@ -12,7 +13,7 @@ public class ElementStorage<T> : MonoBehaviour {
     public OnElementChanged onElementChangedCallback;
 
     private void Start() {
-        elements ??= new Dictionary<T, int>();
+        _elements ??= new Dictionary<T, int>();
         foreach(T element in startElements) {
             AddElement(element, 1);
         }
@@ -22,10 +23,10 @@ public class ElementStorage<T> : MonoBehaviour {
      * Adds the specified amount of elements to the Element Storage
      */
     public virtual void AddElement(T element, int amount) {
-        if(!elements.ContainsKey(element)) {
-            elements.Add(element, amount);
+        if(!_elements.ContainsKey(element)) {
+            _elements.Add(element, amount);
         } else {
-            elements[element] += amount;
+            _elements[element] += amount;
         }
 
         onElementChangedCallback?.Invoke();
@@ -35,10 +36,10 @@ public class ElementStorage<T> : MonoBehaviour {
      * Removes the specified amount of elements in the Element Storage
      */
     public virtual void RemoveElement(T element, int amount) {
-        if(elements[element]-amount <= 0) {
-            elements.Remove(element);
+        if(_elements[element]-amount <= 0) {
+            _elements.Remove(element);
         } else {
-            elements[element] -= amount;
+            _elements[element] -= amount;
         }
 
         onElementChangedCallback?.Invoke();

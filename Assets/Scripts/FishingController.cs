@@ -97,7 +97,7 @@ public class FishingController : MonoBehaviour {
     }
 
     public void StartFishing() {
-        if (!_iv.elements.ContainsKey(_ic.GetItemByName("Bait"))) {
+        if (!_iv.Elements.ContainsKey(_ic.GetItemByName("Bait"))) {
             _messageView.SendMessage("No bait!", 1.0f);
             return;
         }
