@@ -1,26 +1,30 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TileController : MonoBehaviour {
     public GameObject tile;
 
     public GameObject cameraGameObject;
 
-    public List<GameObject> Tiles;
+    public List<List<GameObject>> Tiles;
 
     // Start is called before the first frame update
     void Start() {
         Camera camera = cameraGameObject.GetComponent<Camera>();
+        Tiles = new List<List<GameObject>>();
         Vector3 screen = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
         int x = Convert.ToInt32(Math.Ceiling(screen.x));
         int y = Convert.ToInt32(Math.Ceiling(screen.y));
         for(int xx = -x; xx <= x; xx++) {
+            List<GameObject> temp = new List<GameObject>();
             for(int yy = -y; yy <= y; yy++) {
                 if(tile != null) {
-                    Tiles.Add(Instantiate(tile, new Vector3(xx, yy, 0), Quaternion.identity));
+                    temp.Add(Instantiate(tile, new Vector3(xx, yy, 0), Quaternion.identity));
                 }
             }
+            Tiles.Add(temp);
         }
     }
 }
