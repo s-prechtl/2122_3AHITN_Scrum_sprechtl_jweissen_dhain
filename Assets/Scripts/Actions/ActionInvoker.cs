@@ -62,6 +62,7 @@ namespace DefaultNamespace {
             if(crop.Planted && crop.Hydrated) {
                 crop.Grow();
             }
+            crop.Hydrated = false;
 
             UpdateFarmlandSprites(gameObject);
         }

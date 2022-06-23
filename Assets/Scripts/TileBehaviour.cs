@@ -1,4 +1,5 @@
 using System;
+using Actions;
 using DefaultNamespace;
 using Tiles;
 using UnityEngine;
@@ -26,6 +27,9 @@ public class TileBehaviour : MonoBehaviour {
                 _hoverIndicatorSpriteRenderer = transChild.gameObject.GetComponent<SpriteRenderer>();
                 _hoverIndicatorSpriteRenderer.color = Color.clear;
             }
+            if(transChild.gameObject.name.Equals("HydrationIndicator")) {
+                transChild.gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
+            }
         }
         _hoverIndicatorColor = new Color(1, 1, 1, 0.3f);
         SetHoverIndicatorVisibility(false);
@@ -40,7 +44,8 @@ public class TileBehaviour : MonoBehaviour {
     void OnMouseDown() {
         UsableItem usableItem = PlayerController.instance.SelectedItem;
         if(usableItem != null) {
-            ActionInvoker.InvokeAction(gameObject, usableItem);
+            //ActionInvoker.InvokeAction(gameObject, usableItem);
+            ActionManager.Instance.HandleAction(gameObject, usableItem);
         }
     }
 
