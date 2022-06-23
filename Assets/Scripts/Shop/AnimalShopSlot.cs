@@ -35,7 +35,7 @@ namespace Shop {
                         // Debug.Log("Buying Animal: " + Element.displayName);
                     }
 
-                    PlaceCowRandomlyOnScreen();
+                    PlaceAnimalRandomlyOnScreen();
                     _animalShop.RemoveElement(Element, 1);
                 } else {
                     // Debug.Log("Not enough money to buy Animal.");
@@ -46,17 +46,33 @@ namespace Shop {
         }
 
         /**
-         * Places cow randomly on Screen
+         * Places cow randomly on Screen where no other invalid object is
          */
-        private void PlaceCowRandomlyOnScreen() {
-            float spawnY = Random.Range
-            (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y,
-                Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
-            float spawnX = Random.Range
-            (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x,
-                Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
+        private void PlaceAnimalRandomlyOnScreen() {
+            bool objectIsAtSpawnPos;
+            Vector2 spawnPosition = new Vector2();
+            do {
+                objectIsAtSpawnPos = false;
+                float spawnY = Random.Range
+                (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y,
+                    Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
+                float spawnX = Random.Range
+                (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x,
+                    Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
 
-            Vector2 spawnPosition = new Vector2(spawnX, spawnY);
+                spawnPosition = new Vector2(spawnX, spawnY);
+
+                // check if any Object is already at that position
+                RaycastHit2D hit = Physics2D.Raycast(spawnPosition, Vector2.up, 0f);
+                if(hit.collider != null) {
+                    if(hit.collider.name == "House" 
+                       || hit.collider.GetComponent<Animal>() 
+                       || hit.collider.name == "Fence") {
+                        objectIsAtSpawnPos = true;
+                    }
+                }
+            } while(objectIsAtSpawnPos);
+
             Instantiate(Element.animalPrefab, spawnPosition, Quaternion.identity);
         }
     }
