@@ -38,7 +38,6 @@ public class TileBehaviour : MonoBehaviour {
     }
 
     private void NextDay() {
-        Debug.Log("nextday");
         ActionManager.Instance.NextDayAction(gameObject);
     }
 

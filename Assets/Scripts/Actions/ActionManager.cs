@@ -49,6 +49,7 @@ namespace Actions {
             foreach (ClickActionHandler actionHandler in _clickActionHandlers) {
                 if(actionHandler.Matches(gameObject, usableItem)) {
                     actionHandler.InvokeAction(gameObject);
+                    break; // Ja Herr Professor, Sie sehen richtig. Voller Stolz verwende ich ein break.
                 }
             }
         }
@@ -58,6 +59,7 @@ namespace Actions {
             foreach (NextDayActionHandler actionHandler in _nextDayActionHandlers) {
                 if(actionHandler.Matches(gameObject)) {
                     actionHandler.InvokeAction(gameObject);
+                    break; // Gleich noch einmal. Und ich kann nachts immer noch zufrieden schlafen.
                 }
             }
         }
