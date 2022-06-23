@@ -1,14 +1,12 @@
 ﻿using Actions;
 using Tiles;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 namespace Assets.Scripts.Actions {
-    public abstract class AbstractTileActionHandler : ActionHandler {
+    public abstract class AbstractTileClickActionHandler : ClickActionHandler {
         protected BaseTile _tile;
-        protected int _usableItemId;
         protected ItemContainer _ic;
-        public virtual void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+        public virtual void InvokeAction(GameObject gameObject) {
             throw new System.NotImplementedException();
         }
 
@@ -19,12 +17,12 @@ namespace Assets.Scripts.Actions {
                 _tile = gameObject.GetComponent<TileBehaviour>().Tile;
                 rv = true;
             }
-            catch {
-            }
+            catch { }
+            
             return rv;
         }
     }
-    public abstract class AbstractGrassTileActionHandler : AbstractTileActionHandler {
+    public abstract class AbstractGrassTileClickActionHandler : AbstractTileClickActionHandler {
         public override bool Matches(GameObject gameObject, UsableItem usableItem) {
             bool rv = base.Matches(gameObject, usableItem);
             if(rv) {
@@ -33,7 +31,7 @@ namespace Assets.Scripts.Actions {
             return rv;
         }
     }
-    public abstract class AbstractFarmlandTileActionHandler : AbstractTileActionHandler {
+    public abstract class AbstractFarmlandTileClickActionHandler : AbstractTileClickActionHandler {
         protected Crop crop;
         public override bool Matches(GameObject gameObject, UsableItem usableItem) {
             bool rv = base.Matches(gameObject, usableItem);
@@ -78,7 +76,7 @@ namespace Assets.Scripts.Actions {
             }
         }
     }
-    public abstract class AbstractWaterTileActionHandler : AbstractTileActionHandler {
+    public abstract class AbstractWaterTileClickActionHandler : AbstractTileClickActionHandler {
         public override bool Matches(GameObject gameObject, UsableItem usableItem) {
             bool rv = base.Matches(gameObject, usableItem);
             if(rv) {
@@ -88,25 +86,24 @@ namespace Assets.Scripts.Actions {
         }
     }
 
-    public abstract class AbstractAnimalActionHandler : ActionHandler {
-        public virtual void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public abstract class AbstractAnimalClickActionHandler : ClickActionHandler {
+        public void InvokeAction(GameObject gameObject) {
             throw new System.NotImplementedException();
         }
 
-        public virtual bool Matches(GameObject gameObject, UsableItem usableItem) {
+        public bool Matches(GameObject gameObject, UsableItem usableItem) {
             bool rv = false;
             try {
                 gameObject.GetComponent<Animal>();
                 rv = true;
             }
-            catch {
-            }
+            catch { }
             return rv;
         }
     }
 
-    public class GrassTileHoeActionHandler : AbstractGrassTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public class GrassTileClickHoeActionHandler : AbstractGrassTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             gameObject.GetComponent<TileBehaviour>().Tile = new FarmlandTile();
         }
 
@@ -119,8 +116,8 @@ namespace Assets.Scripts.Actions {
         }
     }
 
-    public class GrassTileShovelActionHandler : AbstractGrassTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public class GrassTileClickShovelActionHandler : AbstractGrassTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             gameObject.GetComponent<TileBehaviour>().Tile = new WaterTile();
         }
 
@@ -133,8 +130,8 @@ namespace Assets.Scripts.Actions {
         }
     }
 
-    public class GrassTileFenceActionHandler : AbstractGrassTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public class GrassTileClickFenceActionHandler : AbstractGrassTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             SpriteRenderer fenceRenderer = null;
             BoxCollider2D fenceCollider = null;
             foreach (Transform transChild in gameObject.GetComponentsInChildren<Transform>()) {
@@ -166,8 +163,8 @@ namespace Assets.Scripts.Actions {
         }
     }
 
-    public class FarmlandTileShovelActionHandler : AbstractFarmlandTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public class FarmlandTileClickShovelActionHandler : AbstractFarmlandTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             gameObject.GetComponent<TileBehaviour>().Tile = new GrassTile();
         }
 
@@ -180,8 +177,8 @@ namespace Assets.Scripts.Actions {
         }
     }
 
-    public class FarmlandTileScytheActionHandler : AbstractFarmlandTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public class FarmlandTileClickScytheActionHandler : AbstractFarmlandTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             if(crop.FullyGrown) {
                 Inventory.instance.AddElement(ItemContainer.Instance.GetItemByName("Wheat Seeds"),
                     (int)(Random.Range(1, 300)));
@@ -200,8 +197,8 @@ namespace Assets.Scripts.Actions {
         }
     }
     
-    public class FarmlandTileWateringCanActionHandler : AbstractFarmlandTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public class FarmlandTileClickWateringCanActionHandler : AbstractFarmlandTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             crop.Hydrated = true;
             updateFarmlandSprites(gameObject);
         }
@@ -215,8 +212,8 @@ namespace Assets.Scripts.Actions {
         }
     }
     
-    public class FarmlandTileWheatSeedsActionHandler : AbstractFarmlandTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public class FarmlandTileClickWheatSeedsActionHandler : AbstractFarmlandTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             if(!crop.Planted) {
                 crop.Plant();
                 Inventory.instance.RemoveElement(ItemContainer.Instance.GetItemByName("Wheat Seeds"), 1);
@@ -234,8 +231,8 @@ namespace Assets.Scripts.Actions {
         }
     }
     
-    public class WaterTileShovelActionHandler : AbstractWaterTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
+    public class WaterTileClickShovelActionHandler : AbstractWaterTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             gameObject.GetComponent<TileBehaviour>().Tile = new GrassTile();
         }
 
@@ -248,10 +245,8 @@ namespace Assets.Scripts.Actions {
         }
     }
     
-    public class WaterTileFishingRodActionHandler : AbstractWaterTileActionHandler {
-        public override void InvokeAction(GameObject gameObject, UsableItem usableItem) {
-            ItemContainer ic = ItemContainer.Instance;
-
+    public class WaterTileClickFishingRodActionHandler : AbstractWaterTileClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
             FishingController fc = FishingController.instance;
             if(!fc.Fishing) {
                 fc.StartFishing();
