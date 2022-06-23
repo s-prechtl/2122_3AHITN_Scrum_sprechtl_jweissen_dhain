@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Tiles {
     public abstract class BaseTile {
-        private Sprite _sprite;
-        public Sprite Sprite => _sprite;
+        protected Sprite _sprite;
+        public virtual Sprite Sprite => _sprite;
 
         protected BaseTile(String pathToImageFile) {
             _sprite = GenerateSpriteFromFile(pathToImageFile);

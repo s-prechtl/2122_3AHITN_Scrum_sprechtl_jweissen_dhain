@@ -12,8 +12,8 @@ public class TileController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        Camera camera = cameraGameObject.GetComponent<Camera>();
         Tiles = new List<List<GameObject>>();
+        Camera camera = cameraGameObject.GetComponent<Camera>();
         Vector3 screen = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
         int x = Convert.ToInt32(Math.Ceiling(screen.x));
         int y = Convert.ToInt32(Math.Ceiling(screen.y));

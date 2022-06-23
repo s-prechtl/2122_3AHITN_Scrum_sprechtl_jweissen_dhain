@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class TileBehaviour : MonoBehaviour {
     private BaseTile _tile;
-
-    public BaseTile Tile {
+    public virtual BaseTile Tile {
         get => _tile;
         set {
             _tile = value;
