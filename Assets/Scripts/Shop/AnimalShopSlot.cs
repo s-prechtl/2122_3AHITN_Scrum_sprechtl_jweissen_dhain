@@ -34,7 +34,6 @@ namespace Shop {
                         _playerController.ChangeMoney(-Element.price);
                         // Debug.Log("Buying Animal: " + Element.displayName);
                     }
-
                     PlaceAnimalRandomlyOnScreen();
                     _animalShop.RemoveElement(Element, 1);
                 } else {

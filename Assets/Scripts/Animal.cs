@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Actions;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,6 +9,7 @@ public class Animal : MonoBehaviour {
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
     private int _animMoveID;
+    private bool _canBeMilked;
 
     public int SellPrice => Convert.ToInt32(price * 0.8);
     
@@ -25,14 +27,19 @@ public class Animal : MonoBehaviour {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _animator = gameObject.GetComponent<Animator>();
         _animMoveID = Animator.StringToHash("moving");
-
+        
+        _canBeMilked = true;
         _spriteRenderer.sprite = defaultSprite;
+        
+        HouseController.NewDayEvent.AddListener(InvertCanBeMilked);
         
         // Move the Animal in any random direction every 1-5s
         InvokeRepeating(nameof(MoveInRandomDirection), 2f, Random.Range(1f, 5f));
     }
 
-    // Moves the Animal in any random direction for a random amount of time
+    /**
+     * Moves the Animal in any random direction for a random amount of time
+     */
     private void MoveInRandomDirection() {
         IEnumerator Move() { 
             float randTime = Random.Range(0.5f, 1f);
@@ -60,9 +67,20 @@ public class Animal : MonoBehaviour {
         StartCoroutine(Move());
     }
 
+    /**
+     * Invert the _canBeMilked bool
+     */
+    private void InvertCanBeMilked() {
+        _canBeMilked = !_canBeMilked;
+    }
+    
+    /**
+     * Milk cow if possible
+     */
     private void OnMouseDown() {
-        //TODO: TEMP!!!!
-        Destroy(gameObject);
-        //ActionManager.Instance.HandleAction(gameObject, PlayerController.instance.SelectedItem);
+        if(_canBeMilked) {
+            ActionManager.Instance.ClickAction(gameObject, PlayerController.instance.SelectedItem);
+            _canBeMilked = false;
+        }
     }
 }

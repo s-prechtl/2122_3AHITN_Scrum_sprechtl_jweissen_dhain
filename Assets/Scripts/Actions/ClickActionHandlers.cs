@@ -89,14 +89,16 @@ namespace Assets.Scripts.Actions {
     }
 
     public abstract class AbstractAnimalClickActionHandler : ClickActionHandler {
-        public void InvokeAction(GameObject gameObject) {
+        protected Animal _animal;
+        
+        public virtual void InvokeAction(GameObject gameObject) {
             throw new System.NotImplementedException();
         }
 
-        public bool Matches(GameObject gameObject, UsableItem usableItem) {
+        public virtual bool Matches(GameObject gameObject, UsableItem usableItem) {
             bool rv = false;
             try {
-                gameObject.GetComponent<Animal>();
+                _animal = gameObject.GetComponent<Animal>();
                 rv = true;
             }
             catch { }
@@ -261,6 +263,20 @@ namespace Assets.Scripts.Actions {
             bool rv = base.Matches(gameObject, usableItem);
             if(rv) {
                 rv = (usableItem.ID == _ic.GetItemIdByName("Fishing Rod"));
+            }
+            return rv;
+        }
+    }
+
+    public class CowAnimalClickActionHandler : AbstractAnimalClickActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
+            Inventory.instance.AddElement(_animal.producedItem, 1);
+        }
+
+        public override bool Matches(GameObject gameObject, UsableItem usableItem) {
+            bool rv = base.Matches(gameObject, usableItem);
+            if(rv) {
+                rv = _animal.displayName.Equals("Cow") && usableItem.ID == ItemContainer.Instance.GetItemIdByName("Bucket");
             }
             return rv;
         }

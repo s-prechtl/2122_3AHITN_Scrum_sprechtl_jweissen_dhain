@@ -23,15 +23,15 @@ namespace Actions {
         private ActionManager() {
             _clickActionHandlers = new List<ClickActionHandler>();
             _nextDayActionHandlers = new List<NextDayActionHandler>();
-            instantiateClickActionHandlers();
-            instantiateNextDayActionHandlers();
+            InstantiateClickActionHandlers();
+            InstantiateNextDayActionHandlers();
         }
 
-        private void instantiateNextDayActionHandlers() {
+        private void InstantiateNextDayActionHandlers() {
             _nextDayActionHandlers.Add(new FarmlandTileNextDayActionHandler());
         }
 
-        private void instantiateClickActionHandlers() {
+        private void InstantiateClickActionHandlers() {
             _clickActionHandlers.Add(new GrassTileClickHoeActionHandler());
             _clickActionHandlers.Add(new GrassTileClickShovelActionHandler());
             _clickActionHandlers.Add(new GrassTileClickFenceActionHandler());
@@ -43,6 +43,8 @@ namespace Actions {
             
             _clickActionHandlers.Add(new WaterTileClickShovelActionHandler());
             _clickActionHandlers.Add(new WaterTileClickFishingRodActionHandler());
+            
+            _clickActionHandlers.Add(new CowAnimalClickActionHandler());
         }
         
         public void ClickAction(GameObject gameObject, UsableItem usableItem) {
