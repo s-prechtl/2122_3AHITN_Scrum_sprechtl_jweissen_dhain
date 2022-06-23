@@ -34,18 +34,18 @@ public class TileBehaviour : MonoBehaviour {
         _hoverIndicatorColor = new Color(1, 1, 1, 0.3f);
         SetHoverIndicatorVisibility(false);
 
-        HouseController.NewDayEvent.AddListener(DayLightStep);
+        HouseController.NewDayEvent.AddListener(NextDay);
     }
 
-    private void DayLightStep() {
-        ActionInvoker.InvokeDayLightStep(gameObject);
+    private void NextDay() {
+        Debug.Log("nextday");
+        ActionManager.Instance.NextDayAction(gameObject);
     }
 
     void OnMouseDown() {
         UsableItem usableItem = PlayerController.instance.SelectedItem;
         if(usableItem != null) {
-            //ActionInvoker.InvokeAction(gameObject, usableItem);
-            ActionManager.Instance.HandleAction(gameObject, usableItem);
+            ActionManager.Instance.ClickAction(gameObject, usableItem);
         }
     }
 

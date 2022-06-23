@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Actions {
     public class ActionManager {
+        #region Singleton
         private static ActionManager _instance;
         public static ActionManager Instance {
             get
@@ -14,33 +15,49 @@ namespace Actions {
                 return _instance;
             }
         }
+        #endregion
 
-        private List<ActionHandler> _actionHandlers;
-        public List<ActionHandler> ActionHandlers => _actionHandlers;
+        private List<ClickActionHandler> _clickActionHandlers;
+        private List<NextDayActionHandler> _nextDayActionHandlers;
         
         private ActionManager() {
-            _actionHandlers = new List<ActionHandler>();
-            instatiateActionHandlers();
+            _clickActionHandlers = new List<ClickActionHandler>();
+            _nextDayActionHandlers = new List<NextDayActionHandler>();
+            instantiateClickActionHandlers();
+            instantiateNextDayActionHandlers();
         }
 
-        private void instatiateActionHandlers() {
-            ActionHandlers.Add(new GrassTileHoeActionHandler());
-            ActionHandlers.Add(new GrassTileShovelActionHandler());
-            ActionHandlers.Add(new GrassTileFenceActionHandler());
+        private void instantiateNextDayActionHandlers() {
+            _nextDayActionHandlers.Add(new FarmlandTileNextDayActionHandler());
+        }
+
+        private void instantiateClickActionHandlers() {
+            _clickActionHandlers.Add(new GrassTileClickHoeActionHandler());
+            _clickActionHandlers.Add(new GrassTileClickShovelActionHandler());
+            _clickActionHandlers.Add(new GrassTileClickFenceActionHandler());
             
-            ActionHandlers.Add(new FarmlandTileShovelActionHandler());
-            ActionHandlers.Add(new FarmlandTileScytheActionHandler());
-            ActionHandlers.Add(new FarmlandTileWateringCanActionHandler());
-            ActionHandlers.Add(new FarmlandTileWheatSeedsActionHandler());
+            _clickActionHandlers.Add(new FarmlandTileClickShovelActionHandler());
+            _clickActionHandlers.Add(new FarmlandTileClickScytheActionHandler());
+            _clickActionHandlers.Add(new FarmlandTileClickWateringCanActionHandler());
+            _clickActionHandlers.Add(new FarmlandTileClickWheatSeedsActionHandler());
             
-            ActionHandlers.Add(new WaterTileShovelActionHandler());
-            ActionHandlers.Add(new WaterTileFishingRodActionHandler());
+            _clickActionHandlers.Add(new WaterTileClickShovelActionHandler());
+            _clickActionHandlers.Add(new WaterTileClickFishingRodActionHandler());
         }
         
-        public void HandleAction(GameObject gameObject, UsableItem usableItem) {
-            foreach (ActionHandler actionHandler in ActionHandlers) {
+        public void ClickAction(GameObject gameObject, UsableItem usableItem) {
+            foreach (ClickActionHandler actionHandler in _clickActionHandlers) {
                 if(actionHandler.Matches(gameObject, usableItem)) {
-                    actionHandler.InvokeAction(gameObject, usableItem);
+                    actionHandler.InvokeAction(gameObject);
+                }
+            }
+        }
+        
+        public void NextDayAction(GameObject gameObject) {
+            Debug.Log("nextday action");
+            foreach (NextDayActionHandler actionHandler in _nextDayActionHandlers) {
+                if(actionHandler.Matches(gameObject)) {
+                    actionHandler.InvokeAction(gameObject);
                 }
             }
         }

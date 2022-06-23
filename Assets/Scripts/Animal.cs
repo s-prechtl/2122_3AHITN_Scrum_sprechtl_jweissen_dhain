@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Actions;
 using DefaultNamespace;
 using UnityEngine;
 using Object = System.Object;
@@ -59,6 +60,6 @@ public class Animal : MonoBehaviour {
     private void OnMouseDown() {
         //TODO: TEMP!!!!
         Destroy(gameObject);
-        ActionInvoker.InvokeAction(gameObject, PlayerController.instance.SelectedItem);
+        //ActionManager.Instance.HandleAction(gameObject, PlayerController.instance.SelectedItem);
     }
 }

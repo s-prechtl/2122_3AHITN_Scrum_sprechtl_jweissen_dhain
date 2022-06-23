@@ -5,6 +5,7 @@ using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
 
 namespace DefaultNamespace {
+    [Obsolete("Use ActionManager.HandleAction() instead", true)]
     public class ActionInvoker {
         public static void InvokeAction(GameObject gameObject, UsableItem usableItem) {
             Type tileType = gameObject.GetComponent<TileBehaviour>().Tile.GetType();

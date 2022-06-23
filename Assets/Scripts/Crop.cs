@@ -38,7 +38,6 @@ public class Crop {
     
     public void Grow() {
         _growthStage++;
-        Hydrated = false;
     }
 
     public void ResetPlant() {
