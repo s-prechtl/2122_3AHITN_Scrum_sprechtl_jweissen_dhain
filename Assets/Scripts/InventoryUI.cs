@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour {
 
         // Set the icon to not be a raycast target for the Description Hovering to work
         foreach(InventorySlot slot in _slots) {
-            slot.icon.raycastTarget = false;
+            slot.image.raycastTarget = false;
         }
     }
 

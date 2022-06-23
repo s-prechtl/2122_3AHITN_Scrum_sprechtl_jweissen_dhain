@@ -1,4 +1,5 @@
 using System;
+using Shop;
 using UnityEngine;
 
 public class Inventory : ElementStorage<Item> {
@@ -50,7 +51,7 @@ public class Inventory : ElementStorage<Item> {
      */
     public void SellItem(Item item, int amount) {
         PlayerController.instance.ChangeMoney(item.SellPrice);
-        Shop.instance.AddElement(item, amount);
+        ItemShop.instance.AddElement(item, amount);
         RemoveElement(item, amount);
     }
 }

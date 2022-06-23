@@ -1,29 +1,32 @@
 using System;
 using System.Collections;
-using Actions;
-using DefaultNamespace;
 using UnityEngine;
-using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class Animal : MonoBehaviour {
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
-    private Sprite _animalSprite;
     private Animator _animator;
     private int _animMoveID;
 
-    public Sprite AnimalSprite => _animalSprite;
+    public int SellPrice => Convert.ToInt32(price * 0.8);
     
     public Item producedItem;
     public int movementSpeed;
+    public GameObject animalPrefab;
+    public Sprite defaultSprite;
+    public Sprite selectedSprite;
+    public string displayName;
+    public string description;
+    public int price;
 
     private void Start() {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        _animalSprite = _spriteRenderer.GetComponent<Sprite>();
         _animator = gameObject.GetComponent<Animator>();
         _animMoveID = Animator.StringToHash("moving");
+
+        _spriteRenderer.sprite = defaultSprite;
         
         // Move the Animal in any random direction every 1-5s
         InvokeRepeating(nameof(MoveInRandomDirection), 2f, Random.Range(1f, 5f));

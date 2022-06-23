@@ -19,7 +19,7 @@ public class Item : ScriptableObject, IComparable<Item> {
     }
 
     public int CompareTo(Item other) {
-        return this._id - other._id;
+        return _id - other._id;
     }
 
     public void SetID(int id) {

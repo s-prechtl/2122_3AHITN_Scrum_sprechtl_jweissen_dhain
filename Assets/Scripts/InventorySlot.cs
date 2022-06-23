@@ -34,7 +34,7 @@ public class InventorySlot : ElementStorageSlot<Item>, IPointerClickHandler {
         // When clicked on with right Mouse Button sell the Item
         if(eventData.button == PointerEventData.InputButton.Right) {
             if(Element) {
-                _inventory.SellItem(Element, 1); //TODO: wie machen mehr als 1 verkaufen?!
+                _inventory.SellItem(Element, 1);
             }
         }
     }

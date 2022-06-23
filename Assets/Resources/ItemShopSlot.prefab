@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5121261191727116852}
   - component: {fileID: 5121261191727116855}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 5121261193055935938}
   - component: {fileID: 5121261193055935941}
   m_Layer: 5
-  m_Name: ShopSlot
+  m_Name: ItemShopSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6f808bd381a554eb64a7e84f997f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 5121261191727116855}
+  image: {fileID: 5121261191727116855}
   amountText: {fileID: 5121261192606669392}
   timeToWait: 0.5
   nameText: {fileID: 5121261192692990484}

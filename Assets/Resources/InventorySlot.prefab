@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 3510585822736120664}
   - component: {fileID: 3510585822736120665}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92863b15e86b5b94e9a331f3c97dddca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 3510585822736120665}
+  image: {fileID: 3510585822736120665}
   amountText: {fileID: 2490526733276001243}
   timeToWait: 0.5
 --- !u!61 &-6709197434562003015

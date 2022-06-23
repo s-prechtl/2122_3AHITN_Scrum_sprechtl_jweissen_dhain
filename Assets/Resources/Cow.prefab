@@ -157,6 +157,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   producedItem: {fileID: 11400000, guid: 510712f2d23afc147979bcd564ef7943, type: 2}
   movementSpeed: 1
+  animalPrefab: {fileID: 2510115116361252817}
+  defaultSprite: {fileID: 21300000, guid: e2bde586482642d44a270276574c0129, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 432d303bbfc9d6f409aa93b6081306e5, type: 3}
+  displayName: Cow
+  description: Mach Milch, hat Fell
+  price: 500
 --- !u!95 &3084876974777557816
 Animator:
   serializedVersion: 4

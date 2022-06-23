@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ElementStorageSlot<T> : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-    public Image icon;
+    public Image image;
     public TextMeshProUGUI amountText;
 
     public T Element => _element;
@@ -30,20 +30,22 @@ public class ElementStorageSlot<T> : MonoBehaviour, IPointerEnterHandler, IPoint
     }
 
     private void ShowMessage() {
-        if(_element is Item) { //TODO: add animal description showing
+        if(_element is Item) {
             Item item = (Item)(object)_element;
             HoverManager.onMouseHoverDescription(item.description, Input.mousePosition);
+        } else if(_element is Animal) {
+            Animal animal = (Animal)(object)_element;
+            HoverManager.onMouseHoverDescription(animal.description, Input.mousePosition);
         }
     }
 
     public void ChangeElementSelectedSprite(bool on) {
         if(_element is Item) { //TODO: add animal sprite change
             Item item = (Item)(object)_element;
-            if(on) {
-                icon.sprite = item.selectedSprite;
-            } else {
-                icon.sprite = item.defaultSprite;
-            }
+            image.sprite = on ? item.selectedSprite : item.defaultSprite;
+        }else if(_element is Animal) {
+            Animal animal = (Animal)(object)_element;
+            image.sprite = on ? animal.selectedSprite : animal.defaultSprite;
         }
     }
 
@@ -61,12 +63,15 @@ public class ElementStorageSlot<T> : MonoBehaviour, IPointerEnterHandler, IPoint
     public void AddElement(T newElement) {
         _element = newElement;
 
-        if(_element is Item) { //TODO: add animal sprite change
+        if(_element is Item) {
             Item item = (Item)(object)_element;
-            icon.sprite = item.defaultSprite;
+            image.sprite = item.defaultSprite;
+        } else if (_element is Animal) {
+            Animal animal = (Animal)(object)_element;
+            image.sprite = animal.defaultSprite;
         }
 
-        icon.enabled = true;
+        image.enabled = true;
     }
 
     /**
@@ -74,8 +79,8 @@ public class ElementStorageSlot<T> : MonoBehaviour, IPointerEnterHandler, IPoint
      */
     public virtual void ClearSlot() {
         _element = default;
-        icon.sprite = null;
-        icon.enabled = false;
+        image.sprite = null;
+        image.enabled = false;
         amountText.text = "";
     }
 

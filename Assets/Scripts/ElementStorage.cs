@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class ElementStorage<T> : MonoBehaviour {
@@ -7,7 +8,7 @@ public class ElementStorage<T> : MonoBehaviour {
     public T[] startElements;
 
     /**
-     * Methods can be added to this and they will get called every time onItemChangedCallback gets Invoked
+     * Methods can be added to this and they will get called every time onElementChangedCallback gets Invoked
      */
     public delegate void OnElementChanged();
     public OnElementChanged onElementChangedCallback;
