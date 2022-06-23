@@ -35,9 +35,11 @@ namespace Assets.Scripts.Actions {
         protected Crop crop;
         public override bool Matches(GameObject gameObject, UsableItem usableItem) {
             bool rv = base.Matches(gameObject, usableItem);
-            if(rv) {
-                crop = ((FarmlandTile)gameObject.GetComponent<TileBehaviour>().Tile).Crop;
-                rv = (_tile.GetType() == typeof(FarmlandTile));
+            try {
+                crop = ((FarmlandTile)_tile).Crop;
+            }
+            catch {
+                rv = false;
             }
             return rv;
         }
