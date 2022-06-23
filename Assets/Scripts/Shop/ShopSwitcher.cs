@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Shop {
-
-
     public class ShopSwitcher : MonoBehaviour {
         public Sprite animalShopSprite;
         public Sprite itemShopSprite;
@@ -22,6 +20,10 @@ namespace Shop {
             viewportAnimals.SetActive(false);
         }
 
+        /**
+         * Shops get switched between Animal and Item Shop
+         * The Image on the Button gets changes depending at which Shop you are
+         */
         public void SwitchShops() {
             // switch Shop Title text and Image of the Button
             if(shopTitleText.text.StartsWith("Item")) {

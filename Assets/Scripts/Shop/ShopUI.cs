@@ -45,8 +45,8 @@ namespace Shop {
         }
 
         /**
-     * Turn on/off the Shop UI
-     */
+         * Turn on/off the Shop UI
+         */
         private void ToggleShop() {
             inventoryUI.gameObject.SetActive(!shopUI.activeSelf);
             HoverManager.instance.HideDescription();
@@ -54,10 +54,10 @@ namespace Shop {
         }
 
         /**
-     * Is called when something in the Shop UI should update
-     */
+        * Is called when something in the Shop UI should update
+         */
         private void UpdateUI() {
-            // Add all items to the correct slots and clear the ones where no item should be
+            // Add all items and animals to the correct slots and clear the ones where no item/animal should be
             for(int i = 0; i < _itemSlots.Length; i++) {
                 // Item Slots
                 if(i < _itemShop.Elements.Count) {

@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 
 namespace Shop {
-    
     public class AnimalShopSlot : ElementStorageSlot<Animal> {
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI costText;
@@ -16,8 +15,8 @@ namespace Shop {
         }
 
         /**
-     * Clears the Shop Slot
-     */
+        * Clears the Shop Slot
+        */
         public override void ClearSlot() {
             nameText.text = "";
             costText.text = "";
@@ -26,8 +25,8 @@ namespace Shop {
         }
 
         /**
-     * Gets called when the Shop Slot is clicked
-     */
+         * Gets called when the Shop Slot is clicked
+         */
         public override void UseElement() {
             if(Element) {
                 if(_playerController.Money >= Element.price) {
@@ -46,6 +45,9 @@ namespace Shop {
             }
         }
 
+        /**
+         * Places cow randomly on Screen
+         */
         private void PlaceCowRandomlyOnScreen() {
             float spawnY = Random.Range
             (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y,

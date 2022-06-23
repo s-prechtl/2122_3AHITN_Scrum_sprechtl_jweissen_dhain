@@ -1,8 +1,6 @@
 using UnityEngine;
 
 namespace Shop {
-
-
     public class ItemShop : ElementStorage<Item> {
         #region Singleton
 
@@ -26,8 +24,8 @@ namespace Shop {
         private int _lastBoughtItemAmount;
 
         /**
-     * Calls ElementStorage.RemoveItem() and sets 2 Variables to remember the last bought item
-     */
+         * Calls ElementStorage.RemoveItem() and sets 2 Variables to remember the last bought item
+         */
         public override void RemoveElement(Item item, int amount) {
             base.RemoveElement(item, amount);
             if(itemWasBought) {
@@ -36,6 +34,9 @@ namespace Shop {
             }
         }
 
+        /**
+         * Undo the last purchase (refund money)
+         */
         public void UndoLastPurchase() {
             if(itemWasBought) {
                 _inventory = Inventory.instance;

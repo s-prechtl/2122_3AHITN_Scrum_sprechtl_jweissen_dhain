@@ -1,8 +1,6 @@
 using UnityEngine;
 
 namespace Shop {
-
-
     public class AnimalShop : ElementStorage<Animal> {
         #region Singleton
 
