@@ -70,6 +70,24 @@ namespace Actions {
             }
         }
     }
+
+    public abstract class AbstractAnimalNextDayActionHandler : NextDayActionHandler{
+        protected Animal _animal;
+        public virtual void InvokeAction(GameObject gameObject) {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual bool Matches(GameObject gameObject) {
+            bool rv = false;
+            try {
+                _animal = gameObject.GetComponent<Animal>();
+                rv = true;
+            }
+            catch { }
+            
+            return rv;
+        }
+    }
     
     public class FarmlandTileNextDayActionHandler : AbstractFarmlandTileNextDayActionHandler {
         public override void InvokeAction(GameObject gameObject) {
@@ -84,6 +102,20 @@ namespace Actions {
         public override bool Matches(GameObject gameObject) {
             bool rv = base.Matches(gameObject);
             Debug.Log(_tile.ToString());
+            return rv;
+        }
+    }
+    
+    public class ChickenAnimalNextDayActionHandler : AbstractAnimalNextDayActionHandler {
+        public override void InvokeAction(GameObject gameObject) {
+            Inventory.instance.AddElement(_animal.producedItem, Random.Range(1, 5));
+        }
+
+        public override bool Matches(GameObject gameObject) {
+            bool rv = base.Matches(gameObject);
+            if(rv) {
+                rv = _animal.displayName.Equals("Chicken");
+            }
             return rv;
         }
     }

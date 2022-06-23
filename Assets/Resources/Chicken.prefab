@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2510115116361252817
+--- !u!1 &8336664152962957100
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2510115116361252819}
-  - component: {fileID: 2510115116361252816}
-  - component: {fileID: 123187747779251107}
-  - component: {fileID: 2510115116361252818}
-  - component: {fileID: 3084876974777557816}
-  - component: {fileID: -345647752741578242}
+  - component: {fileID: 9120721559691392571}
+  - component: {fileID: 3014515124387237889}
+  - component: {fileID: 5993197352764583501}
+  - component: {fileID: 3757590040189918822}
+  - component: {fileID: 1650281244656501979}
+  - component: {fileID: 9088528460680327735}
   m_Layer: 0
-  m_Name: Cow
+  m_Name: Chicken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2510115116361252819
+--- !u!4 &9120721559691392571
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2510115116361252817}
+  m_GameObject: {fileID: 8336664152962957100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.61, y: -2.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 5}
+  m_LocalPosition: {x: 1.7112876, y: -1.5435047, z: -8.102337}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2510115116361252816
+--- !u!212 &3014515124387237889
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2510115116361252817}
+  m_GameObject: {fileID: 8336664152962957100}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -278359049
   m_SortingLayer: 2
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e2bde586482642d44a270276574c0129, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 1577f106ceccd624895112215c69960a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,14 +88,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &123187747779251107
+--- !u!50 &5993197352764583501
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2510115116361252817}
+  m_GameObject: {fileID: 8336664152962957100}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -109,13 +109,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &2510115116361252818
+--- !u!60 &3757590040189918822
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2510115116361252817}
+  m_GameObject: {fileID: 8336664152962957100}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -134,26 +134,46 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.09375, y: 0.40625}
-      - {x: -0.4375, y: 0.40625}
-      - {x: -0.5, y: 0.34375}
-      - {x: -0.5, y: -0.3125}
-      - {x: -0.46875, y: -0.40625}
-      - {x: 0.4375, y: -0.40625}
-      - {x: 0.5, y: -0.28125}
-      - {x: 0.5, y: 0.03125}
-      - {x: 0.375, y: 0.21875}
---- !u!95 &3084876974777557816
+    - - {x: -0.4375, y: -0.03125}
+      - {x: -0.25, y: -0.40625}
+      - {x: 0.21875, y: -0.40625}
+      - {x: 0.4375, y: -0.3125}
+      - {x: 0.4375, y: 0.03125}
+      - {x: 0.3125, y: 0.25}
+      - {x: -0.03125, y: 0.40625}
+      - {x: -0.25, y: 0.40625}
+      - {x: -0.4375, y: 0.09375}
+--- !u!114 &1650281244656501979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336664152962957100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36cb7b1a78935094f84a770ea77f308c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  producedItem: {fileID: 11400000, guid: eca7e47128c3e6e4fb93236db4a6324e, type: 2}
+  movementSpeed: 1
+  animalPrefab: {fileID: 8336664152962957100}
+  defaultSprite: {fileID: 21300000, guid: 1577f106ceccd624895112215c69960a, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 5cd8e4ccae6b051418872e9b1ca5bb46, type: 3}
+  displayName: Chicken
+  description: lays eggs, maybe some eastereggs too
+  price: 500
+--- !u!95 &9088528460680327735
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2510115116361252817}
+  m_GameObject: {fileID: 8336664152962957100}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a8de1a8a5ef3dd746b62c64884f39c5f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 278d5f784edd98f4cbb8875691645b24, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -163,23 +183,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-345647752741578242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2510115116361252817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3abcd021be6e8cd429909d1140d61699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  producedItem: {fileID: 11400000, guid: 510712f2d23afc147979bcd564ef7943, type: 2}
-  movementSpeed: 1
-  animalPrefab: {fileID: 2510115116361252817}
-  defaultSprite: {fileID: 21300000, guid: e2bde586482642d44a270276574c0129, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 432d303bbfc9d6f409aa93b6081306e5, type: 3}
-  displayName: Cow
-  description: Creates Milk in a magical way
-  price: 1000

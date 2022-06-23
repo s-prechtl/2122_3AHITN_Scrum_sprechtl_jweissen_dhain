@@ -8,8 +8,7 @@ public class Animal : MonoBehaviour {
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
-    private int _animMoveID;
-    private bool _canBeMilked;
+    private int _animatorMoveID;
 
     public int SellPrice => Convert.ToInt32(price * 0.8);
     
@@ -26,12 +25,9 @@ public class Animal : MonoBehaviour {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _animator = gameObject.GetComponent<Animator>();
-        _animMoveID = Animator.StringToHash("moving");
+        _animatorMoveID = Animator.StringToHash("moving");
         
-        _canBeMilked = true;
         _spriteRenderer.sprite = defaultSprite;
-        
-        HouseController.NewDayEvent.AddListener(InvertCanBeMilked);
         
         // Move the Animal in any random direction every 1-5s
         InvokeRepeating(nameof(MoveInRandomDirection), 2f, Random.Range(1f, 5f));
@@ -58,29 +54,12 @@ public class Animal : MonoBehaviour {
             }
             
             _rigidbody.velocity = movementSpeed * direction;
-            _animator.SetBool(_animMoveID, true);
+            _animator.SetBool(_animatorMoveID, true);
             yield return new WaitForSeconds(randTime);
             _rigidbody.velocity = new Vector2(0f, 0f); 
-            _animator.SetBool(_animMoveID, false);
+            _animator.SetBool(_animatorMoveID, false);
         }
         
         StartCoroutine(Move());
-    }
-
-    /**
-     * Invert the _canBeMilked bool
-     */
-    private void InvertCanBeMilked() {
-        _canBeMilked = !_canBeMilked;
-    }
-    
-    /**
-     * Milk cow if possible
-     */
-    private void OnMouseDown() {
-        if(_canBeMilked) {
-            ActionManager.Instance.ClickAction(gameObject, PlayerController.instance.SelectedItem);
-            _canBeMilked = false;
-        }
     }
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   description: You can throw this at other people's houses.
   selectedSprite: {fileID: 21300000, guid: ffdb15b7cd6bcb54d93bbde91bc5fa92, type: 3}
   defaultSprite: {fileID: 21300000, guid: 11b007ea791e7eb41b5c6aed9565e8bf, type: 3}
-  price: 20
+  price: 30

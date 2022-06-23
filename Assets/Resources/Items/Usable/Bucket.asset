@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761f645f009328845bc7851753024e92, type: 3}
+  m_Name: Bucket
+  m_EditorClassIdentifier: 
+  displayName: Bucket
+  description: Used for milking cows
+  selectedSprite: {fileID: 21300000, guid: e5d260800e972cd449af5dfcca028521, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 91b3677ea441a4d44b5bdea3f7302a30, type: 3}
+  price: 750
