@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,14 +6,14 @@ using UnityEngine.UI;
 public class DayTransitionManager : MonoBehaviour {
     public Animator dayTransitionAnimator;
     public TextMeshProUGUI dayCountText;
-    public GameObject sleepButton;
+    public Button sleepButton;
 
     private void Start() {
         HouseController.NewDayEvent.AddListener(NewDay);
     }
 
     private void NewDay() {
-        sleepButton.GetComponent<Button>().enabled = false;
+        sleepButton.enabled = false;
         dayTransitionAnimator.gameObject.SetActive(true);
         StartCoroutine(PlayTransition());
     }
@@ -23,7 +22,7 @@ public class DayTransitionManager : MonoBehaviour {
         dayCountText.text = "Day " + HouseController.DayCount;
         
         yield return new WaitForSeconds(3f);
-        sleepButton.GetComponent<Button>().enabled = true;
+        sleepButton.enabled = true;
         dayTransitionAnimator.gameObject.SetActive(false);
     }
 }

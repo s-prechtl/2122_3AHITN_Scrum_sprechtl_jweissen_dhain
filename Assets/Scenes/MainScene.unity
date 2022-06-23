@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayTransitionAnimator: {fileID: 496797769}
   dayCountText: {fileID: 1235858074}
-  sleepButton: {fileID: 880320856}
+  sleepButton: {fileID: 880320858}
 --- !u!4 &401600533
 Transform:
   m_ObjectHideFlags: 0
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2006577139}
   m_HandleRect: {fileID: 2006577138}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.9999999
   m_Size: 0.5386614
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5725,7 +5725,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280111227
+    rgba: 85807227
   m_fontColor: {r: 0.48235297, g: 0.3137255, b: 0.1137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
