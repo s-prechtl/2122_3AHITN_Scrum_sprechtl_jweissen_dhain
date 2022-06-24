@@ -2,10 +2,14 @@ using System;
 using System.IO;
 using UnityEngine;
 
+
 namespace Tiles {
+    /// <summary>
+    /// Base class of all Tile types
+    /// </summary>
     public abstract class BaseTile {
-        private Sprite _sprite;
-        public Sprite Sprite => _sprite;
+        protected Sprite _sprite;
+        public virtual Sprite Sprite => _sprite;
 
         protected BaseTile(String pathToImageFile) {
             _sprite = GenerateSpriteFromFile(pathToImageFile);
@@ -14,6 +18,11 @@ namespace Tiles {
 
         public virtual void DayLightStep() { }
 
+        /// <summary>
+        /// Used to generate Sprites from files 
+        /// </summary>
+        /// <param name="pathToImageFile">Path to the Image file to be Converted to the Sprite</param>
+        /// <returns>the created Sprite</returns>
         static public Sprite GenerateSpriteFromFile(String pathToImageFile) {
             byte[] data = File.ReadAllBytes(pathToImageFile);
             Texture2D texture = new Texture2D(32, 32, TextureFormat.ARGB32, false);
