@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Instatiates Tiles at beginning of the game
+/// </summary>
 public class TileController : MonoBehaviour {
     public GameObject tile;
 

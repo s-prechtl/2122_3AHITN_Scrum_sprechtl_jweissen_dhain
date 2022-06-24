@@ -4,6 +4,9 @@ namespace Tiles
 {
     public class GrassTile : BaseTile {
         private Sprite[] _sprites;
+        /// <summary>
+        /// Overridden Property to randomize tiles between the 3 different sprites
+        /// </summary>
         public override Sprite Sprite
         {
             get

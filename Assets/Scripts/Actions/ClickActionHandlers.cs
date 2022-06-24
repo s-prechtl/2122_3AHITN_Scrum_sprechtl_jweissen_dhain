@@ -2,6 +2,7 @@
 using Tiles;
 using UnityEngine;
 
+/// Definitions of ClickActionHandlers here
 namespace Assets.Scripts.Actions {
     public abstract class AbstractTileClickActionHandler : ClickActionHandler {
         protected BaseTile _tile;
@@ -183,7 +184,7 @@ namespace Assets.Scripts.Actions {
         public override void InvokeAction(GameObject gameObject) {
             if(crop.FullyGrown) {
                 Inventory.instance.AddElement(ItemContainer.Instance.GetItemByName("Wheat Seeds"),
-                    (int)(Random.Range(1, 300)));
+                    (int)(Random.Range(1, 3)));
                 Inventory.instance.AddElement(ItemContainer.Instance.GetItemByName("Wheat"), 1);
                 crop.ResetPlant();
                 updateFarmlandSprites(gameObject);

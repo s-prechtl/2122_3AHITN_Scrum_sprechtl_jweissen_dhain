@@ -5,6 +5,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
+/// <summary>
+/// Controlling logic of crop on FarmlandTiles
+/// </summary>
 public class Crop {
     private const int FinalGrowthStage = 4;
 

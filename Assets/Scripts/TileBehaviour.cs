@@ -4,6 +4,9 @@ using DefaultNamespace;
 using Tiles;
 using UnityEngine;
 
+/// <summary>
+/// Defining the behaviour of tiles
+/// </summary>
 public class TileBehaviour : MonoBehaviour {
     private BaseTile _tile;
     public virtual BaseTile Tile {
@@ -17,7 +20,7 @@ public class TileBehaviour : MonoBehaviour {
     private SpriteRenderer _hoverIndicatorSpriteRenderer;
     private static Color _hoverIndicatorColor;
 
-    // Start is called before the first frame update
+    /// Start is called before the first frame update
     void Start() {
         Tile = new GrassTile();
 
@@ -36,10 +39,16 @@ public class TileBehaviour : MonoBehaviour {
         HouseController.NewDayEvent.AddListener(NextDay);
     }
 
+    /// <summary>
+    /// is called when a NewDayEvent is dispersed
+    /// </summary>
     private void NextDay() {
         ActionManager.Instance.NextDayAction(gameObject);
     }
 
+    /// <summary>
+    /// Used to invoke Click Actions
+    /// </summary>
     void OnMouseDown() {
         UsableItem usableItem = PlayerController.instance.SelectedItem;
         if(usableItem != null) {
@@ -47,6 +56,9 @@ public class TileBehaviour : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// used to set hover indicator
+    /// </summary>
     private void OnMouseEnter() {
         SetHoverIndicatorVisibility(true);
     }
@@ -55,6 +67,10 @@ public class TileBehaviour : MonoBehaviour {
         SetHoverIndicatorVisibility(false);
     }
 
+    /// <summary>
+    /// Sets the visibility of hover indicator
+    /// </summary>
+    /// <param name="visible"></param>
     private void SetHoverIndicatorVisibility(bool visible) {
         if(visible) {
             _hoverIndicatorSpriteRenderer.color = _hoverIndicatorColor;

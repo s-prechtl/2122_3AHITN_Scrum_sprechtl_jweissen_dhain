@@ -3,6 +3,10 @@ using Assets.Scripts.Actions;
 using UnityEngine;
 
 namespace Actions {
+    /// <summary>
+    /// AcrionManagaer managing Actions.
+    /// ActionHandler implement either NextDayActionHandler or ClickActionHandler and have to be added to the matching list in the instatiationmethod 
+    /// </summary>
     public class ActionManager {
         #region Singleton
         private static ActionManager _instance;
@@ -27,10 +31,17 @@ namespace Actions {
             instantiateNextDayActionHandlers();
         }
 
+        /// <summary>
+        /// NextDayActionHandlers to be instatiated and added to the corresponding List
+        /// </summary>
         private void instantiateNextDayActionHandlers() {
             _nextDayActionHandlers.Add(new FarmlandTileNextDayActionHandler());
         }
 
+        
+        /// <summary>
+        /// ClickActionHandlers to be instatiated and added to the corresponding List
+        /// </summary>
         private void instantiateClickActionHandlers() {
             _clickActionHandlers.Add(new GrassTileClickHoeActionHandler());
             _clickActionHandlers.Add(new GrassTileClickShovelActionHandler());
@@ -45,6 +56,12 @@ namespace Actions {
             _clickActionHandlers.Add(new WaterTileClickFishingRodActionHandler());
         }
         
+        /// <summary>
+        /// Used to Invoke ClickActions, all ClickActionHandlers in ClickActionHandlers list are iterated through,
+        /// only one will be invoked per method call 
+        /// </summary>
+        /// <param name="gameObject">The affected gameObject</param>
+        /// <param name="usableItem">the current tool</param>
         public void ClickAction(GameObject gameObject, UsableItem usableItem) {
             foreach (ClickActionHandler actionHandler in _clickActionHandlers) {
                 if(actionHandler.Matches(gameObject, usableItem)) {
@@ -54,6 +71,12 @@ namespace Actions {
             }
         }
         
+        /// <summary>
+        /// Used to Invoke ClickActions, all ClickActionHandlers in ClickActionHandlers list are iterated through,
+        /// only one will be invoked per method call 
+        /// </summary>
+        /// <param name="gameObject">The affected gameObject</param>
+        /// <param name="usableItem">the current tool</param>
         public void NextDayAction(GameObject gameObject) {
             Debug.Log("nextday action");
             foreach (NextDayActionHandler actionHandler in _nextDayActionHandlers) {

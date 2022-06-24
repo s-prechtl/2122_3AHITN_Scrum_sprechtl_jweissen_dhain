@@ -2,6 +2,7 @@
 using Tiles;
 using UnityEngine;
 
+/// Definitions of NextDayActionHandlers here
 namespace Actions {
     public abstract class AbstractTileNextDayActionHandler : NextDayActionHandler {
         protected BaseTile _tile;
