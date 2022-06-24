@@ -43,6 +43,8 @@ namespace Actions {
         /// </summary>
         private void instantiateNextDayActionHandlers() {
             _nextDayActionHandlers.Add(new FarmlandTileNextDayActionHandler());
+            
+            _nextDayActionHandlers.Add(new ChickenAnimalNextDayActionHandler());
         }
 
         

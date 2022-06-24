@@ -82,7 +82,7 @@ namespace Actions {
             bool rv = false;
             try {
                 _animal = gameObject.GetComponent<Animal>();
-                rv = true;
+                rv = _animal != null;
             }
             catch { }
             
