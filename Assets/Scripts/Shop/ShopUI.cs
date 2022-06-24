@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using System.Linq;
+using Actions;
+using Tiles;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Shop {
-    public class ShopUI : MonoBehaviour {
+    public class ShopUI : MonoBehaviour , IPointerEnterHandler, IPointerExitHandler{
         public Transform itemsParent;
         public Transform animalsParent;
         public GameObject shopUI;
@@ -80,6 +84,20 @@ namespace Shop {
                     _animalSlots[i].ClearSlot();
                 }
             }
+        }
+
+        /**
+         * Turn off ActionManager when Pointer over UI
+         */
+        public void OnPointerEnter(PointerEventData eventData) {
+            ActionManager.Instance.Enabled = false;
+        }
+
+        /**
+         * Turn on ActionManager when Pointer over UI
+         */
+        public void OnPointerExit(PointerEventData eventData) {
+            ActionManager.Instance.Enabled = true;
         }
     }
 }

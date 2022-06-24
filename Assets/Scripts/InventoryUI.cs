@@ -1,9 +1,10 @@
 using System;
 using System.Linq;
+using Actions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryUI : MonoBehaviour {
+public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     public Transform itemsParent;
     public GameObject inventoryUI;
     private Inventory _inventory;
@@ -58,5 +59,19 @@ public class InventoryUI : MonoBehaviour {
                 _slots[i].ClearSlot();
             }
         }
+    }
+
+    /**
+    * Turn off ActionManager when Pointer over UI
+    */
+    public void OnPointerEnter(PointerEventData eventData) {
+        ActionManager.Instance.Enabled = false;
+    }
+
+    /**
+    * Turn on ActionManager when Pointer over UI
+    */
+    public void OnPointerExit(PointerEventData eventData) {
+        ActionManager.Instance.Enabled = true;
     }
 }
