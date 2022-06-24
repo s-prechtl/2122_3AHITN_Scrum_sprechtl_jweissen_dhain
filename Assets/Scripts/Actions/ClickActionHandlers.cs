@@ -100,7 +100,7 @@ namespace Assets.Scripts.Actions {
             bool rv = false;
             try {
                 _animal = gameObject.GetComponent<Animal>();
-                rv = true;
+                rv = _animal != null;
             }
             catch { }
             return rv;
@@ -277,7 +277,8 @@ namespace Assets.Scripts.Actions {
         public override bool Matches(GameObject gameObject, UsableItem usableItem) {
             bool rv = base.Matches(gameObject, usableItem);
             if(rv) {
-                rv = _animal.displayName.Equals("Cow") && usableItem.ID == ItemContainer.Instance.GetItemIdByName("Bucket");
+                    rv = _animal.displayName.Equals("Cow") &&
+                         usableItem.ID == ItemContainer.Instance.GetItemIdByName("Bucket");
             }
             return rv;
         }

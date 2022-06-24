@@ -23,12 +23,19 @@ namespace Actions {
 
         private List<ClickActionHandler> _clickActionHandlers;
         private List<NextDayActionHandler> _nextDayActionHandlers;
+        private bool _enabled;
+
+        public bool Enabled {
+            get => _enabled;
+            set => _enabled = value;
+        }
         
         private ActionManager() {
             _clickActionHandlers = new List<ClickActionHandler>();
             _nextDayActionHandlers = new List<NextDayActionHandler>();
             instantiateClickActionHandlers();
             instantiateNextDayActionHandlers();
+            Enabled = true;
         }
 
         /// <summary>
@@ -65,26 +72,28 @@ namespace Actions {
         /// <param name="gameObject">The affected gameObject</param>
         /// <param name="usableItem">the current tool</param>
         public void ClickAction(GameObject gameObject, UsableItem usableItem) {
-            foreach (ClickActionHandler actionHandler in _clickActionHandlers) {
-                if(actionHandler.Matches(gameObject, usableItem)) {
-                    actionHandler.InvokeAction(gameObject);
-                    break; // Ja Herr Professor, Sie sehen richtig. Voller Stolz verwende ich ein break.
+            if(Enabled) {
+                foreach(ClickActionHandler actionHandler in _clickActionHandlers) {
+                    if(actionHandler.Matches(gameObject, usableItem)) {
+                        actionHandler.InvokeAction(gameObject);
+                        break; // Ja Herr Professor, Sie sehen richtig. Voller Stolz verwende ich ein break.
+                    }
                 }
             }
         }
         
         /// <summary>
-        /// Used to Invoke ClickActions, all ClickActionHandlers in ClickActionHandlers list are iterated through,
+        /// Used to Invoke NextDay, all NextDayActionHandlers in NextDayActionHandlers list are iterated through,
         /// only one will be invoked per method call 
         /// </summary>
         /// <param name="gameObject">The affected gameObject</param>
-        /// <param name="usableItem">the current tool</param>
         public void NextDayAction(GameObject gameObject) {
-            Debug.Log("nextday action");
-            foreach (NextDayActionHandler actionHandler in _nextDayActionHandlers) {
-                if(actionHandler.Matches(gameObject)) {
-                    actionHandler.InvokeAction(gameObject);
-                    break; // Gleich noch einmal. Und ich kann nachts immer noch zufrieden schlafen.
+            if(Enabled) {
+                foreach(NextDayActionHandler actionHandler in _nextDayActionHandlers) {
+                    if(actionHandler.Matches(gameObject)) {
+                        actionHandler.InvokeAction(gameObject);
+                        break; // Gleich noch einmal. Und ich kann nachts immer noch zufrieden schlafen.
+                    }
                 }
             }
         }

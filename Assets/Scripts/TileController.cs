@@ -7,6 +7,20 @@ using UnityEngine.Tilemaps;
 /// Instatiates Tiles at beginning of the game
 /// </summary>
 public class TileController : MonoBehaviour {
+    #region Singleton
+
+    public static TileController instance;
+
+    private void Awake() {
+        if (instance != null) {
+            Debug.LogWarning("More than one instance of TileController found");
+        }
+
+        instance = this;
+    }
+
+    #endregion
+    
     public GameObject tile;
 
     public GameObject cameraGameObject;
