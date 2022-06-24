@@ -89,6 +89,13 @@ namespace Actions {
             return rv;
         }
     }
+
+    public abstract class AbstractCowNextDayActionHandler : AbstractAnimalNextDayActionHandler {
+        public override bool Matches(GameObject gameObject) {
+            bool rv = base.Matches(gameObject);
+            return rv;
+        }
+    }
     
     public class FarmlandTileNextDayActionHandler : AbstractFarmlandTileNextDayActionHandler {
         public override void InvokeAction(GameObject gameObject) {
@@ -120,4 +127,6 @@ namespace Actions {
             return rv;
         }
     }
+
+
 }

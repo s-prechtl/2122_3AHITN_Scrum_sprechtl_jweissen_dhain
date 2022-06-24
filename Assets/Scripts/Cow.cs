@@ -6,14 +6,18 @@ public class Cow : Animal {
 
     private void Awake() {
         _canBeMilked = true;
-        HouseController.NewDayEvent.AddListener(UpdateCanBeMilked);
+        HouseController.NewDayEvent.AddListener(NextDay);
+    }
+
+    private void NextDay() {
+        UpdateCanBeMilked();
+        //ActionManager.Instance.NextDayAction(gameObject);
     }
 
     /**
      * Update the _canBeMilked bool
      */
-    private void UpdateCanBeMilked() {
-        Debug.Log("_ca" + _canBeMilked);
+    public void UpdateCanBeMilked() {
         _canBeMilked = true;
     }
     
