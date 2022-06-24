@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3014515124387237889}
   - component: {fileID: 5993197352764583501}
   - component: {fileID: 3757590040189918822}
-  - component: {fileID: 1650281244656501979}
   - component: {fileID: 9088528460680327735}
+  - component: {fileID: 7584642645977806350}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -143,26 +143,6 @@ PolygonCollider2D:
       - {x: -0.03125, y: 0.40625}
       - {x: -0.25, y: 0.40625}
       - {x: -0.4375, y: 0.09375}
---- !u!114 &1650281244656501979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8336664152962957100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36cb7b1a78935094f84a770ea77f308c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  producedItem: {fileID: 11400000, guid: eca7e47128c3e6e4fb93236db4a6324e, type: 2}
-  movementSpeed: 1
-  animalPrefab: {fileID: 8336664152962957100}
-  defaultSprite: {fileID: 21300000, guid: 1577f106ceccd624895112215c69960a, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 5cd8e4ccae6b051418872e9b1ca5bb46, type: 3}
-  displayName: Chicken
-  description: lays eggs, maybe some eastereggs too
-  price: 500
 --- !u!95 &9088528460680327735
 Animator:
   serializedVersion: 4
@@ -183,3 +163,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7584642645977806350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336664152962957100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca3402310a920b4a81fc0240a161965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  producedItem: {fileID: 11400000, guid: eca7e47128c3e6e4fb93236db4a6324e, type: 2}
+  movementSpeed: 1
+  animalPrefab: {fileID: 8336664152962957100}
+  defaultSprite: {fileID: 21300000, guid: 1577f106ceccd624895112215c69960a, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 5cd8e4ccae6b051418872e9b1ca5bb46, type: 3}
+  displayName: Chicken
+  description: Lays eggs every day. \nMaybe some eastereggs too
+  price: 500
